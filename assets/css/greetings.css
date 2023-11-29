@@ -27,7 +27,7 @@
 .greetings__heading{
     margin: 0;
     margin-bottom: 1.625rem;
-    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    font-size: clamp(1.25rem, 1.7vw, 1.5rem);
 }
 
 .greetings__text{

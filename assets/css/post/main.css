@@ -1,0 +1,56 @@
+.main{
+    padding: 5rem 2.5rem;
+    width: 100%;
+}
+
+.main__breadcrumbs{
+
+}
+
+.main__home{
+    padding: .875rem;
+    background-color: var(--main-dark);
+    color: var(--background);
+    border-radius: 10px;
+}
+
+.main__rubrics{
+    background-color: var(--main);
+    border-radius: 4px;
+    border-left: 2px solid var(--main-dark);
+    text-decoration: none;
+    color: var(--black);
+}
+
+.main__author_info{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.main__author_info span{
+    text-align: right;
+}
+.main__author_info a{
+    text-decoration: none;
+    color: var(--black);
+}
+
+.main__rubrics:visited,
+.main__author_info a:visited{
+    color: var(--black);
+}
+
+.main__precept{
+    margin: 0;
+    max-width: 29.9rem;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 120%;
+    letter-spacing: .2px;
+    margin-bottom: 5rem;
+}
+
+.main__content{
+    max-width: 46.25rem;
+    margin: 0 auto;
+}

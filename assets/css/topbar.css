@@ -6,6 +6,13 @@
     background-color: transparent;
     width: clamp(min(100%, 56rem), 66vw, 66vw);
     color: var(--background);
+    transition: background-color 400ms ease, padding 400ms ease, border-radius 400ms ease;
+    z-index: 110;
+}
+.header--dark{
+    background-color: var(--black-80);
+    padding: .5rem .875rem;
+    border-radius: 0 0 10px 10px;
 }
 
 .header__logo {

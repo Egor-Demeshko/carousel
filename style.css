@@ -11,6 +11,7 @@
 @import url('/assets/css/links.css');
 @import url('/assets/css/footer.css');
 @import url('/assets/css/mobile_bottom.css');
+@import url('/assets/css/go_up.css');
 
 *{
     font-family: Ubuntu, sans-serif;

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="stylesheet" href="/assets/css/normolize.css"/>
+    <style>
+        :root {
+            --background: #F6F6F6;
+            --main-dark: #36AA00;
+            --main: #97E572;
+            --semi-main: #99E675;
+            --second_menu_gradient: #73B156; 
+            --light: #E7FCDB;
+            --grey: #D9D9D9;
+            --grey-dark: #919191;
+            --accent: #77003e;
+            --black: #000000;
+            --black-80: #000000CC;
+            --white: #FFFFFF;
+            --slide-background: #36AA0033;
+            --shadow: #000000A1;
+            
+            --first-green-gradient: #97E572B3; /*70%*/
+            --secondary-green-gradient: #97E5724D;
+            
+            
+            --background-dark: #0D0D0D;
+            --black-gradient-first: #8F8F8F;
+            --black-gradient-second: #C1C1C173;
+            
+            --main-green-gradient: linear-gradient(-90deg, var(--first-green-gradient), var(--secondary-green-gradient));
+            --grey-gradient: linear-gradient(-90deg, var(--black-gradient-first), var(--black-gradient-second));
+            --menu-gradient: linear-gradient(-90deg, var(--main), var(--second_menu_gradient));
+
+            --step: clamp(3rem, 20vw, 6.26rem);
+            --bottombar-height: 4.375rem;
+        }
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: var(--background);
+        }
+
+        .header-post{
+            display: flex;
+            padding: 1.5rem;
+            background-color: var(--black-80);
+            width: clamp(min(100%, 56rem), 66vw, 66vw);
+            color: var(--background);
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+        }.header-post__menu{
+            display: flex;
+        }.header-post__list{
+            display: flex;  
+        }
+
+
+        .banner{
+            width: 100%;
+            height: 19.875rem;
+            position: relative;
+        }
+
+        .banner__title{
+            font-size: 2rem;
+            padding: clamp(1rem, 2.2vw, 1.375rem);
+            width: 45%;
+            border-radius: 10px;
+            color: var(--background);
+        }
+        .banner__title_wrapper{
+            display: flex;
+            justify-content: end;
+            position: absolute;
+            width: clamp(min(100%, 56rem), 66vw, 66vw);
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 50%);
+        }
+
+        .main__header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .main__wrapper{
+            max-width: 63.75rem;
+        }
+
+        .main__breadcrumbs{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .main__home{
+            padding: .875rem;
+        }
+
+        .main__rubrics{
+            padding: .5rem 1.375rem;
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/post/style.css"/>
+</head>
+<body>
+    <div class="mobile_bottom">
+        <a class="mobile_bottom__item" href="#"><span>Контакты</span></a>
+        <a class="mobile_bottom__item" href="#"><span>Новости</span></a>
+        <button class="mobile_bottom__button">
+            <svg viewBox="0 0 48 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 16.5H45.5" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 2H45.5" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.25 31.5H45.75" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+        </button>
+    </div>
+
+    <header class="header-post">
+        <span><a class="header-post__logo" href="/">Логотип</a></span>
+        <div class="header-post__menu">
+            <nav>
+                <ul class="header-post__list">
+                    <li class="header-post__menu-item"><a href="/post.html">Страница</a></li>
+                    <li class="header-post__menu-item"><a href="#">Пункт 2</a></li>
+                    <li class="header-post__menu-item"><a href="#">Пункт 3</a></li>
+                    <li class="header-post__menu-item"><a href="#">Пункт 4</a></li>
+                    <li class="header-post__menu-item"><a href="#">Пункт 5</a></li>
+                </ul>
+            </nav>
+            
+            <svg class="header-post__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="header-post__language"><a>RU</a></span>
+            <span class="header-post__language"><a>BY</a></span>
+        </div>
+    </header>
+
+
+    <div class="banner">
+        <img class="banner__image" src="/assets/images/football.png" alt="banner" role="presentation"
+        width="1446px" height="314px">
+        <div class="banner__title_wrapper">
+            <h1 class="banner__title">Одно окно</h1>
+        </div>
+    </div>
+
+    <div class="main_flow">
+        <aside class="main_flow__aside">
+            <nav class="menu">
+                <div class="menu__sticky">
+                    <h3 class="menu__heading">Навигация</h3>
+                    <ul class="menu__main">
+                        <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                        <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                        <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                        <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                        <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                        <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                    </ul>
+                    <ul class="side_menu">
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                        <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    </ul>
+                    <div class="menu__socials">
+                        <div class="menu__socials_list">
+                            <a href="#"><img src="/assets/icons/Instagram_green.svg"/></a>
+                            <a href="#"><img src="/assets/icons/youtube_green.svg"/></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <main class="main_flow__main">
+            <div class="main">
+                <div class="main__wrapper">
+                    <header class="main__header">
+                        <div class="main__breadcrumbs">
+                            <a class="main__home" href="#">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.3626 32.586V24.1088C22.3626 23.7341 22.2093 23.3747 21.9365 23.1098C21.6638 22.8448 21.2938 22.696 20.908 22.696H15.0898C14.7041 22.696 14.3341 22.8448 14.0613 23.1098C13.7885 23.3747 13.6353 23.7341 13.6353 24.1088V32.586C13.6353 32.9607 13.4821 33.32 13.2093 33.585C12.9366 33.85 12.5667 33.9988 12.1809 33.9989L3.45473 34C3.2637 34 3.07454 33.9635 2.89804 33.8925C2.72155 33.8215 2.56118 33.7174 2.42609 33.5862C2.291 33.455 2.18385 33.2993 2.11074 33.1279C2.03763 32.9564 2 32.7727 2 32.5872V16.2582C2 16.0613 2.04234 15.8667 2.12432 15.6867C2.20629 15.5066 2.32609 15.3453 2.47602 15.2128L17.0205 2.36751C17.2882 2.13104 17.6371 2.00001 17.999 2C18.3608 1.99999 18.7097 2.131 18.9775 2.36744L33.5239 15.2128C33.6739 15.3453 33.7937 15.5066 33.8757 15.6867C33.9577 15.8667 34 16.0614 34 16.2582V32.5872C34 32.7727 33.9624 32.9564 33.8893 33.1279C33.8162 33.2993 33.709 33.4551 33.5739 33.5863C33.4388 33.7174 33.2785 33.8215 33.102 33.8925C32.9255 33.9635 32.7363 34 32.5453 34L23.8169 33.9989C23.4312 33.9988 23.0613 33.85 22.7885 33.585C22.5158 33.3201 22.3626 32.9607 22.3626 32.586Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a class="main__rubrics" href="#">Название рубрики</a>
+                        </div>
+                        <div class="main__author_info">
+                            <span>14-14-24г.</span>
+                            <span><a href="">Автор Новости</a></span>
+                        </div>
+                    </header>
+
+                    <!-- BREAKER-->
+                    <div style="height: 4px; background-color: var(--grey); margin: 2.5rem 0; border-radius: 2px;">
+                    </div>
+                    <!-- END OF BREAKER-->
+                    <div>
+                        <p class="main__precept">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.
+                        </p>
+                    </div>
+
+                    <article class="main__content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae sapien sit amet justo congue tincidunt. Sed auctor ultricies odio, at vulputate est blandit id. Nunc non ligula id ante tincidunt fermentum. Integer auctor, nisi vel aliquet tincidunt, mauris ipsum dapibus justo. Etiam in libero at justo ullamcorper eleifend. Sed at mauris nec justo consequat vestibulum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae sapien sit amet justo congue tincidunt. Sed auctor ultricies odio, at vulputate est blandit id. Nunc non ligula id ante tincidunt fermentum. Integer auctor, nisi vel aliquet tincidunt, mauris ipsum dapibus justo. Etiam in libero at justo ullamcorper eleifend. Sed at mauris nec justo consequat vestibulum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae sapien sit amet justo congue tincidunt. Sed auctor ultricies odio, at vulputate est blandit id. Nunc non ligula id ante tincidunt fermentum. Integer auctor, nisi vel aliquet tincidunt, mauris ipsum dapibus justo. Etiam in libero at justo ullamcorper eleifend. Sed at mauris nec justo consequat vestibulum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>
+
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae sapien sit amet justo congue tincidunt. Sed auctor ultricies odio, at vulputate est blandit id. Nunc non ligula id ante tincidunt fermentum. Integer auctor, nisi vel aliquet tincidunt, mauris ipsum dapibus justo. Etiam in libero at justo ullamcorper eleifend. Sed at mauris nec justo consequat vestibulum.</p>
+                    </article>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__info">
+            <p class="footer__name">Детский сад №1 г.п. Кореличи</p>
+            <p class="footer__text">Наш адрес: г.п.Кореличи, ул.Парковая. 1а
+                тел.8 01596 749 91
+                расчетный счет
+                BY92 AKBB 3642 5180 0005 5420 0000 BYN
+                ЦБУ № 411 ОАО «АСБ Беларусбанк» г.п. Кореличи BIC AKBBBY2Х
+            </p>
+            <p>Свидетельство о гос. регистрации: 1956535188</p>
+        </div>
+        <div class="footer__menu_wrapper">
+            <ul class="footer__menu">
+                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
+                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
+                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
+                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
+                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
+                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
+            </ul>
+        </div>
+
+        <svg class="footer__icon" width="100" height="63" viewBox="0 0 100 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M86.8323 11.3292C83.4534 17.3913 79.4534 26.6584 77.6646 38.3851C76.7453 35.2795 75.6522 31.9255 74.4348 28.4969C78.2857 21.0683 82.4348 15.3292 86.8323 11.3292ZM73.3168 1.91304C71.7516 5.11801 70.0124 9.19255 68.3975 14.0373C67.8261 12.8696 67.2547 11.7516 66.6584 10.6832C68.795 7.22981 71.0311 4.29814 73.3168 1.91304ZM32.5963 1.86335C34.2112 3.52795 35.7764 5.46584 37.3168 7.65217C36.795 8.09938 36.2733 8.57143 35.7516 9.06832C34.6832 6.3354 33.6149 3.92547 32.5963 1.86335ZM13.1429 11.3043C16.9193 14.7081 20.4969 19.4286 23.8509 25.3665C22.8075 27.3292 21.8137 29.3168 20.8944 31.3043C18.8323 22.9068 15.7764 16.0994 13.1429 11.3043ZM8.64596 62.087C11.528 44.5466 5.26708 30.8075 0 22.7826C7.13043 28.1988 12.4472 36.4224 16.0248 43.4037C13.0683 51.8012 11.3292 58.9814 10.6335 62.087H8.64596ZM26.1366 62.087H20.1739H14.7081C16.7205 53.6149 24.4472 24.6708 39.0807 11.3789C33.6646 21.118 26.559 38.9814 29.7888 62.087H26.1366ZM33.8137 62.087C33.0186 56.6211 32.8447 51.4286 33.118 46.5839C35.3789 53.2671 36.8447 59.0062 37.5652 62.087H33.8137ZM39.1056 52.323C37.8634 48.0994 36.2236 43.0559 34.1118 37.7391C34.8075 33.7143 35.7764 30.0124 36.8696 26.6335C38.6584 35.0807 39.4286 43.6522 39.1056 52.323ZM42.3354 62.087C44.0745 47.8012 43.0807 33.6894 39.3789 20.0497C40.1739 18.1863 40.9938 16.472 41.7888 14.9565C45.0683 20.9938 48.1242 28.323 50.9068 36.7453C47.2547 48.0994 45.1429 58.236 44.3975 62.087H42.3354ZM60.9689 52.2981C60.8447 55.5031 60.5466 58.7826 60.1491 62.087H59.9255H48.4224C49.2671 57.7888 51.3789 48.0745 54.8571 37.3416C56.1242 33.441 57.4658 29.764 58.882 26.2857C59.2547 28.1491 59.5776 30.0373 59.8509 31.9255C60.8447 38.559 61.2174 45.4161 60.9689 52.2981ZM65.8882 62.087H64.1739C64.5714 58.8323 64.8199 55.6025 64.9441 52.4472C65.2174 45.3168 64.8199 38.2112 63.8012 31.354C63.2298 27.354 62.4099 23.3789 61.4161 19.5279C61.4161 19.4783 61.3913 19.4286 61.3913 19.3789C59.3043 11.2547 56.646 4.7205 54.4099 0C57.2422 3.00621 59.9752 6.85714 62.6087 11.5776C64.0745 14.1863 65.5155 17.0932 66.882 20.2236C66.9068 20.2733 66.9068 20.323 66.9317 20.3727V20.3975C68.1491 23.1304 69.3168 26.0373 70.4099 29.0435C73.2671 36.9938 75.3789 44.5714 76.646 49.7143C74.3851 55.2298 72.9689 59.8012 72.323 62.087H65.8882ZM91.3292 62.087H81.7888H79.8012H76.4721C78.6832 54.7826 86.1615 33.2174 100 22.7578C94.7081 30.7578 88.4472 44.5217 91.3292 62.087Z"/>
+        </svg>
+
+    </footer>
+
+
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
