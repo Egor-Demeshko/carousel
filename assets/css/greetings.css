@@ -1,0 +1,148 @@
+:root{
+    --padding-right: 9.125rem;
+}
+
+@media screen and (max-width: 800px){
+    :root{
+        --padding-right: 0; 
+    }
+}
+
+.greetings{
+    position: relative;
+    padding: 0 var(--padding-right) 0 0;
+    grid-column: 2 / span 2;
+}
+
+.greetings__text-wrapper{
+    border: 4px solid var(--main-dark);
+    border-radius: 10px;
+    height: 100%;
+    background-color: var(--white);
+    padding: clamp(1.5rem, 2.5vw, 2.25rem)  clamp(1.5rem, 10vw, 9rem) 3.875rem clamp(1.125rem, 3.2vw, 2.875rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.greetings__heading{
+    margin: 0;
+    margin-bottom: 1.625rem;
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
+}
+
+.greetings__text{
+    margin: 0;
+    line-height: 130%;
+    letter-spacing: .5px;
+    font-size: clamp(1rem, 1.1vw, 1rem);
+}
+
+
+/*QOUTES*/
+.quote__bottom,
+.quote__top{
+    fill: var(--main-dark);
+}
+
+.quote__top{
+    position: absolute;
+    right: calc(var(--padding-right) + 2.2rem);
+    top: 0;
+    transform: translateY(-67%) rotateZ(180deg);
+}
+
+.quote__bottom{
+    position: absolute;
+    left: 2.2rem;
+    bottom: 0;
+    transform: translateY(67%);
+}
+/* --- END of QOUTES ---*/
+
+
+
+/*Portrait and sing*/
+.greetings__image{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: var(--black);
+    transform: translate(-20%, 50%);
+}
+    .greetings__image>img{
+        position: absolute;
+        display: block;
+        border-radius: 16px;
+        border: 4px solid var(--main-dark);
+        right: 0;
+        bottom: calc(100% + 1.125rem);
+        height: clamp(10rem, 17vw, 15rem);
+        width: clamp(8.79rem, 14.6vw, 13.19rem);
+    }
+
+.greerings__sign{
+    padding: .875rem clamp(1rem, 2.2vw, 2rem);
+    background-color: var(--main);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp( .5rem, 1.5vw ,1.375rem);
+}
+    .greerings__sign h4,
+    .greerings__sign p{
+        margin: 0;
+    }
+    .greerings__sign h4{
+        font-size: 1rem;
+        font-weight: normal;
+    }
+    .greerings__sign p{
+        font-size: 1.5rem;
+    }
+
+
+@media screen and (max-width: 800px){
+    .quote__bottom,
+    .quote__top{
+        display: none;
+    }
+
+    .greetings__text-wrapper{
+        border: none;
+        padding: 0;
+    }
+
+    .greetings__image,
+    .greetings__image>img{
+        position: static;
+        transform: none;
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .greetings__image{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .greetings__heading{
+        text-align: center;
+        margin-bottom: .875rem;
+    }
+
+    .greetings__text{
+        border: 4px solid var(--main-dark);
+        padding: 1.5rem 1.125rem;
+        border-radius: 10px;
+    }
+
+    .greerings__sign{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px){
+
+}

@@ -1,0 +1,87 @@
+.footer{
+    background-image: var(--main-green-gradient);
+    padding: 4.375rem 12.5rem 1.75rem 8.9rem;
+    display: flex;
+    max-height: 18.75rem;
+    justify-content: start;
+    position: relative;
+    gap: 10rem;
+    width: clamp(min(100%, 56rem), 75vw, 1390px);
+    clip-path: path("M19.6967 381.325L1393.32 377.468L1373.29 195.369C1361.06 84.2505 1259.12 -3.53918 1147.21 0.675343L175.858 37.2563C65.4797 41.4132 -12.4705 133.581 1.75184 243.118L19.6967 381.325Z");
+    margin: var(--step) auto 0;
+}
+
+.footer__info{
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    padding-top: 1.6rem; 
+    flex: 0 1 32.9rem;
+}
+.footer__info p{
+    font-size: .875rem;
+    margin: 0;
+    line-height: 130%;
+    letter-spacing: .3px;
+}
+
+p.footer__name{
+    font-size: 2rem;
+    font-family: "SeoulHangangCondensed-Medium", sans-serif;
+}
+
+.footer__menu{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.125rem 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+}
+
+.footer__menu_item a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--black);
+    appearance: none;
+    transition: color 400ms ease;
+}
+.footer__menu_item a:hover{
+    color: var(--accent);
+}
+
+.footer__icon{
+    position: absolute;
+    fill: var(--main-dark);
+    bottom: 0;
+    right: 5.25rem;
+}
+@media screen and (max-width: 500px){
+    .footer__menu{
+        display: none;
+    }   
+}
+
+@media screen and (max-width: 800px){
+    p.footer__name{
+        font-size: 1.8rem;
+    }
+    .footer__info{
+        padding: 0;
+    }
+    .footer__menu{
+        display: none;
+    }
+    .footer__icon{
+        display: none;
+    }   
+    .footer__menu_wrapper{
+        display: none;
+    }
+    .footer{
+        padding: 1.125rem;
+        clip-path: none;    
+    }
+}
