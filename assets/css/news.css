@@ -1,0 +1,122 @@
+:root{
+    --padding-left: .875rem;
+    --heading-size: 1.5rem;
+}
+
+
+.news{
+    grid-column: 2;
+    grid-row: 2;
+    padding-left: var(--padding-left);
+    position: relative;
+}
+
+
+.news::before{
+    content: "";
+    width: 4px;
+    position: absolute;
+    height: 95.68%;
+    left: 0;
+    transform: translate(-50%, calc(var(--heading-size) / 2));
+    background-color: var(--grey);
+}
+
+
+.news__heading{
+    margin: 0;
+    font-size: var(--heading-size);
+    position: relative;
+}
+
+.news__heading::before{
+    content: "";
+    display: block;
+    width: .75rem;
+    height: .75rem;
+    border-radius: 50%;
+    background-color: var(--main-dark);
+    position: absolute;
+    left: calc(-1 * var(--padding-left));
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 500px) {
+    .news{
+        padding-left: 0;
+    }
+
+    .news::before{
+        display: none;
+    }
+
+    .news__heading::before{
+        display: none;
+    }
+}
+
+.news_card__text{
+    font-size: .875rem;
+    line-height: 130%;
+    letter-spacing: 0.2px;
+}
+
+.news__block-wrapper{
+    margin-top: 1.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 1.68rem 0 0 clamp(4rem, 5.5vw, 5rem);
+}
+
+@media screen and (max-width: 500px) {
+    .news__block-wrapper{
+        margin-top: .4rem;
+        padding: 1.68rem 0 0 2.5rem;
+        gap: 2rem;
+    } 
+}
+
+.news__read_all{
+    color: var(--background);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: block;
+}
+
+.news__wrapper{
+    background-color: var(--main-dark);
+    text-align: center;
+    padding: 1.25rem 0;
+    border-radius: 10px;
+    position: relative;
+    transition: background-color 400ms ease;
+    cursor: pointer;
+}
+.news__wrapper::before{
+    content: "";
+    display: block;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: calc(-1 * (clamp(4rem, 5.5vw, 5rem) + .875rem));
+    transform: translateY(-50%);
+    background-color: var(--grey);
+    width: calc((clamp(4rem, 5.5vw, 5rem) + .875rem));
+}
+@media screen and (max-width: 500px) {
+    .news__wrapper::before{
+        display: none;
+    }
+}
+
+.news__wrapper:hover{
+    background-color: var(--accent);
+}
+
+.news__read_all:visited{
+    color: var(--background);
+}
+

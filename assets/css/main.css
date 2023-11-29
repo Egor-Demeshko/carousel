@@ -1,0 +1,8 @@
+.main{
+    position: relative;
+}
+
+.main__menu{
+    grid: 1 / 1;
+    background-color: var(--main-green-gradient);
+}

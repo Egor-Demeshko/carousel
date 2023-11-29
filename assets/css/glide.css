@@ -1,0 +1,160 @@
+:root{
+    --message-gradient: linear-gradient(-45deg, #8F8F8FE6, #DAD9D9CC);
+}
+
+.glide{
+    margin-top: var(--step);
+    height: 24rem;
+}
+
+@media screen and (max-width: 500px) {
+    .glide{
+        height: unset;
+    }
+}
+
+.glide__track {
+    height: 100%;
+  }
+
+.glide__slides{
+    height: 100%;
+}  
+
+.glide__slide{
+    padding: clamp(1.125rem , 4vw, 3.625rem) clamp(1.125rem, 10vw, 12.5rem);
+    position: relative;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+}
+
+.glide__slide_background{
+    background-color: var(--slide-background);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.glide__message_wrapper{
+    background-image: var(--message-gradient);
+    transform: translate(0);
+    padding: 3rem;
+    height: 100%;
+    position: relative;
+}
+@media screen and (max-width: 500px) {
+    .glide__message_wrapper{
+        padding: .875rem;
+    }
+}
+
+.glide__header,
+.glide__text{
+    margin: 0;
+}
+.glide__header{
+    font-size: 2rem;
+    font-weight: normal;
+}
+.glide__text{
+    margin-top: 3.125rem;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+    max-width: clamp(min(100%, 24rem), 55vw, 75rem);
+}
+@media screen and (max-width: 500px) {
+    .glide__text{
+        margin-top: .875rem;
+    }
+}
+
+.glide__button{
+    appearance: none;
+    text-decoration: none;
+    position: absolute;
+    bottom: 1.875rem;
+    right: 3.5rem;
+    background-color: var(--semi-main);
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: var(--black);
+    padding: 1.125rem 2.75rem;
+    transition: background-color 400ms ease;
+}
+.glide__button:hover{
+    background-color: var(--accent);
+}
+@media screen and (max-width: 500px){
+    .glide__button{
+        display: block;
+        position: static;
+        right: 50%;
+        text-align: center;
+        margin-top: 1.25rem;
+    }
+}
+
+/* ARROWS / CONTROLS */
+.glide__arrows{
+    position: absolute;
+    z-index: 10;
+    top: calc(clamp(1.125rem , 4vw, 3.625rem) + 2rem);
+    right: 13.5vw;
+    display: flex;
+    gap: 6.3rem;
+}
+.glide__button_arrow{
+    appearance: none;
+    background-color: transparent;
+    border: none;
+}
+@media screen and (max-width: 500px) {
+    .glide__arrows{
+        display: none;
+    }
+}
+
+/* --- END OF ARROWS / CONTROLS ---*/
+
+
+/*BULLETS*/
+.glide__bullets{
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.25rem;
+    z-index: 10;
+}
+
+.glide__bullet{
+    background-color: var(--main-dark);
+    transition: background-color 400ms ease, width 400ms ease;
+    width: 1.125rem;
+    height: 1.125rem;
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+}
+.glide__bullet:hover{
+    background-color: var(--accent);
+}
+
+.glide__bullet--active{
+    width: 5rem;
+}
+@media screen and (max-width: 500px){
+    .glide__bullets{
+        top: unset;
+        bottom: .4rem;
+    }
+}
+
+/*END OF BULLETS*/
+
+
