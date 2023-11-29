@@ -1,21 +1,26 @@
 .footer{
-    background-image: var(--main-green-gradient);
-    padding: 4.375rem 12.5rem 1.75rem 8.9rem;
-    display: flex;
-    max-height: 18.75rem;
+    background-image: linear-gradient(-90deg, var(--secondary-green-gradient), var(--first-green-gradient));
     justify-content: start;
+    width: 100%;
     position: relative;
+    height: 16.75rem;
+    padding: 2rem 0;
+}
+
+.footer__wrapper{
+    width: clamp(min(100%, 56rem), 66vw, 66vw);
+    display: flex;  
+    position: relative;
+    align-items: center;
     gap: 10rem;
-    width: clamp(min(100%, 56rem), 75vw, 1390px);
-    clip-path: path("M19.6967 381.325L1393.32 377.468L1373.29 195.369C1361.06 84.2505 1259.12 -3.53918 1147.21 0.675343L175.858 37.2563C65.4797 41.4132 -12.4705 133.581 1.75184 243.118L19.6967 381.325Z");
-    margin: var(--step) auto 0;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .footer__info{
     display: flex;
     flex-direction: column;
     gap: 1.125rem;
-    padding-top: 1.6rem; 
     flex: 0 1 32.9rem;
 }
 .footer__info p{
@@ -57,6 +62,10 @@ p.footer__name{
     fill: var(--main-dark);
     bottom: 0;
     right: 5.25rem;
+}
+
+.footer__menu_wrapper{
+    height: 100%;
 }
 @media screen and (max-width: 500px){
     .footer__menu{

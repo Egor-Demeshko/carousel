@@ -1,5 +1,6 @@
 (function controllscroll(){
-    const element = document.querySelector('.header');
+    const element = document.querySelector('.header') || document.querySelector('.header-post');
+    if(!element) return;
 
     function controllTopScroll(){
         if(window.scrollY > 0){

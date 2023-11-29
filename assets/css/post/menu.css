@@ -1,16 +1,19 @@
 .menu{
     max-width: 18rem;
+    height: 100%;
 }
 
 .menu__sticky{
     position: sticky;
-    top: 60px;
+    top: 0;
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    max-height: 100vh;
 }
 
 .menu__heading{
-    background-color: var(--main);
+    background-color: var(--first-green-gradient);
     text-align: center;
     padding-top: 3.43rem;
     padding-bottom: 1.5rem;
@@ -41,10 +44,11 @@
 /*сектор второсетпенного меню*/
 .side_menu{
     list-style: none;
-    background-color: var(--main);
+    background-color: var(--first-green-gradient);
     margin: 0;
     padding: 2rem 0 0;
     border-bottom: 6px solid var(--main-dark);
+    overflow-y: scroll;
 }
 
 .side_menu__item{
@@ -69,7 +73,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--main);
+    background-color: var(--first-green-gradient);
 }
 
 .menu__socials_list{
@@ -101,3 +105,30 @@
         padding-bottom: 7rem;
     }
 }
+
+
+/*SCROLLBAR*/
+.side_menu::-webkit-scrollbar{
+    width: 4px;
+}
+
+/* Hide the scrollbar buttons */
+.side_menu::-webkit-scrollbar-button {
+    display: none;
+}
+  
+  /* Style the scrollbar track */
+  .side_menu::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Style the scrollbar thumb */
+  .side_menu::-webkit-scrollbar-thumb {
+    background-color: var(--main-dark);
+    width: 4px;
+  }
+  
+  /* Style the scrollbar corner */
+  .side_menu::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }

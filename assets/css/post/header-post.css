@@ -4,6 +4,12 @@
     justify-content: space-between;
     z-index: 110;
     border-radius: 0 0 10px 10px;
+    transition: padding 400ms ease, border-radius 400ms ease;
+}
+
+.header--dark{
+    padding: .5rem .875rem;
+    border-radius: 0 0 10px 10px;
 }
 
 .header-post__logo{
