@@ -18,7 +18,6 @@ export default class AnimatedLinks {
         }
         
         if(this.isMobileDevice()) {
-            console.log("animation cancelled");
             return null;
         }
 

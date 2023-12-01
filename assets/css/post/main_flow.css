@@ -14,3 +14,38 @@
     grid-row: 1;
     align-self: start;
 }
+
+@media screen and (max-width: 500px) {
+    .main_flow__aside{
+        transition: transform 400ms ease;
+        height: 100vh;
+        overflow-y: scroll;
+    }
+}
+
+
+/*SCROLLBAR*/
+.main_flow__aside::-webkit-scrollbar{
+    width: 4px;
+}
+
+/* Hide the scrollbar buttons */
+.main_flow__aside::-webkit-scrollbar-button {
+    display: none;
+}
+  
+  /* Style the scrollbar track */
+  .main_flow__aside::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Style the scrollbar thumb */
+  .main_flow__aside::-webkit-scrollbar-thumb {
+    background-color: var(--main-dark);
+    width: 4px;
+  }
+  
+  /* Style the scrollbar corner */
+  .main_flow__aside::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }

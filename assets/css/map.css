@@ -40,4 +40,8 @@
     .map__embeded{
         display: none;
     }
+
+    html.highcontrast .map__button{
+        border: 2px solid black;
+    }
 }

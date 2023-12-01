@@ -4,7 +4,7 @@
 }
 
 
-.news{
+.list{
     grid-column: 2;
     grid-row: 2;
     padding-left: var(--padding-left);
@@ -12,24 +12,24 @@
 }
 
 
-.news::before{
+.list::before{
     content: "";
     width: 4px;
     position: absolute;
-    height: 95.68%;
+    height: 100%;
     left: 0;
     transform: translate(-50%, calc(var(--heading-size) / 2));
     background-color: var(--grey);
 }
 
 
-.news__heading{
+.list__heading{
     margin: 0;
     font-size: var(--heading-size);
     position: relative;
 }
 
-.news__heading::before{
+.list__heading::before{
     content: "";
     display: block;
     width: .75rem;
@@ -43,26 +43,26 @@
 }
 
 @media screen and (max-width: 500px) {
-    .news{
+    .list{
         padding-left: 0;
     }
 
-    .news::before{
+    .list::before{
         display: none;
     }
 
-    .news__heading::before{
+    .list__heading::before{
         display: none;
     }
 }
 
-.news_card__text{
+.list_card__text{
     font-size: .875rem;
     line-height: 130%;
     letter-spacing: 0.2px;
 }
 
-.news__block-wrapper{
+.list__block-wrapper{
     margin-top: 1.875rem;
     display: flex;
     flex-direction: column;
@@ -71,14 +71,14 @@
 }
 
 @media screen and (max-width: 500px) {
-    .news__block-wrapper{
+    .list__block-wrapper{
         margin-top: .4rem;
         padding: 1.68rem 0 0 2.5rem;
         gap: 2rem;
     } 
 }
 
-.news__read_all{
+.list__read_all{
     color: var(--background);
     text-decoration: none;
     font-size: 1.5rem;
@@ -86,7 +86,7 @@
     display: block;
 }
 
-.news__wrapper{
+.list__wrapper{
     background-color: var(--main-dark);
     text-align: center;
     padding: 1.25rem 0;
@@ -95,7 +95,7 @@
     transition: background-color 400ms ease;
     cursor: pointer;
 }
-.news__wrapper::before{
+.list__wrapper::before{
     content: "";
     display: block;
     height: 4px;
@@ -107,34 +107,20 @@
     width: calc((clamp(4rem, 5.5vw, 5rem) + .875rem));
 }
 @media screen and (max-width: 500px) {
-    .news__wrapper::before{
+    .list__wrapper::before{
         display: none;
     }
 }
 
-.news__wrapper:hover{
+.list__wrapper:hover{
     background-color: var(--accent);
 }
 
-.news__read_all:visited{
+.list__read_all:visited{
     color: var(--background);
 }
 
 
-/*HIGHCONTRAST*/
-html.highcontrast .news::before{
+html.highcontrast .list::before{
     display: none;
-}
-html.highcontrast .news__wrapper::before{
-    display: none;
-}
-html.highcontrast .news__wrapper{
-    border: 2px solid black;
-}
-
-html.highcontrast .news__wrapper:hover{
-    background-color: var(--grey);
-}
-html.highcontrast .news__read_all{
-    background-color: transparent;
 }

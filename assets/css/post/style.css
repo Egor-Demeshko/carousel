@@ -7,10 +7,20 @@
 @import url('/assets/css/post/main_flow.css');
 @import url('/assets/css/post/main.css');
 @import url('/assets/css/post/footer.css');
+@import url('/assets/css/highcontrast_control.css');
 
 *{
     font-family: Ubuntu, sans-serif;
     box-sizing: border-box;
+}
+
+html.highcontrast{
+  font-size: 16px;
+}
+
+html.highcontrast *{
+  color: black !important;
+  background-color: white;
 }
 
 html::-webkit-scrollbar{
@@ -38,3 +48,8 @@ html::-webkit-scrollbar-button {
     background-color: transparent;
   }
 
+
+  /*HIGHCONTRAST*/
+  html.highcontrast::-webkit-scrollbar-thumb {
+    background-color: grey;
+  }

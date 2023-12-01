@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
-<head style="background-color: pink">
+<html lang="ru">
+<head >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Моя веб-страница</title>
+    <link rel="stylesheet" href="/assets/css/normolize.css"/>
     <style>
         :root {
             --background: #F6F6F6;
@@ -120,7 +121,6 @@
             }
         }
         </style>
-    <link rel="stylesheet" href="/assets/css/normolize.css"/>
     <link rel="stylesheet" href="/style.css"/>
     <link rel="stylesheet" href="/assets/css/fonts.css"/>
     <link rel="stylesheet" href="/assets/css/glide.core.min.css"/>
@@ -146,9 +146,9 @@
         <a class="mobile_bottom__item" href="#"><span>Новости</span></a>
         <button class="mobile_bottom__button">
             <svg viewBox="0 0 48 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 16.5H45.5" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2 2H45.5" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2.25 31.5H45.75" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 16.5H45.5" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 2H45.5" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.25 31.5H45.75" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
         </button>
     </div>
@@ -160,17 +160,20 @@
             <nav>
                 <ul class="header__list">
                     <li class="header__menu-item"><a href="/post.html">Страница</a></li>
-                    <li class="header__menu-item"><a href="#">Пункт 2</a></li>
-                    <li class="header__menu-item"><a href="#">Пункт 3</a></li>
+                    <li class="header__menu-item"><a href="/archive.html">Archive</a></li>
+                    <li class="header__menu-item"><a href="/single-worker.html">Single</a></li>
                     <li class="header__menu-item"><a href="#">Пункт 4</a></li>
                     <li class="header__menu-item"><a href="#">Пункт 5</a></li>
                 </ul>
             </nav>
             
-            <svg class="header__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <div class="header__icon_wrapper" aria-role="button" aria-label="включить/выключить режим высокого контраста">
+                <svg class="header__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path id="cancel" class="header__icon_cancel" fill="currentColor" d="M21.7699 2.22988C21.4699 1.92988 20.9799 1.92988 20.6799 2.22988L2.22988 20.6899C1.92988 20.9899 1.92988 21.4799 2.22988 21.7799C2.37988 21.9199 2.56988 21.9999 2.76988 21.9999C2.96988 21.9999 3.15988 21.9199 3.30988 21.7699L21.7699 3.30988C22.0799 3.00988 22.0799 2.52988 21.7699 2.22988Z" />
+                </svg>
+            </div>
             <span class="header__language"><a>RU</a></span>
             <span class="header__language"><a>BY</a></span>
         </div>
@@ -217,7 +220,7 @@
             <div class="greetings__text-wrapper">
                 <!-- Greetings__image -->
                 <div class="greetings__image">
-                    <img src="/assets/images/test_head.jpg" width="210px" height="240px"/>
+                    <img src="/assets/images/mask_portrait.svg" width="210px" height="240px"/>
                     <div class="greerings__sign">
                         <h4>Заведующая детским садом</h4>
                         <p>Фамилия Имя Отчество</p>
@@ -348,12 +351,12 @@
         <div class="glide__arrows" data-glide-el="controls">
             <button class="glide__button_arrow" data-glide-dir="<">
                 <svg width="28" height="53" viewBox="0 0 28 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25 49.8073L3 26.4036L25 3" stroke="white" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M25 49.8073L3 26.4036L25 3" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
             <button class="glide__button_arrow" data-glide-dir=">">
                 <svg width="28" height="53" viewBox="0 0 28 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 3.00008L25 26.4037L3 49.8074" stroke="white" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 3.00008L25 26.4037L3 49.8074" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
         </div>

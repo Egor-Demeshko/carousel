@@ -37,6 +37,8 @@
 
             --step: clamp(3rem, 20vw, 6.26rem);
             --bottombar-height: 4.375rem;
+
+            --worker-image-width: clamp(10rem, 16.1vw, 14.5rem);
         }
 
         *{
@@ -71,11 +73,17 @@
         }
 
         .banner__title{
-            font-size: 2rem;
+            font-size: clamp(1rem, 2.2vw, 2rem);
             padding: clamp(.875rem, 2.2vw, 1.375rem);
-            width: 45%;
             border-radius: 10px;
             color: var(--background);
+            max-width: 35rem;
+        }
+        .banner__title--no-display{
+            display: none;
+        }
+        .banner__title--big-screen{
+            display: block;
         }
         .banner__title_wrapper{
             display: flex;
@@ -110,6 +118,8 @@
         .main__rubrics{
             padding: .5rem 1.375rem;
         }
+
+        
 
         @media screen and (max-width: 800px){
             header.header-post{
@@ -154,15 +164,20 @@
                 padding: 0 1.125rem 4.375rem;
             }
 
+            div.main__placeholder{
+                display: none;
+            }
+
             /*BREADCRUMBS block*/
             header.main__header{
                 position: relative;
-                transform: translateY(-50%);
+                transform: translateY(-10%);
                 justify-content: center;
+                flex-direction: column;
+                gap: 2rem;
             }
             div.main__author_info{
-                position: absolute;
-                bottom: -3rem;
+                position: static;
                 flex-direction: row;
             }
             /* -- END of BREADCRUMBS -- */
@@ -176,9 +191,9 @@
         <a class="mobile_bottom__item" href="#"><span>Новости</span></a>
         <button class="mobile_bottom__button">
             <svg viewBox="0 0 48 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 16.5H45.5" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2 2H45.5" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2.25 31.5H45.75" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 16.5H45.5" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 2H45.5" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.25 31.5H45.75" stroke="#F5F5F5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
         </button>
     </div>
@@ -210,7 +225,6 @@
         <img class="banner__image" src="/assets/images/football.png" alt="banner" role="presentation"
         width="1446px" height="314px">
         <div class="banner__title_wrapper">
-            <h1 class="banner__title">Одно окно</h1>
         </div>
     </div>
 
@@ -251,7 +265,7 @@
         <main class="main_flow__main">
             <div class="main" >
                 <div class="main__wrapper">
-                    <header class="main__header">
+                    <header class="main__header main__header--relative">
                         <div class="main__breadcrumbs">
                             <a class="main__home" href="#">
                                 <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -261,8 +275,11 @@
                             <a class="main__rubrics" href="#">Название рубрики</a>
                         </div>
                         <div class="main__author_info">
-                            <span>14-14-24г.</span>
-                            <span><a href="">Автор Новости</a></span>
+                            <div class="main__author--absolute">
+                                <h1 class="banner__title banner__title--big-screen">Воспитатель</h1>
+                                <img src="/assets/images/worker.png" alt=""/>
+                                <p class="main__author_name">Фамилия Имя Отчество</p>
+                            </div>
                         </div>
                     </header>
 
@@ -270,13 +287,14 @@
                     <div style="height: 4px; background-color: var(--grey); margin: 2.5rem 0; border-radius: 2px;">
                     </div>
                     <!-- END OF BREAKER-->
-                    <div>
+                    <div class="main__precept_wrapper">
                         <p class="main__precept">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.
                         </p>
+                        <div class="main__placeholder"></div>
                     </div>
 
-                    <article class="main__content">
+                    <article class="main__content main__content--margin-top">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>
 
                         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae sapien sit amet justo congue tincidunt. Sed auctor ultricies odio, at vulputate est blandit id. Nunc non ligula id ante tincidunt fermentum. Integer auctor, nisi vel aliquet tincidunt, mauris ipsum dapibus justo. Etiam in libero at justo ullamcorper eleifend. Sed at mauris nec justo consequat vestibulum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>

@@ -16,5 +16,29 @@
     text-align: right;
     background-color: var(--black-80);
     font-weight: normal;
+    
 }
 
+.banner__title_wrapper--flex-start{
+    justify-content: start;
+}
+
+.banner__title--left{
+    text-align: left;
+}
+
+@media screen and (max-width: 500px) {
+    .banner__title{
+        background-color: var(--main-dark);
+    }
+}
+
+
+/*highcontrast*/
+html.highcontrast .banner__image{
+    display: none;
+}
+
+html.highcontrast .banner{
+    border-bottom: 4px solid black;
+}

@@ -12,7 +12,7 @@
     display: flex;  
     position: relative;
     align-items: center;
-    gap: 10rem;
+    gap: clamp(4rem, 9vw, 10rem);
     margin: 0 auto;
     height: 100%;
 }
@@ -39,7 +39,7 @@ p.footer__name{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 1.125rem 3rem;
+    gap: 1.125rem clamp(.875rem, 3.3vw, 3rem);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -47,7 +47,7 @@ p.footer__name{
 }
 
 .footer__menu_item a{
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
     text-decoration: none;
     color: var(--black);
     appearance: none;
@@ -68,12 +68,17 @@ p.footer__name{
     height: 100%;
 }
 @media screen and (max-width: 500px){
+
     .footer__menu{
         display: none;
     }   
 }
 
 @media screen and (max-width: 800px){
+    .footer{
+        margin-bottom: 4.375rem;
+    }
+    
     p.footer__name{
         font-size: 1.8rem;
     }
@@ -93,4 +98,15 @@ p.footer__name{
         padding: 1.125rem;
         clip-path: none;    
     }
+}
+
+
+/*HIGHCONTRAST*/
+html.highcontrast .footer{
+    background-image: none;
+    border-top: 4px solid black;
+}
+
+html.highcontrast .footer__icon{
+    fill: grey;
 }

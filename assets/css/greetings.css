@@ -146,3 +146,8 @@
 @media screen and (max-width: 500px){
 
 }
+
+
+html.highcontrast .greerings__sign{
+    border: 4px solid var(--main-dark);
+}

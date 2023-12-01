@@ -90,19 +90,28 @@
 }
 
 @media screen and (max-width: 800px){
-    .menu{
-        grid: none;
-        height: 100vh;
-        overflow-y: scroll;
-        transition: transform 400ms ease;
-    }
-
     .menu__heading{
         font-size: 1.5rem;
     }
 
     .menu__socials{
         padding-bottom: 7rem;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .menu{
+        max-width: unset;
+    }
+
+    .side_menu{
+        overflow-y: unset;
+    }
+
+    .menu__heading,
+    .side_menu,
+    .menu__socials{
+        background-image: var(--menu-gradient);
     }
 }
 
@@ -131,4 +140,19 @@
   /* Style the scrollbar corner */
   .side_menu::-webkit-scrollbar-corner {
     background-color: transparent;
+  }
+
+
+/*HIGH CONTRAST*/
+html.highcontrast .menu__socials_list img{
+    filter: grayscale(100%);
+}
+
+html.highcontrast .side_menu{
+    border-bottom: 6px solid black;
+}
+
+.side_menu::-webkit-scrollbar-thumb {
+    background-color: grey;
+    width: 4px;
   }

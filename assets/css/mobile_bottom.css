@@ -38,10 +38,15 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    color: var(--background);
 }
 
 @media screen and (min-width: 800px){
     .mobile_bottom{
         display: none;
     }
+}
+
+html.highcontrast .mobile_bottom__button{
+    border: 2px solid black;
 }

@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: clamp( 1.125rem, 1.7vw, 1.5rem);
     background-color: transparent;
     width: clamp(min(100%, 56rem), 66vw, 66vw);
     color: var(--background);
@@ -17,7 +17,8 @@
 
 .header__logo {
     font-family: "SeoulHangangCondensed-Medium", sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2.2vw, 2rem);
+    line-height: 100%;
     text-decoration: none;
     color: inherit;
     transition: color 400ms ease;
@@ -60,16 +61,29 @@
     border-bottom: 4px solid var(--accent);
 }
 
-.header__icon {
+/* EYE ICON */
+.header__icon_wrapper{
     width: 24px;
     height: 24px;
+}
+
+.header__icon {
+    width: 100%;
+    height: 100%;
     stroke: var(--background);
-    transition: stroke 400ms ease;
+    transition: stroke 200ms ease;
+    cursor: pointer;
 }
 
 .header__icon:hover{
     stroke: var(--accent);
 }
+
+.header__icon_cancel{
+    position: relative;
+    transform: translate(200%, -100%);
+}
+/* --- END OF eye ICON -- */
 
 .header__language{
     cursor: pointer;
@@ -120,5 +134,28 @@
 
 .header__background_socials img{
     height: 100%;
+}
+
+
+/*highcontrast*/
+html.highcontrast .header{
+    border-bottom: 4px solid black;
+}
+
+html.highcontrast .header__background_image{
+    display: none;
+}
+
+html.highcontrast .header__menu-item a:hover{
+    border-bottom: 4px solid transparent;
+}
+
+html.highcontrast .header__icon{
+    stroke: black;
+}
+
+html.highcontrast .header__background_socials img{
+    box-shadow: 0 0 3px black;
+    border-radius: 4px;
 }
 

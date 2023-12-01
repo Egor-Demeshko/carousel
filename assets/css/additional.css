@@ -103,3 +103,29 @@
         padding: .5rem .875rem;
     }
 }
+
+/*HIGHCONTRAST*/
+html.highcontrast .additional__left,
+html.highcontrast .additional__right{
+    border: 4px solid black;
+    border-collapse: collapse;
+}
+
+html.highcontrast .additional__right{
+    border-left: none;
+}
+
+html.highcontrast .additional__button{
+    border: 2px solid black;
+}
+
+html.highcontrast .additional__button:hover{
+    background-color: var(--grey);
+}
+
+@media screen and (max-width: 500px){
+    html.highcontrast .additional__right{
+        border: 2px solid black;
+        border-top: none;
+    }
+}

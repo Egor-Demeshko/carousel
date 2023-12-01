@@ -1,4 +1,6 @@
 (function controllscroll(){
+    if(isMobileDevice()) return;
+    
     const element = document.querySelector('.header') || document.querySelector('.header-post');
     if(!element) return;
 
@@ -25,3 +27,7 @@
 
     document.addEventListener("scroll", freezed);
 })();
+
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+} 

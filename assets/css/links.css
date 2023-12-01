@@ -74,3 +74,24 @@
   .links::-webkit-scrollbar-corner {
     background-color: transparent;
   }
+
+
+  /*HIGHCONTRAST*/
+  html.highcontrast .links__image{
+    display: none;
+  }
+  html.highcontrast .links__title{
+    font-size: 1.25rem;
+  }
+  html.highcontrast .links__item{
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+
+  html.highcontrast .links__item:hover{
+    background-color: var(--grey);
+  }
+  html.highcontrast .links__title,
+  html.highcontrast .links__title_wrapper{
+    background-color: transparent;
+  }

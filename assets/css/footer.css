@@ -58,6 +58,18 @@ p.footer__name{
     bottom: 0;
     right: 5.25rem;
 }
+
+html.highcontrast .footer{
+    padding: 2rem 3rem ;
+    background-image: none;
+    border-top: 4px solid black;
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    clip-path: none;
+}
+
 @media screen and (max-width: 500px){
     .footer__menu{
         display: none;
@@ -84,4 +96,10 @@ p.footer__name{
         padding: 1.125rem;
         clip-path: none;    
     }
+
+    html.highcontrast .footer{
+        padding: .5rem;
+        clip-path: none;  
+    }
+
 }
