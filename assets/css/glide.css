@@ -1,7 +1,3 @@
-:root{
-    --message-gradient: linear-gradient(-45deg, #8F8F8FE6, #DAD9D9CC);
-}
-
 .glide{
     margin-top: var(--step);
     height: 24rem;
