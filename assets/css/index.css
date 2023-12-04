@@ -409,13 +409,13 @@ Tags: Kindergarten
     border: 4px solid transparent;
 }
 
-.header__menu-item a:visited{
-    color: var(--background);
-}
-
 .header__menu-item a:hover{
     color: var(--accent);
     border-bottom: 4px solid var(--accent);
+}
+
+.header__menu-item--active a{
+    color: var(--active-menu);
 }
 
 /* EYE ICON */

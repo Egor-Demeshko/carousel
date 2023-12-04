@@ -4,6 +4,11 @@ $roots = [
 ];
 $main_script = 'main';
 
+/** Requesting WALKERS */
+require get_template_directory() . '/assets/php/walkers.php';
+/** Загружаем настройки BOGO */
+require get_template_directory() . '/assets/php/kinder_bogo_options.php';
+
 /** ДОБАВЛЯЕМ СКРИПТЫ И СТИЛИ. СТИЛИ отличаются у второстепенных от главной, поэтому используется
  * еще функция $enqueue_script_add_type_attribute
  */
@@ -43,8 +48,10 @@ add_filter( 'script_loader_tag', $enqueue_script_add_type_attribute , 10, 3 );
 /**РЕГИСТРАЦИЯ МЕНЮ */
 
 add_action( 'after_setup_theme', function (){
-    register_nav_menus( [
-        `top_menu` => 'Верхнее меню',
-    ] );
+    register_nav_menus( array(
+        'top_menu' => 'Верхнее меню',
+     ) );
 } );
+
+
 ?>

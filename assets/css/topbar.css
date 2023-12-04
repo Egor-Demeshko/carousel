@@ -61,6 +61,10 @@
     border-bottom: 4px solid var(--accent);
 }
 
+.header__menu-item--active a{
+    color: var(--active-menu);
+}
+
 /* EYE ICON */
 .header__icon_wrapper{
     width: 24px;

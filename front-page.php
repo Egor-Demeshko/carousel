@@ -1,8 +1,15 @@
+<?php 
+    function get_main_top_background(){
+        $url = get_field("kinder_main_top_background_image") ?: esc_url( get_template_directory_uri() . '/assets/images/background.png' );
+        return $url;
+    }
+?>
+
 <?php get_header('main') ?>
 
 
 <div class="header__background">
-        <div class="header__background_image" style="background-image: url(<?php the_field("kinder_main_top_background_image");?>">
+        <div class="header__background_image" style="background-image: url(<?php echo get_main_top_background();?>">
         </div>
         <div class="header__background_socials">
             
@@ -31,16 +38,25 @@
         <span><a class="header__logo" href="/"><?php the_title();?></a></span>
         <div class="header__menu">
             <nav>
-                <?php wp_nav_menu('top_menu'); ?>
-            <!-- 
-                <ul class="header__list">
-                    <li class="header__menu-item"><a href="/post.html">Страница</a></li>
-                    <li class="header__menu-item"><a href="/archive.html">Archive</a></li>
-                    <li class="header__menu-item"><a href="/single-worker.html">Single</a></li>
-                    <li class="header__menu-item"><a href="#">Пункт 4</a></li>
-                    <li class="header__menu-item"><a href="#">Пункт 5</a></li>
-                </ul>
-            -->
+                <?php 
+                if( has_nav_menu("top_menu") ){
+                    wp_nav_menu(array(
+                        'theme_location' => 'top_menu',
+                        'container' => false,
+                        'menu_class' => 'header__list',
+                        'depth' => 1,
+                        "items_wrap" => '<ul class="%2$s">%3$s</ul>',
+                        'walker' => new Top_Menu()
+                    ));     
+                } else {
+                    ?>
+                    <ul class="header__list">
+                        <li class="header__menu-item"><a href="/">Главная</a></li>
+                        <li class="header__menu-item"><a href="/posts">Все записи</a></li>
+                    </ul>
+                    <?php
+                }
+                ?>
             </nav>
             
             <div class="header__icon_wrapper" aria-role="button" aria-label="включить/выключить режим высокого контраста">
@@ -50,8 +66,10 @@
                     <path id="cancel" class="header__icon_cancel" fill="currentColor" d="M21.7699 2.22988C21.4699 1.92988 20.9799 1.92988 20.6799 2.22988L2.22988 20.6899C1.92988 20.9899 1.92988 21.4799 2.22988 21.7799C2.37988 21.9199 2.56988 21.9999 2.76988 21.9999C2.96988 21.9999 3.15988 21.9199 3.30988 21.7699L21.7699 3.30988C22.0799 3.00988 22.0799 2.52988 21.7699 2.22988Z" />
                 </svg>
             </div>
+            <?php echo do_shortcode( '[bogo]' ); ?>
+            <!--
             <span class="header__language"><a>RU</a></span>
-            <span class="header__language"><a>BY</a></span>
+            <span class="header__language"><a>BY</a></span>-->
         </div>
     </header>
     

@@ -36,6 +36,7 @@
             --white: <?php echo get_field("kinder_white") ?: "#FFFFFF"?>;
             --slide-background: <?php echo get_field("kinder_slide-background") ?: "#36AA0033"?>;
             --shadow: <?php echo get_field("kinder_shadow") ?: "#000000A1"?>;
+            --active-menu: <?php echo get_field("kinder_active-menu") ?: "#CC8821"?>;
 
             
             --first-green-gradient: <?php echo get_field("kinder_first-green-gradient") ?: "#97E572B3"?>; /*70%*/
