@@ -3604,7 +3604,6 @@ class AnimatedLinks {
   const menu = document.querySelector(".main_flow__aside") || document.querySelector(".menu");
   let menuOpen = false;
   function toggleMenu() {
-    console.log("click");
     if (menuOpen) {
       menu.style.transform = "translateX(-150%)";
     } else {
@@ -3687,7 +3686,7 @@ function isMobileDevice() {
 (function() {
   const cancelElement = document.getElementById("cancel");
   const HIGHCONTRAST = "highcontrast";
-  const MAXWIDTH = 801;
+  const MAXWIDTH2 = 801;
   const hitBox = cancelElement.closest(".header-post__icon_wrapper") || cancelElement.closest(".header__icon_wrapper");
   let controlBar;
   let open = false;
@@ -3786,12 +3785,161 @@ function isMobileDevice() {
     });
   }
   function displayControlBar() {
-    if (Math.max(window.innerWidth < MAXWIDTH || document.documentElement.offsetWidth < 801)) {
+    if (Math.max(window.innerWidth < MAXWIDTH2 || document.documentElement.offsetWidth < 801)) {
       controlBar.querySelector(".highcontrast__buttons");
       controlBar.style.display = "block";
     } else {
       controlBar.style.display = "block";
     }
+  }
+})();
+let closeButton = null;
+class CloseButton {
+  constructor(elementToClose) {
+    if (closeButton && closeButton instanceof HTMLButtonElement) {
+      return closeButton;
+    }
+    this.elementToClose = elementToClose;
+    closeButton = document.createElement("button");
+    closeButton.classList.add("close-button");
+    closeButton.textContent = "Закрыть";
+    return closeButton;
+  }
+}
+const foldersTreeButton = `<div class="sub-menu__folders_tree" role="button" aria-label="Открыть подменю">
+                <svg aria-hidden="true" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.976745 0C0.783563 0 0.59472 0.0703789 0.434095 0.202237C0.27347 0.334094 0.148278 0.521509 0.0743507 0.74078C0.000423205 0.960051 -0.0189196 1.20133 0.0187683 1.43411C0.0564562 1.66689 0.149482 1.8807 0.286082 2.04853C0.422682 2.21635 0.596722 2.33064 0.786191 2.37694C0.975661 2.42324 1.17205 2.39948 1.35053 2.30866C1.52901 2.21783 1.68155 2.06402 1.78888 1.86668C1.8962 1.66935 1.95349 1.43734 1.95349 1.2C1.95349 0.88174 1.85058 0.576516 1.66741 0.351472C1.48423 0.126428 1.23579 0 0.976745 0ZM4.88372 2.4H18.5581C18.8172 2.4 19.0656 2.27357 19.2488 2.04853C19.432 1.82348 19.5349 1.51826 19.5349 1.2C19.5349 0.88174 19.432 0.576516 19.2488 0.351472C19.0656 0.126428 18.8172 0 18.5581 0H4.88372C4.62467 0 4.37623 0.126428 4.19306 0.351472C4.00988 0.576516 3.90698 0.88174 3.90698 1.2C3.90698 1.51826 4.00988 1.82348 4.19306 2.04853C4.37623 2.27357 4.62467 2.4 4.88372 2.4ZM4.88372 6C4.69054 6 4.5017 6.07038 4.34107 6.20224C4.18045 6.33409 4.05525 6.52151 3.98133 6.74078C3.9074 6.96005 3.88806 7.20133 3.92574 7.43411C3.96343 7.66689 4.05646 7.8807 4.19306 8.04853C4.32966 8.21635 4.5037 8.33064 4.69317 8.37694C4.88264 8.42324 5.07903 8.39948 5.25751 8.30866C5.43598 8.21783 5.58853 8.06402 5.69585 7.86668C5.80318 7.66935 5.86047 7.43734 5.86047 7.2C5.86047 6.88174 5.75756 6.57652 5.57438 6.35147C5.39121 6.12643 5.14277 6 4.88372 6ZM8.7907 12C8.59752 12 8.40867 12.0704 8.24805 12.2022C8.08742 12.3341 7.96223 12.5215 7.8883 12.7408C7.81438 12.9601 7.79503 13.2013 7.83272 13.4341C7.87041 13.6669 7.96344 13.8807 8.10004 14.0485C8.23664 14.2164 8.41068 14.3306 8.60015 14.3769C8.78962 14.4232 8.98601 14.3995 9.16448 14.3087C9.34296 14.2178 9.49551 14.064 9.60283 13.8667C9.71016 13.6693 9.76744 13.4373 9.76744 13.2C9.76744 12.8817 9.66454 12.5765 9.48136 12.3515C9.29819 12.1264 9.04975 12 8.7907 12ZM18.5581 6H8.7907C8.53165 6 8.28321 6.12643 8.10004 6.35147C7.91686 6.57652 7.81395 6.88174 7.81395 7.2C7.81395 7.51826 7.91686 7.82348 8.10004 8.04853C8.28321 8.27357 8.53165 8.4 8.7907 8.4H18.5581C18.8172 8.4 19.0656 8.27357 19.2488 8.04853C19.432 7.82348 19.5349 7.51826 19.5349 7.2C19.5349 6.88174 19.432 6.57652 19.2488 6.35147C19.0656 6.12643 18.8172 6 18.5581 6ZM18.5581 12H12.6977C12.4386 12 12.1902 12.1264 12.007 12.3515C11.8238 12.5765 11.7209 12.8817 11.7209 13.2C11.7209 13.5183 11.8238 13.8235 12.007 14.0485C12.1902 14.2736 12.4386 14.4 12.6977 14.4H18.5581C18.8172 14.4 19.0656 14.2736 19.2488 14.0485C19.432 13.8235 19.5349 13.5183 19.5349 13.2C19.5349 12.8817 19.432 12.5765 19.2488 12.3515C19.0656 12.1264 18.8172 12 18.5581 12Z"/>
+                </svg>
+                </div>`;
+const MAXWIDTH = 801;
+const subMenuClass = "sub-menu";
+const menuItemWrapper = ".menu__main-item-wrapper";
+const subMenuMobileClass = "sub-menu__mobile";
+let isMobile = false;
+let isMenuOpen = false;
+(function subMenus() {
+  if (Math.max(window.innerWidth, document.documentElement.offsetWidth) < MAXWIDTH) {
+    isMobile = true;
+  }
+  const mainMenu = document.querySelector(".menu__main");
+  if (isMobile) {
+    generateSubMenuOpenButtons();
+  } else {
+    const mainMenuItems = Array.from(mainMenu.querySelectorAll(".menu__main-item"));
+    mainMenuItems.forEach((item) => {
+      item.addEventListener("pointerenter", pointerEntersMainMenu);
+    });
+    mainMenu.addEventListener("pointerleave", pointerLeavesMainMenu);
+  }
+  function pointerEntersMainMenu(e) {
+    const target = e.target;
+    if (target.classList.contains("menu__main-item") || target.closest(".menu__main-item")) {
+      disableActiveSubMenus(subMenuClass);
+      const subMenu = getSubMenu(target);
+      if (!subMenu)
+        return;
+      animateSubMenuIn(subMenu);
+      subMenu.addEventListener("pointerleave", function pointerLeavesSubMenu() {
+        animateSubMenuOut(subMenu);
+      }, { once: true });
+    }
+  }
+  function pointerLeavesMainMenu() {
+    const elementToHide = mainMenu.querySelector(".sub-menu--active");
+    if (!elementToHide)
+      return;
+    animateSubMenuOut(elementToHide);
+  }
+  function createSubMenuButton(item) {
+    item.insertAdjacentHTML("beforeend", foldersTreeButton);
+  }
+  function closeSubMenu(e) {
+    const target = e.target;
+    const duration = 0.4;
+    if (!target.classList.contains("close-button"))
+      return;
+    e.stopPropagation();
+    const subMenu = getSubMenu(target);
+    if (!subMenu)
+      return;
+    animate(subMenu, {
+      opacity: [1, 0],
+      y: ["-50%", "-30%"],
+      x: ["-50%", "0%"],
+      duration
+    });
+    setTimeout(() => subMenu.classList.remove(subMenuMobileClass), duration * 1e3);
+  }
+  function generateSubMenuOpenButtons() {
+    const menuList = Array.from(mainMenu.querySelectorAll(menuItemWrapper));
+    menuList.forEach((item) => {
+      if (item.querySelector(`.${subMenuClass}`)) {
+        createSubMenuButton(item);
+        let button = item.querySelector(".sub-menu__folders_tree");
+        if (!button)
+          return;
+        button.addEventListener("click", mobileClickOnMainMenu);
+      }
+    });
+  }
+  function mobileClickOnMainMenu(e) {
+    const target = e.target;
+    const menuElementWrapper = target.closest(menuItemWrapper);
+    if (!menuElementWrapper)
+      return;
+    const subMenu = getSubMenu(menuElementWrapper);
+    if (!subMenu)
+      return false;
+    subMenu.classList.add(subMenuMobileClass);
+    animate(subMenu, {
+      opacity: [0, 1],
+      x: ["-50%"],
+      y: ["-30%", "-50%"],
+      duration: 0.4
+    });
+    const button = new CloseButton();
+    if (button)
+      subMenu.appendChild(button);
+    button.addEventListener("click", closeSubMenu);
+  }
+  function getSubMenu(target) {
+    const menuItemWrapper2 = target.closest(".menu__main-item-wrapper");
+    if (!menuItemWrapper2)
+      return false;
+    return menuItemWrapper2.querySelector(".sub-menu");
+  }
+  function disableActiveSubMenus(className) {
+    let activeSubmenu = mainMenu.querySelector(`.${className}`);
+    if (!activeSubmenu)
+      return;
+    animateSubMenuOut(activeSubmenu);
+  }
+  function animateSubMenuIn(subMenuElement) {
+    if (isMenuOpen)
+      return;
+    subMenuElement.style.display = "block";
+    subMenuElement.classList.add("sub-menu--active");
+    isMenuOpen = true;
+    animate(subMenuElement, {
+      opacity: [0, 1],
+      y: ["-30%", "-50%"],
+      duration: 0.4
+    });
+  }
+  function animateSubMenuOut(subMenuElement) {
+    const timeout = 0.4;
+    if (!isMenuOpen)
+      return;
+    animate(subMenuElement, {
+      opacity: [1, 0],
+      y: ["-50%", "-30%"],
+      duration: timeout
+    });
+    setTimeout(() => {
+      subMenuElement.style.display = "none";
+      subMenuElement.classList.remove("sub-menu--active");
+      isMenuOpen = false;
+    }, timeout * 1e3);
   }
 })();
 new HeroSlider();

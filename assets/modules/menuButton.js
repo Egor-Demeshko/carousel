@@ -4,7 +4,6 @@
   let menuOpen = false;
 
   function toggleMenu() {
-    console.log("click");
     if (menuOpen) {
       menu.style.transform = "translateX(-150%)";
     } else {

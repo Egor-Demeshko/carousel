@@ -589,6 +589,11 @@ html.highcontrast .header__background_socials img{
     font-size: 1.125rem;
     font-weight: bold;
     transition: background 400ms ease;
+    border-left: 4px solid transparent;
+}
+.menu__main-item--active{
+    color: var(--active-menu);
+    border-left: 4px solid var(--active-menu);
 }
 
 /*сектор второсетпенного меню*/

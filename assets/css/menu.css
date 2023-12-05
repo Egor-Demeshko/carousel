@@ -25,8 +25,16 @@
     list-style: none;
     width: 100%;
 }
+.menu__main-item-wrapper{
+    position: relative;
+}
+.menu__main-item--active{
+    color: var(--active-menu);
+    border-left: 4px solid var(--active-menu);
+}
 
-.menu__main-item{
+.menu__main-item,
+.sub-menu__item{
     display: block;
     background-color: transparent;
     color: var(--black);
@@ -36,8 +44,50 @@
     text-decoration: none;
     font-size: 1.125rem;
     font-weight: bold;
+    transition: background 400ms ease, border 400ms ease;
+    border-left: 4px solid var(--light);
+}
+
+/*ПОДМЕНЮ*/
+.sub-menu{
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--light);
+    border-radius: 10px;
+}
+.sub-menu--active{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.sub-menu__mobile{
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    background-color: var(--grey);
+}
+
+
+.sub-menu__item{
+    position: relative;
+    background-color: transparent;
     transition: background 400ms ease;
 }
+.sub-menu>li:first-child>.sub-menu__item{
+    border-radius: 10px 10px 0 0;
+}
+.sub-menu>li:last-child>.sub-menu__item{
+    border-radius: 0 0 10px 10px;
+}
+
+/**/
 
 /*сектор второсетпенного меню*/
 .side_menu{
@@ -61,8 +111,13 @@
 }
 
 .side_menu__item:hover,
-.menu__main-item:hover{
+.menu__main-item:hover,
+.sub-menu__item:hover
+{
     background-color: var(--main-dark);
+}
+.menu__main-item:hover{
+    border-left: 4px solid var(--main-dark);
 }
 
 /*нижняя часть меню*/
@@ -108,6 +163,45 @@
 
     .menu__socials{
         padding-bottom: 7rem;
+    }
+
+    /*кнопка поддерево меню*/
+    .sub-menu__folders_tree{
+        position: absolute;
+        padding: 0.687rem 0.562rem;
+        background-color: var(--grey);
+        text-align: center;
+        border-radius: 10px;
+        top: 50%;
+        right: 7vw;
+        transform: translateY(-50%);
+    }
+    .sub-menu__folders_tree svg{
+        width: 1.19rem;
+        height: .875rem;
+        fill: var(--black);
+    }
+    .sub-menu__mobile{
+        box-shadow: 0 0 150px 4px black/*var(--second-slide-background)*/;
+    }
+
+    .sub-menu__mobile li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 60vw;
+        position: relative;
+    }
+    .sub-menu__item{
+        border-left: none;
+    }
+    .close-button{
+        appearance: none;
+        border: none;
+        padding: 1.25rem;
+        width: 100%;
+        background-color: var(--background);
+        border-radius: 0 0 10px 10px;
     }
 }
 

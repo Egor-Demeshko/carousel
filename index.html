@@ -21,6 +21,7 @@
             --white: #FFFFFF;
             --slide-background: #36AA0033;
             --shadow: #000000A1;
+            --active-menu: #CC8821;
             
             --first-green-gradient: #97E572B3; /*70%*/
             --secondary-green-gradient: #97E5724D;
@@ -181,40 +182,6 @@
     
     
     <main class="main">
-        <!-- SIDE MENU -->
-        <nav class="menu">
-            <div class="menu__sticky">
-                <h3 class="menu__heading">Навигация</h3>
-                <ul class="menu__main">
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                </ul>
-                <ul class="side_menu">
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                </ul>
-                <div class="menu__socials">
-                    <div class="menu__socials_list">
-                        <a href="#"><img src="/assets/icons/Instagram_green.svg"/></a>
-                        <a href="#"><img src="/assets/icons/youtube_green.svg"/></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- END OF SIDE MENU -->
-        
         <!-- Greetings -->
         <div class="greetings">
             <div class="greetings__text-wrapper">
@@ -243,8 +210,53 @@
                     <path d="M27 20.1951H29.9781C28.5851 24.3732 27.3955 26.3741 23.4375 28.0823C22.7769 28.3675 22.4032 29.0956 22.5439 29.8223C22.6845 30.5476 23.2998 31.0695 24.0147 31.0695H24.0177C32.275 31.0542 37.0182 27.6257 40.3815 19.2455C41.455 16.6133 42 13.7962 42 10.8743C42 6.3807 40.6875 3.93367 38.6865 0.713001C38.4111 0.268553 37.935 -4.19617e-05 37.4253 -4.19617e-05L27 -4.19617e-05C24.5186 -4.19617e-05 22.5 2.09047 22.5 4.66038V15.5347C22.5 18.1046 24.5186 20.1951 27 20.1951ZM4.5 20.1951L7.4781 20.1951C6.08505 24.3732 4.89555 26.3741 0.9375 28.0823C0.276901 28.3675 -0.0967484 29.0956 0.0439529 29.8223C0.184502 30.5476 0.799801 31.0695 1.5147 31.0695H1.5177C9.77505 31.0542 14.5182 27.6257 17.8815 19.2455C18.955 16.6133 19.5 13.7962 19.5 10.8743C19.5 6.3807 18.1875 3.93367 16.1865 0.713001C15.9111 0.268553 15.435 -4.19617e-05 14.9253 -4.19617e-05H4.5C2.01855 -4.19617e-05 0 2.09047 0 4.66038V15.5347C0 18.1046 2.01855 20.1951 4.5 20.1951Z"/>
                 </svg>
                 <!-- END of Quote -->
+        </div>
+        <!-- END OF Greetings -->
+        <!-- SIDE MENU -->
+        <nav class="menu">
+            <div class="menu__sticky">
+                <h3 class="menu__heading">Навигация</h3>
+                <ul class="menu__main">
+                    <li class="menu__main-item-wrapper">
+                        <a href="#" class="menu__main-item">Пункт 1</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#" class="sub-menu__item">ПОДПункт 1.1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__item">ПОДПункт 1.1</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
+                </ul>
+                <ul class="side_menu">
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
+                </ul>
+                <div class="menu__socials">
+                    <div class="menu__socials_list">
+                        <a href="#"><img src="/assets/icons/Instagram_green.svg"/></a>
+                        <a href="#"><img src="/assets/icons/youtube_green.svg"/></a>
+                    </div>
+                </div>
             </div>
-            <!-- END OF Greetings -->
+        </nav>
+        <!-- END OF SIDE MENU -->
+        
+
             
             
             <!-- News -->
