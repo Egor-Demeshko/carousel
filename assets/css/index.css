@@ -456,6 +456,32 @@ Tags: Kindergarten
     color: var(--accent);
 }
 
+/* BOGO STYLES*/
+.bogo-language-switcher{
+    display: flex;
+    gap: 1.375rem;
+    margin: 0;
+    padding: 0;
+}
+
+
+.bogo-language-name{
+    cursor: pointer;
+}
+.bogo-language-name a{
+    text-decoration: none;
+    transition: color 400ms ease;
+    color: inherit;
+}
+.bogo-language-name:hover a{
+    color: var(--accent);
+}
+.bogo-language-switcher>.current a{
+    color: var(--active-menu);
+}
+/* -- END OF BOGO -- */
+
+
 .header__background{
     position: relative;
     margin: 0 auto;
@@ -724,7 +750,17 @@ html.highcontrast .menu__socials{
     overflow-x: hidden;
     overflow-y: auto;
 }
-
+.greetings__text-wrapper a{
+    padding: 0.2rem 0.4rem;
+    color: var(--black);
+    background-color: var(--grey);
+    border-radius: 6px;
+    transition: color 400ms ease;
+    text-decoration: none;
+}
+.greetings__text-wrapper a:hover{
+    color: var(--accent);
+}
 .greetings__heading{
     margin: 0;
     margin-bottom: 1.625rem;

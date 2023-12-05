@@ -101,6 +101,31 @@
     color: var(--accent);
 }
 
+/* BOGO STYLES*/
+.bogo-language-switcher{
+    display: flex;
+    gap: 1.375rem;
+    margin: 0;
+    padding: 0;
+}
+
+
+.bogo-language-name{
+    cursor: pointer;
+}
+.bogo-language-name a{
+    text-decoration: none;
+    transition: color 400ms ease;
+    color: inherit;
+}
+.bogo-language-name:hover a{
+    color: var(--accent);
+}
+.bogo-language-switcher>.current a{
+    color: var(--active-menu);
+}
+/* -- END OF BOGO -- */
+
 
 
 
@@ -162,4 +187,6 @@ html.highcontrast .header__background_socials img{
     box-shadow: 0 0 3px black;
     border-radius: 4px;
 }
+
+
 

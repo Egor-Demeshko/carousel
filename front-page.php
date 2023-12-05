@@ -1,4 +1,7 @@
 <?php 
+    /** Загружаем меню социальных сетей */
+    require get_template_directory() . '/assets/php/navigations/socials.php';
+    require get_template_directory() . '/assets/php/navigations/left_navigation.php';
     function get_main_top_background(){
         $url = get_field("kinder_main_top_background_image") ?: esc_url( get_template_directory_uri() . '/assets/images/background.png' );
         return $url;
@@ -8,18 +11,11 @@
 <?php get_header('main') ?>
 
 
-<div class="header__background">
+    <div class="header__background">
         <div class="header__background_image" style="background-image: url(<?php echo get_main_top_background();?>">
         </div>
-        <div class="header__background_socials">
-            
-            <a href="#">
-                <img src="/assets/icons/Instagram.svg"/>
-            </a>
-            <a href="#">
-                <img src="/assets/icons/youtube.svg"/>
-            </a>
-        </div>
+
+        <?php echo create_socials_menu(); ?>
     </div>
     <div class="mobile_bottom">
         <a class="mobile_bottom__item" href="#"><span>Контакты</span></a>
@@ -33,7 +29,7 @@
         </button>
     </div>
 
-    <img class="sun_icon" alt="Картинка солнца" role="presentation" src="/assets/images/sun.svg"/>
+    <img class="sun_icon" alt="Картинка солнца" role="presentation" src="<?php echo get_template_directory_uri() . "/assets/images/sun.svg"; ?>"/>
     <header class="header">
         <span><a class="header__logo" href="/"><?php the_title();?></a></span>
         <div class="header__menu">
@@ -67,9 +63,6 @@
                 </svg>
             </div>
             <?php echo do_shortcode( '[bogo]' ); ?>
-            <!--
-            <span class="header__language"><a>RU</a></span>
-            <span class="header__language"><a>BY</a></span>-->
         </div>
     </header>
     
@@ -79,6 +72,7 @@
         <nav class="menu">
             <div class="menu__sticky">
                 <h3 class="menu__heading">Навигация</h3>
+                <?php echo get_left_top_menu(); ?>
                 <ul class="menu__main">
                     <li><a href="#" class="menu__main-item">Пункт 1</a></li>
                     <li><a href="#" class="menu__main-item">Пункт 1</a></li>
@@ -111,22 +105,59 @@
         
         <!-- Greetings -->
         <div class="greetings">
+            
             <div class="greetings__text-wrapper">
                 <!-- Greetings__image -->
                 <div class="greetings__image">
-                    <img src="/assets/images/mask_portrait.svg" width="210px" height="240px"/>
-                    <div class="greerings__sign">
-                        <h4>Заведующая детским садом</h4>
-                        <p>Фамилия Имя Отчество</p>
-                    </div>
-                </div>
-                <!-- END OF Greetings__image --> 
-                
-                <h3 class="greetings__heading">Заголовок</h3>
-                <p class="greetings__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.
+                    <img src="<?php 
+                    $url = get_field("kinder_greetings_image");
+                    if($url){
+                        echo $url;
+                    } else {
+                        echo get_template_directory_uri() . '/assets/images/mask_portrait.svg';
+                    }
                     
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vitae sapien sit amet justo congue tincidunt. Sed auctor ultricies odio, at vulputate est blandit id. Nunc non ligula id ante tincidunt fermentum. Integer auctor, nisi vel aliquet tincidunt, mauris ipsum dapibus justo. Etiam in libero at justo ullamcorper eleifend. Sed at mauris nec justo consequat vestibulum.</p>
+                    ?>" width="210px" height="240px"/>
+                    <!--<img src="/assets/images/mask_portrait.svg" width="210px" height="240px"/>-->
+                    <?php
+                        $titul = get_field("kinder_greetings_titul");
+                        $name = get_field("kinder_greetings_name");
+                        if($titul || $name){
+                            ?>
+                            <div class="greerings__sign">
+                                <?php
+                                if($titul){
+                                    ?> 
+                                    <h4><?php echo $titul ?></h4>
+                                    <?php
+                                }
+                                if($name){
+                                    ?>
+                                <p><?php echo $name ?></p>
+                                <?php
+                                }                        
+                                ?>
+                            </div>
+                            <?php
+                        }
+                        ?>
                 </div>
+                <!-- END OF Greetings__image -->
+                <?php
+                    $heading = get_field("kinder_greetings_heading");
+                    if($heading){
+                ?>
+                <h3 class="greetings__heading">
+                    <?php  
+                        echo get_field("kinder_greetings_heading"); ?>
+                </h3>
+                    <?php
+                        }
+                    ?>
+                <div class="greetings__text">
+                    <?php  echo get_field("kinder_greetings_text"); ?>
+                </div>
+            </div>
                 
                 
                 <!-- Quote -->
@@ -137,8 +168,8 @@
                     <path d="M27 20.1951H29.9781C28.5851 24.3732 27.3955 26.3741 23.4375 28.0823C22.7769 28.3675 22.4032 29.0956 22.5439 29.8223C22.6845 30.5476 23.2998 31.0695 24.0147 31.0695H24.0177C32.275 31.0542 37.0182 27.6257 40.3815 19.2455C41.455 16.6133 42 13.7962 42 10.8743C42 6.3807 40.6875 3.93367 38.6865 0.713001C38.4111 0.268553 37.935 -4.19617e-05 37.4253 -4.19617e-05L27 -4.19617e-05C24.5186 -4.19617e-05 22.5 2.09047 22.5 4.66038V15.5347C22.5 18.1046 24.5186 20.1951 27 20.1951ZM4.5 20.1951L7.4781 20.1951C6.08505 24.3732 4.89555 26.3741 0.9375 28.0823C0.276901 28.3675 -0.0967484 29.0956 0.0439529 29.8223C0.184502 30.5476 0.799801 31.0695 1.5147 31.0695H1.5177C9.77505 31.0542 14.5182 27.6257 17.8815 19.2455C18.955 16.6133 19.5 13.7962 19.5 10.8743C19.5 6.3807 18.1875 3.93367 16.1865 0.713001C15.9111 0.268553 15.435 -4.19617e-05 14.9253 -4.19617e-05H4.5C2.01855 -4.19617e-05 0 2.09047 0 4.66038V15.5347C0 18.1046 2.01855 20.1951 4.5 20.1951Z"/>
                 </svg>
                 <!-- END of Quote -->
-            </div>
-            <!-- END OF Greetings -->
+        </div>
+        <!-- END OF Greetings -->
             
             
             <!-- News -->

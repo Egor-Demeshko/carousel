@@ -23,6 +23,49 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+.greetings__text-wrapper a{
+    padding: 0.2rem 0.4rem;
+    color: var(--black);
+    background-color: var(--grey);
+    border-radius: 6px;
+    transition: color 400ms ease;
+    text-decoration: none;
+}
+.greetings__text-wrapper a:hover{
+    color: var(--accent);
+}
+.greetings__text-wrapper p{
+    margin-top: 0;
+}
+.greetings__text-wrapper p:last-child{
+    margin-bottom: 0;
+}
+
+/* Hide the scrollbar buttons */
+.greetings__text-wrapper::-webkit-scrollbar-button {
+    display: none;
+}
+  
+  /* Style the scrollbar track */
+  .greetings__text-wrapper::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Style the scrollbar thumb */
+  .greetings__text-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--main-dark);
+    width: 4px;
+  }
+  
+  /* Style the scrollbar corner */
+  .greetings__text-wrapper::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  /*HIGHCONTRAST*/
+  .greetings__text-wrapper.highcontrast::-webkit-scrollbar-thumb {
+    background-color: grey;
+  }
 
 .greetings__heading{
     margin: 0;
@@ -78,6 +121,7 @@
         bottom: calc(100% + 1.125rem);
         height: clamp(10rem, 17vw, 15rem);
         width: clamp(8.79rem, 14.6vw, 13.19rem);
+        object-fit: cover;
     }
 
 .greerings__sign{

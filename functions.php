@@ -50,6 +50,8 @@ add_filter( 'script_loader_tag', $enqueue_script_add_type_attribute , 10, 3 );
 add_action( 'after_setup_theme', function (){
     register_nav_menus( array(
         'top_menu' => 'Верхнее меню',
+        'socials' => 'Социальные сети',
+        'left_navigation_main' => 'Главное. Левое верхнее навигационное меню',
      ) );
 } );
 
