@@ -1,5 +1,6 @@
 <?php
     function get_left_top_menu(){
+
         $left_top_menu = wp_nav_menu([
             "theme_location" => "left_navigation_main",
             'menu_id' => 'left_top_menu',

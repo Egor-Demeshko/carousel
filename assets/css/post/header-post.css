@@ -44,11 +44,12 @@
     transition: color 400ms ease, border 400ms ease;
     border: 4px solid transparent;
     font-size: 1.125rem;
-}.header-post__menu-item a:visited{
-    color: var(--background);
 }.header-post__menu-item a:hover{
     color: var(--top-menu-accent);
     /*border-bottom: 4px solid var(--accent);*/
+}
+.header-post__menu-item--active a{
+    color: var(--active-menu);
 }
 
 /* eye icon*/
@@ -86,6 +87,31 @@
 .header-post__language:hover a{
     color: var(--top-menu-accent);
 }
+
+/* BOGO STYLES*/
+.bogo-language-switcher{
+    display: flex;
+    gap: 1.375rem;
+    margin: 0;
+    padding: 0;
+}
+
+
+.bogo-language-name{
+    cursor: pointer;
+}
+.bogo-language-name a{
+    text-decoration: none;
+    transition: color 400ms ease;
+    color: inherit;
+}
+.bogo-language-name:hover a{
+    color: var(--accent);
+}
+.bogo-language-switcher>.current a{
+    color: var(--active-menu);
+}
+/* -- END OF BOGO -- */
 
 
 /*highcontrast*/

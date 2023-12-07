@@ -1,36 +1,58 @@
+<?php 
+    /**
+     * Retrieves the background image URL for the Kinder theme.
+     *
+     * This function checks if the "kinder_background_image" custom field is set using the
+     * `get_field` function. If it is not set, the function falls back to the default
+     * background image URL using the `get_template_directory_uri` function.
+     *
+     * @return string The URL of the background image.
+     */
+    function kinder_get_background_image(){
+        $url = get_field("kinder_background_image") ?: esc_url( get_template_directory_uri() . '/assets/images/main_bg.svg' );
+        return $url;
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="<?php language_attributes(); ?>">
 <head>
-    <meta charset="UTF-8">
+    <meta <?php bloginfo('charset') ?> >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
     <style>
         :root {
-            --background: #F6F6F6;
-            --main-dark: #36AA00;
-            --main: #97E572;
-            --semi-main: #99E675;
-            --second_menu_gradient: #73B156; 
-            --light: #E7FCDB;
-            --grey: #D9D9D9;
-            --grey-dark: #919191;
-            --accent: #77003e;
-            --black: #000000;
-            --black-80: #000000CC;
-            --white: #FFFFFF;
-            --slide-background: #36AA0033;
-            --shadow: #000000A1;
+            --background: <?php echo get_field("kinder_background") ?: "#F6F6F6"?>;
+            --main-dark: <?php echo get_field("main-dark") ?: "#36AA00"?>;
+            --main: <?php echo get_field("kinder_main") ?: "#97E572"?>;
+            --semi-main: <?php echo get_field("kinder_semi-main") ?: "#99E675"?>;
+            --second_menu_gradient: <?php echo get_field("kinder_second_menu_gradient") ?: '#73B156' ?>; 
+            --light: <?php echo get_field("kinder_light") ?: "#E7FCDB" ?>;
+            --grey: <?php echo get_field("kinder_grey") ?: "#D9D9D9"?>;
+            --grey-dark: <?php echo get_field("kinder_grey_dark") ?: "#919191"?>;
+            --accent: <?php echo get_field("kinder_accent") ?: "#77003e"?>;
+            --black: <?php echo get_field("kinder_black") ?: "#000000"?>;
+            --black-80: <?php echo get_field("kinder_black-80") ?: "#201F1FCC"?>;
+            --white: <?php echo get_field("kinder_white") ?: "#FFFFFF"?>;
+            --slide-background: <?php echo get_field("kinder_slide-background") ?: "#36AA0033"?>;
+            --shadow: <?php echo get_field("kinder_shadow") ?: "#000000A1"?>;
+            --active-menu: <?php echo get_field("kinder_active-menu") ?: "#CC8821"?>;
+
             
-            --first-green-gradient: #97E572B3; /*70%*/
-            --secondary-green-gradient: #97E5724D;
+            --first-green-gradient: <?php echo get_field("kinder_first-green-gradient") ?: "#97E572B3"?>; /*70%*/
+            --secondary-green-gradient: <?php echo get_field("kinder-secondary-green-gradient") ?: "#97E5724D"?>;
             
             
             --background-dark: #0D0D0D;
-            --black-gradient-first: #8F8F8F;
-            --black-gradient-second: #C1C1C173;
+            /**Цвет  сообщения слайдера */
+            --first-slide-background: <?php echo get_field("kinder_first-slide-background") ?: "#8F8F8FE6"?>;
+            --second-slide-background: <?php echo get_field("kinder_second-slide-background") ?: "#DAD9D9CC"?>;
+            /**два градиентных цвета, заднего фона сообщения, слайдера */
+            --search-gradient-first: <?php echo get_field("kinder_search-gradient-first") ?: "#8F8F8F" ?>;
+            --search-gradient-second: <?php echo get_field("kinder_search-gradient-second") ?: "#C1C1C173" ?>;
             
+            --message-gradient: linear-gradient(-45deg, var(--first-slide-background), var(--second-slide-background));
             --main-green-gradient: linear-gradient(-90deg, var(--first-green-gradient), var(--secondary-green-gradient));
-            --grey-gradient: linear-gradient(-90deg, var(--black-gradient-first), var(--black-gradient-second));
+            --grey-gradient: linear-gradient(-90deg, var(--search-gradient-first), var(--search-gradient-second));
             --menu-gradient: linear-gradient(-90deg, var(--main), var(--second_menu_gradient));
 
             --step: clamp(3rem, 20vw, 6.26rem);
@@ -166,6 +188,6 @@
             /* -- END of BREADCRUMBS -- */
         }
     </style>
-    <link rel="stylesheet" href="/assets/css/post/style.css"/>
+    <?php wp_head();?>
 </head>
-<body>
+<body <?php body_class(); ?> style="background-image: url( <?php echo kinder_get_background_image(); ?>);">

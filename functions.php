@@ -22,9 +22,24 @@ add_action("wp_enqueue_scripts", function(){
     if(str_contains($URI, $roots['main'])){
         wp_enqueue_style('normolize', get_template_directory_uri() . '/assets/css/normolize.css', [], null);
         wp_enqueue_script($main_script, get_template_directory_uri() . '/assets/js/index.js', [], null);
-        wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
+
+       // wp_enqueue_style('page_style', get_template_directory_uri() . '/assets/css/post/post.css', ['normolize'], null);
+       // wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
     }
 }); 
+
+/**так как для страницы и front-page стили сильно разные, делаем разделение загрузки стилей. */
+function enqueue_styles_for_page_template($template) {
+    //$template содержит полную строку до макета страницы
+    if (basename($template) === 'page.php') {
+        wp_enqueue_style('your-custom-style', get_template_directory_uri() . '/assets/css/post/post.css');
+    } else if(basename($template) === 'front-page.php'){
+        wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
+    }
+    return $template;
+}
+add_filter('template_include', 'enqueue_styles_for_page_template');
+
 
 /** Функция для добавления атрибута type=module к элементу скрипта */
 $enqueue_script_add_type_attribute = static function( $tag, $handle ) use ( $main_script ) {
@@ -54,6 +69,7 @@ add_action( 'after_setup_theme', function (){
         'left_navigation_secondary_menu' => 'Второстепенное. Левое среднее навигационное меню',
         'left_socials' => 'Социальные сети. Левая навигация, внизу',
         'footer_menu' => 'Меню в футере. Подвал сайта',
+        'mobile_bottom_bar' => "Мобильное меню. внизу, где две кнопки"
      ) );
 
 } );

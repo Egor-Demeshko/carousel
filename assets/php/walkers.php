@@ -11,9 +11,10 @@ class Top_Menu extends Walker_Nav_Menu {
 		//create classes
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'header__menu-item';
+		$classes[] = 'header-post__menu-item';
 
         if(!empty($item->current) && $item->current){
-            $classes = array_merge($classes, ['header__menu-item--active']);
+            $classes = array_merge($classes, ['header__menu-item--active', 'header-post__menu-item--active']);	
         }
 
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
@@ -74,7 +75,6 @@ class Socials_Top_Banner extends Walker_Nav_Menu{
  * мобильное выезжающее меню. верхний главный(светлый) сектор
  */
 class Left_Top_Menu extends Walker_Nav_Menu{
-
 
 	function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
 		$link_classes = [];
@@ -186,6 +186,30 @@ class Footer_Menu extends Walker_Nav_Menu{
 			$attributes,
 			apply_filters( 'the_title', $item->title, $item->ID ),
             $args->link_after
+		);
+
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
+}
+
+class WP_Mobile_Menu extends Walker_Nav_Menu{
+	
+	function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
+		$item = $data_object;
+		/**Классы ссылки <a> */
+		$link_classes = ['mobile_bottom__item'];
+		
+		// link attributes
+		$attributes = ' class="' . implode(' ', $link_classes) . '"';
+		$attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+		$item_output = sprintf( '<a%1$s>%2$s%3$s</a>',
+			$attributes,
+			apply_filters( 'the_title', $item->title, $item->ID ),
+			$args->link_after
 		);
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
