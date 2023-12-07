@@ -9,6 +9,7 @@ require get_template_directory() . '/assets/php/walkers.php';
 /** Загружаем настройки BOGO */
 require get_template_directory() . '/assets/php/kinder_bogo_options.php';
 
+
 /** ДОБАВЛЯЕМ СКРИПТЫ И СТИЛИ. СТИЛИ отличаются у второстепенных от главной, поэтому используется
  * еще функция $enqueue_script_add_type_attribute
  */
@@ -36,8 +37,6 @@ $enqueue_script_add_type_attribute = static function( $tag, $handle ) use ( $mai
         $tag = str_replace( 'src=', 'type="module" src=', $tag );
         return $tag;
     }
-
-
     return $tag;
 };
 
@@ -52,7 +51,63 @@ add_action( 'after_setup_theme', function (){
         'top_menu' => 'Верхнее меню',
         'socials' => 'Социальные сети',
         'left_navigation_main' => 'Главное. Левое верхнее навигационное меню',
+        'left_navigation_secondary_menu' => 'Второстепенное. Левое среднее навигационное меню',
+        'left_socials' => 'Социальные сети. Левая навигация, внизу',
+        'footer_menu' => 'Меню в футере. Подвал сайта',
      ) );
+
 } );
+
+
+/** регистрируем поле виджетов */
+add_action( 'widgets_init', function(){
+    register_sidebar( [
+        'name' => __('Правое поле виджетов', "kinder"),
+        'id' => 'right_sidebar',
+        'description' => __('Правое поле виджетов, справа от блока новостей. Выводится на главной странице.', "kinder"),
+        'before_widget' => '<div id="%1$s" class="widgets__box %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>',
+    ]);
+
+    register_sidebar( [
+        'name' => __('Текст в футере, внизу', "kinder"),
+        'id' => 'footer_sidebar',
+        'description' => __('Правое поле виджетов, справа от блока новостей. Выводится на главной странице.', "kinder"),
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>',
+        'before_sidebar' => '<div class="footer__info %2$s">',
+        'after_sidebar' => '</div>'
+    ]);
+});
+
+
+/** РЕГИСТРИРУЕМ КАСТОМНЫЕ ТИПЫ ЗАПИСИ. ДЛЯ СЛАЙДЕРА */
+add_action( 'init', 'kinder_register_post_types' );
+
+/**меня форматы изображение */
+// Дерегистрируем существующие размеры
+function remove_image_sizes() {
+    remove_image_size('medium');
+    remove_image_size('medium_large');
+    remove_image_size('large');
+    remove_image_size('2048x2048');
+}
+
+add_action('init', 'remove_image_sizes');
+
+// Добавляем новые размеры
+function add_custom_image_sizes() {
+    add_image_size('post_preview', 232, 252, true);
+    add_image_size('greetings_portrait', 252, 212, true);
+    add_image_size('slider_image', 1440, 386, true);
+    add_image_size('banner_background', 1446, 314, true);
+}
+
+add_action('after_setup_theme', 'add_custom_image_sizes');
+
 
 ?>

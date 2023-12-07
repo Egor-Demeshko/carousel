@@ -63,7 +63,7 @@ class Socials_Top_Banner extends Walker_Nav_Menu{
 
 		$item_output = sprintf( '<a%1$s>%2$s</a>',
 			$attributes,
-            $args->link_after . ' <img aria-label="перейти на страницу социальной сети '. $title  . '" src="' . get_template_directory_uri() . '/assets/icons/' . $icon . '.svg"/>'
+            '<img aria-label="перейти на страницу социальной сети '. $title  . '" src="' . get_template_directory_uri() . '/assets/icons/' . $icon . '.svg"/>'
 		);
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
@@ -74,12 +74,20 @@ class Socials_Top_Banner extends Walker_Nav_Menu{
  * мобильное выезжающее меню. верхний главный(светлый) сектор
  */
 class Left_Top_Menu extends Walker_Nav_Menu{
+
+
 	function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
 		$link_classes = [];
 		// Restores the more descriptive, specific name for use within this method.
 		$item = $data_object;
 		//create <li> classes
         $classes = [];
+
+		if($depth >= 1){
+			$classes[] = "";
+		} else if($depth === 0) {
+			$classes[] = "menu__main-item-wrapper";
+		} 
 
 
 		/** Если wordpress назначает активный элемент, то 
@@ -93,8 +101,83 @@ class Left_Top_Menu extends Walker_Nav_Menu{
 		$output .= '<li class="' . implode(' ', $classes) . '">';
 
 		// link attributes
-		$attributes = ' class="menu__main-item ' . implode(' ', $link_classes) . '"';
+		$attributes = (($depth === 0) ? ' class="menu__main-item ' : ' class="sub-menu__item ') . implode(' ', $link_classes) . '"';
 		$attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+		$item_output = sprintf( '<a%1$s>%2$s%3$s</a>',
+			$attributes,
+			apply_filters( 'the_title', $item->title, $item->ID ),
+            $args->link_after
+		);
+
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
+}
+
+
+class Left_Secondary_Menu extends Walker_Nav_Menu{
+
+
+	function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
+		$item = $data_object;
+		/**Классы ссылки <a> */
+		$link_classes = [];
+		//классы <li> 
+        $classes = [];
+
+
+		/** Если wordpress назначает активный элемент, то 
+		 * так как в разметке стили примененны к <a>, то добавляем активный класс
+		 * к $link_classes
+		 */
+		if(!empty($item->current) && $item->current){
+            $link_classes = array_merge($link_classes, ['side_menu__item--active']);
+        }
+		// создаем <li>, если к классам ничего не добавили, то создаем <li> без атрибутов
+		if(empty($classes)){
+			$output .= '<li>';
+		} else {
+			$output .= '<li class="' . implode(' ', $classes) . '">';
+		}
+
+		// link attributes
+		$attributes = ' class="side_menu__item ' . implode(' ', $link_classes) . '"';
+		$attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+		$item_output = sprintf( '<a%1$s>%2$s%3$s</a>',
+			$attributes,
+			apply_filters( 'the_title', $item->title, $item->ID ),
+            $args->link_after
+		);
+
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
+}
+
+
+class Footer_Menu extends Walker_Nav_Menu{
+
+
+	function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
+		$item = $data_object;
+		/**Классы ссылки <a> */
+		$link_classes = [];
+		//классы <li> 
+        $classes = ['footer__menu_item'];
+
+
+		// создаем <li>, если к классам ничего не добавили, то создаем <li> без атрибутов
+		$output .= '<li class="' . implode(' ', $classes) . '">';
+
+
+		// link attributes
+		$attributes = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';

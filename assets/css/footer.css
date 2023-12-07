@@ -25,9 +25,19 @@
     letter-spacing: .3px;
 }
 
-p.footer__name{
+.footer__info p,
+.footer__info :is(h1, h2, h3, h4, h5, h6){
+    margin: 0;
+}
+
+
+.footer__info>p:first-child{
     font-size: 2rem;
+    line-height: 100%;
     font-family: "SeoulHangangCondensed-Medium", sans-serif;
+}
+.footer__info .is-layout-flex{
+    gap: 0;
 }
 
 .footer__menu{

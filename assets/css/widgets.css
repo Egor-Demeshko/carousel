@@ -6,25 +6,27 @@
 
 .widgets--sticky{
     position: sticky;
-    top: 60px;
+    top: 70px;
     display: flex;
     flex-direction: column;
     gap: 2.375rem;
 }
 
 .widgets__box{
-    padding: 1.5rem 1.25rem;
+    padding: 1rem .875rem;
     background-color: var(--light);
     color: var(--black);
     border-radius: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-    .widgets__box h4{
+    .widgets__box :is(h1, h2, h3, h4, h5, h6) {
         margin: 0;
-    }
-    .widgets__box h4{
         font-size: 1.5rem;
     }
+
     .widgets__box p{
         font-size: .875rem;
     }
@@ -56,6 +58,9 @@
     right: .875rem;
     transform: translateY(-50%);
     stroke: var(--grey-dark);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {

@@ -89,9 +89,10 @@
         }
 
         .content{
-            background-color: var(--background);
+            background-color: transparent;
             max-width: 63rem;
             margin: var(--step) auto 0;
+            text-align: center;
         }
 
         @media screen and (max-width: 800px){

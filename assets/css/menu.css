@@ -4,7 +4,7 @@
 
 .menu__sticky{
     position: sticky;
-    top: 60px;
+    top: 70px;
     display: flex;
     flex-direction: column;
 }
@@ -119,6 +119,10 @@
 .menu__main-item:hover{
     border-left: 4px solid var(--main-dark);
 }
+.side_menu__item--active{
+    color: var(--active-menu);
+    border-left: 4px solid var(--active-menu);
+}
 
 /*нижняя часть меню*/
 .menu__socials{
@@ -128,6 +132,7 @@
     justify-content: center;
     background-image: var(--main-green-gradient);
     clip-path: path("M288 0C288 0 288 39.5 288 48C288 56.5 280.5 103.5 233 107C185.5 110.5 0.5 122 0.5 122V0");
+    border-radius: 0 0 0 30px;
 }
 
 .menu__socials_list{

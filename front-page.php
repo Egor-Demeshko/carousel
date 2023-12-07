@@ -68,41 +68,6 @@
     
     
     <main class="main">
-        <!-- SIDE MENU -->
-        <nav class="menu">
-            <div class="menu__sticky">
-                <h3 class="menu__heading">Навигация</h3>
-                <?php echo get_left_top_menu(); ?>
-                <ul class="menu__main">
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                    <li><a href="#" class="menu__main-item">Пункт 1</a></li>
-                </ul>
-                <ul class="side_menu">
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                    <li><a href="#" class="side_menu__item">Второстепенный пункт</a></li>
-                </ul>
-                <div class="menu__socials">
-                    <div class="menu__socials_list">
-                        <a href="#"><img src="/assets/icons/Instagram_green.svg"/></a>
-                        <a href="#"><img src="/assets/icons/youtube_green.svg"/></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- END OF SIDE MENU -->
-        
         <!-- Greetings -->
         <div class="greetings">
             
@@ -170,76 +135,83 @@
                 <!-- END of Quote -->
         </div>
         <!-- END OF Greetings -->
+        <!-- SIDE MENU -->
+        <nav class="menu">
+            <div class="menu__sticky">
+                <h3 class="menu__heading">Навигация</h3>
+
+                <?php echo get_left_top_menu(); ?>
+
+                <?php echo get_left_middle_menu(); ?>
+
+                <div class="menu__socials">
+                    <?php echo get_left_socials(); ?>
+                    <!--<div class="menu__socials_list">
+                        <a href="#"><img src="/assets/icons/Instagram_green.svg"/></a>
+                        <a href="#"><img src="/assets/icons/youtube_green.svg"/></a>
+                    </div>-->
+                </div>
+            </div>
+        </nav>
+        <!-- END OF SIDE MENU -->
+        
+
             
-            
+            <?php 
+                $query = new WP_Query([
+                    'post_type' => 'any',
+                    'posts_per_page' => 3,
+                    'post__not_in' => get_posts([
+                        'post_type' => 'kinder_slider', 
+                        'post_type' => 'kinder_additional_infoblocks', 
+                        'post_type' => 'kinder_links_slider',
+                        'fields' => 'ids'])
+                ]);
+
+                
+            ?>
             <!-- News -->
             <div class="news">
-                <h2 class="news__heading">Последние новости</h2>
+                <h2 class="news__heading">Последние записи</h2>
                 
                 <div class="news__block-wrapper">
                     <!-- News card -->
+                    <?php
+                        while($query->have_posts()){
+                            $query->the_post();
+                            $day = get_the_date('d');
+                            $month = get_the_date('F');
+                            $title = get_the_title();
+                            $excerpt = get_the_excerpt();
+                            $author = get_the_author();
+                            $author_link = get_author_posts_url(get_the_author_meta('ID'));
+                        
+                    ?>
                     <div class="news_card">
                         <div class="news_card__point"></div>
                         <div class="news_card__date">
                             <div class="news_card__date_background"></div>
-                            <span class="news_card__day">05</span>
-                            <span class="news_card__month">августа</span>
+                            <span class="news_card__day"><?php echo $day; ?></span>
+                            <span class="news_card__month"><?php echo $month; ?></span>
                         </div>
                         <div class="news_card__content">
-                            <h4 class="news_card__heading">Событие первое</h4>
+                            <h4 class="news_card__heading"><?php echo $title; ?></h4>
                             <p class="news_card__text">
-                                Lorem ipsum dolor sit amet consectetur. Faucibus accumsan dui sem sit enim imperdiet. Nibh sed in orci sed venenatis tortor in risus. Aenean imperdiet ac amet aliquam urna nunc iaculis. Semper facilisi duis ultricies malesuada. Senectus purus adipiscing eleifend posuere neque parturient. Sed sem semper orci enim.
+                                <?php echo $excerpt; ?>
                             </p>
                             <div class="news_card__bottom">
-                                <span class="news_card__author">автор: <a href="#">Автор Новости</a></span>
-                                <a class="news_card__link" href="#">Прочитать</a>
+                                <span class="news_card__author">автор: <a href="<?php echo $author_link; ?>"><?php echo ($author) ? $author : 'Автор статьи'; ?></a></span>
+                                <a class="news_card__link" href="<?php the_permalink(); ?>">Прочитать</a>
                             </div>
                         </div>
                     </div>
                     <!-- END OF News card -->
-                    <!-- News card -->
-                    <div class="news_card">
-                        <div class="news_card__point"></div>
-                        <div class="news_card__date">
-                            <div class="news_card__date_background"></div>
-                            <span class="news_card__day">05</span>
-                            <span class="news_card__month">августа</span>
-                        </div>
-                        <div class="news_card__content">
-                            <h4 class="news_card__heading">Событие первое</h4>
-                            <p class="news_card__text">
-                                Lorem ipsum dolor sit amet consectetur. Faucibus accumsan dui sem sit enim imperdiet. Nibh sed in orci sed venenatis tortor in risus. Aenean imperdiet ac amet aliquam urna nunc iaculis. Semper facilisi duis ultricies malesuada. Senectus purus adipiscing eleifend posuere neque parturient. Sed sem semper orci enim.
-                            </p>
-                            <div class="news_card__bottom">
-                                <span class="news_card__author">автор: <a href="#">Автор Новости</a></span>
-                                <a class="news_card__link" href="#">Прочитать</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END OF News card -->
-                    <!-- News card -->
-                    <div class="news_card">
-                        <div class="news_card__point"></div>
-                        <div class="news_card__date">
-                            <div class="news_card__date_background"></div>
-                            <span class="news_card__day">05</span>
-                            <span class="news_card__month">августа</span>
-                        </div>
-                        <div class="news_card__content">
-                            <h4 class="news_card__heading">Событие первое</h4>
-                            <p class="news_card__text">
-                                Lorem ipsum dolor sit amet consectetur. Faucibus accumsan dui sem sit enim imperdiet. Nibh sed in orci sed venenatis tortor in risus. Aenean imperdiet ac amet aliquam urna nunc iaculis. Semper facilisi duis ultricies malesuada. Senectus purus adipiscing eleifend posuere neque parturient. Sed sem semper orci enim.
-                            </p>
-                            <div class="news_card__bottom">
-                                <span class="news_card__author">автор: <a href="#">Автор Новости</a></span>
-                                <a class="news_card__link" href="#">Прочитать</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END OF News card -->
+                    <?php } ?>
+                    <?php wp_reset_postdata(); ?>
                     
+                    <?php $all_posts_link = get_post_type_archive_link('post'); ?>
                     <div class="news__wrapper">
-                        <a class="news__read_all" href="#">ЧИТАТЬ ВСЕ НОВОСТИ</a>
+                        <a class="news__read_all" href="<?php echo $all_posts_link; ?>">ЧИТАТЬ ВСЕ НОВОСТИ</a>
                     </div>
                 </div>
 
@@ -250,21 +222,13 @@
         
         <aside class="widgets">
             <div class="widgets--sticky">
-                <div class="widgets__box">
-                    <h4>Режим работы</h4>
-                    <p>Понедельник - пятница: 7.30 - 18.00</p>
-                    <p>Суббота - Воскресенье: Выходной</p>
-                    <p>Праздничные и нерабочие дни: Выходной</p>
-                </div>
-                <form class="widgets__search">
-                    <div class="widgets__search_wrapper">
-                        <input class="widgets__search_input">
-                        <svg class="widgets__search_icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9.06429 17C13.3803 17 16.8792 13.4183 16.8792 9C16.8792 4.58172 13.3803 1 9.06429 1C4.74824 1 1.24939 4.58172 1.24939 9C1.24939 13.4183 4.74824 17 9.06429 17Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.833 19L14.5836 14.65" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </form>
+                <?php get_search_form(); ?>
+
+                <?php 
+                if(is_dynamic_sidebar()) {
+                    dynamic_sidebar('right_sidebar');
+                }
+                ?>
             </div>
         </aside>
     </main>
@@ -287,174 +251,88 @@
         </div>
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-                <li class="glide__slide" style="background-image: url('/assets/images/slider 1.jpg');">
-                    <div class="glide__slide_background"></div>
-                    <div class="glide__message_wrapper">
-                        <h4 class="glide__header">Важное сообщение</h4>
-                        <p class="glide__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.
+                <?php
+                // Запрос кастомного типа записи kinder_slider
+                $args = array(
+                    'post_type' => 'kinder_slider',
+                );
 
-                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec [...]</p>
-                            <a class="glide__button" href="#">Подробнее</a>
-                    </div>
-                </li>
-                <li class="glide__slide" style="background-image: url('/assets/images/slider 1.jpg');">
-                    <div class="glide__slide_background"></div>
-                    <div class="glide__message_wrapper">
-                        <h4 class="glide__header">Важное сообщение</h4>
-                        <p class="glide__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.
+                $query = new WP_Query($args);
 
-                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec [...]</p>
-                            <a class="glide__button" href="#">Подробнее</a>
-                    </div>
-                </li>
+                // Цикл для кастомного типа записи kinder_slider
+                if ($query->have_posts()) {
+                    while ($query->have_posts()) {
+                        $query->the_post();
+
+                        get_template_part("template-parts/content", "slider"); 
+                    }
+                    
+                    wp_reset_postdata();
+                }
+                ?>
             </ul>
         </div>
     </section>
 
-    <section class="additional_info">
-        <div class="additional__left">
-            <h4>Свободные места</h4>
-            <p>В 2023/2024 учебном году функционируют <b>6</b> возрастных групп</p>
-        </div>
-        <div class="additional__right">
-            <p>первая младшая №1 - 0 (Свобдных мест нет)</p>
-            <p>вторая младшая №2 - 7 ( 7 Свобдных мест )</p>
-            <p>средняя группа №4 - 0 (Свобдных мест нет)</p>
-            <p>группа интегрированного обучения и воспитания 5-6 лет №5 - 0 (Свобдных мест нет)</p>
-            <p>группа интегрированного обучения и воспитания 5-6 лет №6 ( свободных мест нет)</p>
-        </div>
-    </section>
 
-    <div class="map">
+    
+
+    <?php
+
+        $query = new WP_Query([
+            'post_type' => 'kinder_infoblocks',
+        ]);
+
+        // Цикл для кастомного типа записи kinder_slider
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+
+                get_template_part("template-parts/content", "kinder_additional_infoblocks"); 
+            }
+            
+            wp_reset_postdata();
+        }
+    ?>
+
+   <!-- <div class="map">
         <h3 class="map__heading">Интерактивные карты свободных мест</h3>
         <a class="map__button" href="#">Интерактивные карты свободных мест</a>
         <iframe class="map__embeded" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab3fd6a48253fddfc0938315bacb4c649e707f7933cfbd555fa59d58475448637&source=constructor"
         width="720" height="532"></iframe>
-    </div>
+    </div>-->
 
-    <section class="additional_info">
-        <div class="additional__left">
-            <h4>Заголовок</h4>
-            <p>Инфомарция</p>
-        </div>
-        <div class="additional__right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at mauris nec justo consequat vestibulum. Nulla facilisi. Fusce vel ex sed libero interdum lacinia. Aenean vel semper felis, sed commodo elit. Quisque nec semper urna. Cras eget urna vitae ligula tincidunt convallis.</p>
-            <a class="additional__button" href="#">Перейти</a>
-        </div>
+    <section class="content">
+        <?php the_content(); ?>
     </section>
 
+
+    
     <!-- Additional links-->
-    <div class="links links__track">
-       <!-- <div class="">-->
+    <?php
+        $query = new WP_Query([
+            'post_type' => 'kinder_links_slider',
+        ]);
 
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-            <a class="links__item" href="#">
-                <div class="links__image">
-                    <img src="/assets/images/links_logo.png" width="89px" height="89px" alt=""/>
-                </div>
-                <div class="links__title_wrapper">
-                    <span class="links__title">Министерство образования Республики Беларусь</span>
-                </div>
-            </a>
-       <!-- </div>-->
-    </div>
-        <!-- END OF Additional links-->
-        
-        <content class="content">
+        // Цикл для кастомного типа записи kinder_slider
+        if ($query->have_posts()) {
+            ?>
+            <div class="links links__track">
+                <?php 
+                while ($query->have_posts()) {
+                    $query->the_post();
 
-        </content>
+                    get_template_part("template-parts/content", "kinder_links_slider"); 
+                }
+                
+                wp_reset_postdata();
+                ?>
+            </div>
+            <?php
+        }
+    ?>
+    <!-- END OF Additional links-->
+    
 
 
-    <footer class="footer">
-        <div class="footer__info">
-            <p class="footer__name">Детский сад №1 г.п. Кореличи</p>
-            <p class="footer__text">Наш адрес: г.п.Кореличи, ул.Парковая. 1а
-                тел.8 01596 749 91
-                расчетный счет
-                BY92 AKBB 3642 5180 0005 5420 0000 BYN
-                ЦБУ № 411 ОАО «АСБ Беларусбанк» г.п. Кореличи BIC AKBBBY2Х
-            </p>
-            <p>Свидетельство о гос. регистрации: 1956535188</p>
-        </div>
-        <div class="footer__menu_wrapper">
-            <ul class="footer__menu">
-                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
-                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
-                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
-                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
-                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
-                <li class="footer__menu_item"><a href="#">пункт меню</a></li>
-            </ul>
-        </div>
-
-        <svg class="footer__icon" width="100" height="63" viewBox="0 0 100 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M86.8323 11.3292C83.4534 17.3913 79.4534 26.6584 77.6646 38.3851C76.7453 35.2795 75.6522 31.9255 74.4348 28.4969C78.2857 21.0683 82.4348 15.3292 86.8323 11.3292ZM73.3168 1.91304C71.7516 5.11801 70.0124 9.19255 68.3975 14.0373C67.8261 12.8696 67.2547 11.7516 66.6584 10.6832C68.795 7.22981 71.0311 4.29814 73.3168 1.91304ZM32.5963 1.86335C34.2112 3.52795 35.7764 5.46584 37.3168 7.65217C36.795 8.09938 36.2733 8.57143 35.7516 9.06832C34.6832 6.3354 33.6149 3.92547 32.5963 1.86335ZM13.1429 11.3043C16.9193 14.7081 20.4969 19.4286 23.8509 25.3665C22.8075 27.3292 21.8137 29.3168 20.8944 31.3043C18.8323 22.9068 15.7764 16.0994 13.1429 11.3043ZM8.64596 62.087C11.528 44.5466 5.26708 30.8075 0 22.7826C7.13043 28.1988 12.4472 36.4224 16.0248 43.4037C13.0683 51.8012 11.3292 58.9814 10.6335 62.087H8.64596ZM26.1366 62.087H20.1739H14.7081C16.7205 53.6149 24.4472 24.6708 39.0807 11.3789C33.6646 21.118 26.559 38.9814 29.7888 62.087H26.1366ZM33.8137 62.087C33.0186 56.6211 32.8447 51.4286 33.118 46.5839C35.3789 53.2671 36.8447 59.0062 37.5652 62.087H33.8137ZM39.1056 52.323C37.8634 48.0994 36.2236 43.0559 34.1118 37.7391C34.8075 33.7143 35.7764 30.0124 36.8696 26.6335C38.6584 35.0807 39.4286 43.6522 39.1056 52.323ZM42.3354 62.087C44.0745 47.8012 43.0807 33.6894 39.3789 20.0497C40.1739 18.1863 40.9938 16.472 41.7888 14.9565C45.0683 20.9938 48.1242 28.323 50.9068 36.7453C47.2547 48.0994 45.1429 58.236 44.3975 62.087H42.3354ZM60.9689 52.2981C60.8447 55.5031 60.5466 58.7826 60.1491 62.087H59.9255H48.4224C49.2671 57.7888 51.3789 48.0745 54.8571 37.3416C56.1242 33.441 57.4658 29.764 58.882 26.2857C59.2547 28.1491 59.5776 30.0373 59.8509 31.9255C60.8447 38.559 61.2174 45.4161 60.9689 52.2981ZM65.8882 62.087H64.1739C64.5714 58.8323 64.8199 55.6025 64.9441 52.4472C65.2174 45.3168 64.8199 38.2112 63.8012 31.354C63.2298 27.354 62.4099 23.3789 61.4161 19.5279C61.4161 19.4783 61.3913 19.4286 61.3913 19.3789C59.3043 11.2547 56.646 4.7205 54.4099 0C57.2422 3.00621 59.9752 6.85714 62.6087 11.5776C64.0745 14.1863 65.5155 17.0932 66.882 20.2236C66.9068 20.2733 66.9068 20.323 66.9317 20.3727V20.3975C68.1491 23.1304 69.3168 26.0373 70.4099 29.0435C73.2671 36.9938 75.3789 44.5714 76.646 49.7143C74.3851 55.2298 72.9689 59.8012 72.323 62.087H65.8882ZM91.3292 62.087H81.7888H79.8012H76.4721C78.6832 54.7826 86.1615 33.2174 100 22.7578C94.7081 30.7578 88.4472 44.5217 91.3292 62.087Z"/>
-        </svg>
-
-    </footer>
-
-
-<?php get_footer(); ?>
+<?php get_footer('main'); ?>
