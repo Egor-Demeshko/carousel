@@ -75,7 +75,7 @@
         <main class="main_flow__main">
             <div class="main" >
                 <div class="main__wrapper">
-                    <?php get_template_part('/template-parts/content', 'breadcrumbs')?>
+                    <?php get_template_part('/template-parts/content', 'breadcrumbs_single')?>
                     <!-- BREAKER-->
                     <div style="height: 4px; background-color: var(--grey); margin: 2.5rem 0; border-radius: 2px;">
                     </div>

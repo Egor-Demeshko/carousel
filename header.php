@@ -15,7 +15,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php language_attributes(); ?>">
+<html <?php language_attributes(); ?>>
 <head>
     <meta <?php bloginfo('charset') ?> >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -188,6 +188,30 @@
             /* -- END of BREADCRUMBS -- */
         }
     </style>
+    <title><?php wp_title(); ?></title>
+    <meta name="description" content="<?php bloginfo('description')?>"/>
+    <?php 
+
+        $page_title = get_the_title();
+        $page_description = get_the_excerpt();
+        $url = get_the_permalink();
+        ?>
+        
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "<?php echo $page_title ?>",
+                "description": "<?php echo $page_description ?>",
+                "url": "<?php echo $url?>",
+                "mainEntity": {
+                    "@type": "CreativeWork",
+                    "name": "<?php echo $page_title ?>",
+                    "description": "<?php echo $page_description ?>",
+                    "text": "<?php the_content(); ?>"
+                }
+            }
+        </script>
     <?php wp_head();?>
 </head>
 <body <?php body_class(); ?> style="background-image: url( <?php echo kinder_get_background_image(); ?>);">

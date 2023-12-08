@@ -651,11 +651,6 @@ html.highcontrast .banner{
     position: relative;
 }
 
-.menu__main-item--active{
-    color: var(--active-menu);
-    border-left: 4px solid var(--active-menu);
-}
-
 .menu__main-item,
 .sub-menu__item{
     display: block;
@@ -669,6 +664,11 @@ html.highcontrast .banner{
     font-weight: bold;
     transition: background 400ms ease;
     border-left: 4px solid var(--light);
+}
+
+.menu__main-item--active{
+    color: var(--active-menu);
+    border-left: 4px solid var(--active-menu);
 }
 
 /*ПОДМЕНЮ*/

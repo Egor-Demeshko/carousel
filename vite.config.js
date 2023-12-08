@@ -6,6 +6,7 @@ export default {
         assetFileNames: '[name].[ext]',
         rollupOptions: {
             input: {
+                index: 'index.html',
                 post: 'post.html',
             },
             output: {

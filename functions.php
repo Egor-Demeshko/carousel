@@ -31,7 +31,7 @@ add_action("wp_enqueue_scripts", function(){
 /**так как для страницы и front-page стили сильно разные, делаем разделение загрузки стилей. */
 function enqueue_styles_for_page_template($template) {
     //$template содержит полную строку до макета страницы
-    if (basename($template) === 'page.php') {
+    if (basename($template) === 'page.php' || basename($template) === 'single.php') {
         wp_enqueue_style('your-custom-style', get_template_directory_uri() . '/assets/css/post/post.css');
     } else if(basename($template) === 'front-page.php'){
         wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);

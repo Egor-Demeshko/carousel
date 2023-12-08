@@ -2,12 +2,12 @@ import {animate} from "motion";
 import CloseButton from "./CloseButton";
 import {foldersTreeButton} from "./markup/markups";
 
+var subMenuClass = "sub-menu";
 const MAXWIDTH = 801;
-const subMenuClass = "sub-menu";
 const menuItemWrapper = ".menu__main-item-wrapper";
 const subMenuMobileClass = "sub-menu__mobile";
+const subMenuActive = 'sub-menu--active';
 let isMobile = false;
-let isMenuOpen = false;
 
 (function subMenus(){
     //проверить, если мы имеем дело с мобильной версией, то тогда функцию не запускаем.
@@ -25,11 +25,12 @@ let isMenuOpen = false;
         
         //если нет, то создаем слушатель pointerenter на каждый элемент меню
         const mainMenuItems = Array.from(mainMenu.querySelectorAll(".menu__main-item"));
-        
+        if(mainMenuItems.length === 0) return;
+
         mainMenuItems.forEach(item => {
             item.addEventListener("pointerenter", pointerEntersMainMenu);
+            item.addEventListener("pointerleave", pointerLeavesMenuItem);
         });
-        mainMenu.addEventListener("pointerleave", pointerLeavesMainMenu);
     }
     
 
@@ -39,13 +40,13 @@ let isMenuOpen = false;
      * @param {Event} e - The event object for the pointerenter event.
      */
     function pointerEntersMainMenu(e){
-        const target = e.target;
-        
-        if(target.classList.contains("menu__main-item") || target.closest(".menu__main-item")){
-            disableActiveSubMenus(subMenuClass);
+        const menuElementtarget = e.target;
 
+        if(menuElementtarget.classList.contains("menu__main-item") || menuElementtarget.closest(".menu__main-item")){
+            //disableActiveSubMenus(subMenuActive);
+            
             /**проверяем есть ли сабменю у элемента */
-            const subMenu = getSubMenu(target);
+            const subMenu = getSubMenu(menuElementtarget);
             if(!subMenu) return;
 
             //показываем subMenu, для этого подключаем класс .sub-menu--active. .sub-menu--active должна быть константой
@@ -53,18 +54,31 @@ let isMenuOpen = false;
             animateSubMenuIn(subMenu);
             //на subMenu навещиваем слушатель события pointerLeave. он должен сработать один раз
             //в коллбеке мы убираем класс .sub-menu--active
-            subMenu.addEventListener("pointerleave", function pointerLeavesSubMenu(){
+            subMenu.addEventListener("pointerleave", function pointerLeavesSubMenu(e){
+                const {relatedTarget} = e;
+                /**если мы выходим курсор из клибокса сабменю, но попадаем обратно на 
+                 * элемент меню первой линии, то ничего не делаем
+                 */
+                if(relatedTarget === menuElementtarget) return;
                 animateSubMenuOut(subMenu);
-            }, {once: true});
-            
+            }, {once: true});     
         }
     }
 
+    /**если полность выходим из clickbox меню */
+    function pointerLeavesMenuItem(e){
+        const {target, relatedTarget} = e;
+        
+        const subMenu = relatedTarget.classList.contains(subMenuClass) || relatedTarget.closest(`.${subMenuClass}`);
+        if( !relatedTarget ) return;
+        if(subMenu) return;
 
-    function pointerLeavesMainMenu(){
-        const elementToHide = mainMenu.querySelector(".sub-menu--active");
-        if(!elementToHide) return;
-        animateSubMenuOut(elementToHide);
+        {
+            const elementToHide = (target.nextElementSibling?.classList.contains(subMenuClass)) ? target.nextElementSibling : null;
+        
+            if(!elementToHide) return;
+            animateSubMenuOut(elementToHide);
+        }
     }
 
 
@@ -142,19 +156,21 @@ let isMenuOpen = false;
 
 
     function getSubMenu(target){
-        const menuItemWrapper = target.closest(".menu__main-item-wrapper");
+        const menuItemWrapper = target?.closest(".menu__main-item-wrapper");
             
-        if(!menuItemWrapper) return false;
+        if(!menuItemWrapper) return null;
         /**проверяем есть ли сабменю у элемента */
         return menuItemWrapper.querySelector(".sub-menu");
     }
 
 
     function disableActiveSubMenus(className){
-        let activeSubmenu = mainMenu.querySelector(`.${className}`);
-        if(!activeSubmenu) return;
+        let activeSubmenus = mainMenu.querySelectorAll(`.${className}`);
+        if(!activeSubmenus || !activeSubmenus.length === 0) return;
 
-        animateSubMenuOut(activeSubmenu);
+        activeSubmenus.forEach( (activeSubmenu) => {
+            animateSubMenuOut(activeSubmenu);
+        });
     }
 
     /**
@@ -165,10 +181,10 @@ let isMenuOpen = false;
      */
     function animateSubMenuIn(subMenuElement){
         //если меню уже открыто, то ничего не делаем
-        if(isMenuOpen) return;
+
         subMenuElement.style.display = 'block';
         subMenuElement.classList.add("sub-menu--active");
-        isMenuOpen = true;
+
         animate(subMenuElement,{
             opacity: [0, 1],
             y: ["-30%", "-50%"],
@@ -178,8 +194,6 @@ let isMenuOpen = false;
 
     function animateSubMenuOut(subMenuElement){
         const timeout = .4;
-        
-        if(!isMenuOpen) return;
 
         animate(subMenuElement,{
             opacity: [1, 0],
@@ -190,7 +204,6 @@ let isMenuOpen = false;
         setTimeout( () => {
             subMenuElement.style.display = 'none';
             subMenuElement.classList.remove("sub-menu--active");
-            isMenuOpen = false;
             
         }, timeout * 1000);
     }
