@@ -8,6 +8,8 @@ $main_script = 'main';
 require get_template_directory() . '/assets/php/walkers.php';
 /** Загружаем настройки BOGO */
 require get_template_directory() . '/assets/php/kinder_bogo_options.php';
+/**константы*/
+require get_template_directory() . '/assets/php/const.php';
 
 
 /** ДОБАВЛЯЕМ СКРИПТЫ И СТИЛИ. СТИЛИ отличаются у второстепенных от главной, поэтому используется
@@ -35,7 +37,9 @@ function enqueue_styles_for_page_template($template) {
         wp_enqueue_style('your-custom-style', get_template_directory_uri() . '/assets/css/post/post.css');
     } else if(basename($template) === 'front-page.php'){
         wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
-    }
+    } else if(basename($template) === "home.php" || basename($template) === "archive.php"){
+        wp_enqueue_style('arcive_style', get_template_directory_uri() . '/assets/css/archive/archive.css', ['normolize'], null);
+    } 
     return $template;
 }
 add_filter('template_include', 'enqueue_styles_for_page_template');
@@ -124,6 +128,20 @@ function add_custom_image_sizes() {
 }
 
 add_action('after_setup_theme', 'add_custom_image_sizes');
+
+
+/**изменяем шаблон пагинации */
+add_filter( 'navigation_markup_template', 'navigation_markup_template_filter', 10, 2 );
+
+function navigation_markup_template_filter( $template, $class ){
+
+    return '
+    <span class="previous" href="#"></span>
+        <div class="pagination__pages">
+            %2$s
+        </div>
+    ';
+}
 
 
 ?>

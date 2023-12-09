@@ -52,7 +52,7 @@
         }
     ?>
     <img class="banner__image" src="<?php 
-        echo ($url) ? $url : esc_url( get_template_directory_uri() . "/assets/images/football.png");
+        echo ($url) ? $url : esc_url( get_template_directory_uri() . BANNER_DEFAULT_ROUTE);
     ?>" alt="banner" role="presentation" width="1446" height="314" aria-hidden="true">
     <div class="banner__title_wrapper">
         <h1 class="banner__title"><?php the_title();?></h1>

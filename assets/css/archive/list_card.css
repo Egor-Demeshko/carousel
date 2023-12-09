@@ -72,6 +72,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: var(--top-padding) clamp(1.5rem, 2.6vw , 2.4rem);
+    width: 100%;
 }
 
 .list_card__heading_wrapper{
@@ -152,6 +153,7 @@
 
 .list_card__thumbnail{
     object-fit: cover;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 800px){

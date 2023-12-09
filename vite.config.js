@@ -8,6 +8,7 @@ export default {
             input: {
                 index: 'index.html',
                 post: 'post.html',
+                archive: 'archive.html',
             },
             output: {
                 entryFileNames: '[name].js',

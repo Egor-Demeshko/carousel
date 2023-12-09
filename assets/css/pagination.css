@@ -15,17 +15,17 @@
     text-decoration: none;
 }
 
-.pagination .previous,
+.pagination .prev,
 .pagination .next{
     font-size: .875rem;
     color: var(--black);
 }
 
-.pagination .previous{
+.pagination .prev{
     position: relative;
 }
 
-.pagination .previous:before{
+.pagination .prev:before{
     content: "";
     display: block;
     position: absolute;
@@ -37,7 +37,7 @@
     background-color: var(--grey);
     border-radius: 2px;
 }
-.pagination .previous:after{
+.pagination .prev:after{
     content: "";
     display: block;
     position: absolute;
@@ -72,7 +72,7 @@
     position: relative;
 }
 
-.pagination__pages span{
+.pagination__pages .page-numbers__number{
     transform: rotateZ(-45deg);
 }
 
@@ -87,12 +87,12 @@
         flex-direction: column;
     }
 
-    .pagination .previous:before,
-    .pagination .previous:after{
+    .pagination .prev:before,
+    .pagination .prev:after{
         display: none;
     }
 
-    .pagination .previous,
+    .pagination .prev,
     .pagination .next{
         padding: .6rem .875rem;
         background-color: var(--main);
@@ -115,12 +115,12 @@ html.highcontrast .pagination__pages span{
     padding: .1rem 0.2rem;
 }
 
-html.highcontrast .pagination .previous:after,
-html.highcontrast .pagination .previous:before{
+html.highcontrast .pagination .prev:after,
+html.highcontrast .pagination .prev:before{
     background-color: transparent;
 }
 
-html.highcontrast .pagination .previous,
+html.highcontrast .pagination .prev,
 html.highcontrast .pagination .next{
     background-color: white;
     border: 1px solid black;
