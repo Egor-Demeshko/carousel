@@ -12,22 +12,12 @@
 
 
     <div class="header__background">
-        <div class="header__background_image" style="background-image: url(<?php echo get_main_top_background();?>">
+        <div class="header__background_image" style="background-image: url(<?php echo get_main_top_background();?>" role="presentation">
         </div>
 
         <?php echo create_socials_menu(); ?>
     </div>
-    <div class="mobile_bottom">
-        <a class="mobile_bottom__item" href="#"><span>Контакты</span></a>
-        <a class="mobile_bottom__item" href="#"><span>Новости</span></a>
-        <button class="mobile_bottom__button">
-            <svg viewBox="0 0 48 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 16.5H45.5" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2 2H45.5" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2.25 31.5H45.75" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-        </button>
-    </div>
+    <?php get_template_part('template-parts/content', "mobile_bottom")?>
 
     <img class="sun_icon" alt="Картинка солнца" role="presentation" src="<?php echo get_template_directory_uri() . "/assets/images/sun.svg"; ?>"/>
     <header class="header">
@@ -47,15 +37,15 @@
                 } else {
                     ?>
                     <ul class="header__list">
-                        <li class="header__menu-item"><a href="/">Главная</a></li>
-                        <li class="header__menu-item"><a href="/posts">Все записи</a></li>
+                        <li class="header__menu-item"><a href="/"><?php echo __("Главная", "kinder") ?></a></li>
+                        <li class="header__menu-item"><a href="/posts"><?php echo __("Все записи", "kinder") ?></a></li>
                     </ul>
                     <?php
                 }
                 ?>
             </nav>
             
-            <div class="header__icon_wrapper" aria-role="button" aria-label="включить/выключить режим высокого контраста">
+            <div class="header__icon_wrapper" role="button" aria-label="включить/выключить режим высокого контраста">
                 <svg class="header__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -82,8 +72,8 @@
                         echo get_template_directory_uri() . '/assets/images/mask_portrait.svg';
                     }
                     
-                    ?>" width="210px" height="240px"/>
-                    <!--<img src="/assets/images/mask_portrait.svg" width="210px" height="240px"/>-->
+                    ?>" width="210px" height="240px" alt="<?php echo __("Изображение работника организации", "kinder")?>"/>
+
                     <?php
                         $titul = get_field("kinder_greetings_titul");
                         $name = get_field("kinder_greetings_name");
@@ -172,7 +162,7 @@
             ?>
             <!-- News -->
             <div class="news">
-                <h2 class="news__heading">Последние записи</h2>
+                <h2 class="news__heading"><?php echo __("Последние записи", "kinder")?></h2>
                 
                 <div class="news__block-wrapper">
                     <!-- News card -->
@@ -189,7 +179,7 @@
                     ?>
                     <div class="news_card">
                         <div class="news_card__point"></div>
-                        <div class="news_card__date">
+                        <div class="news_card__date" aria-label="<?php echo __("Дата публикации", "kinder")?>">
                             <div class="news_card__date_background"></div>
                             <span class="news_card__day"><?php echo $day; ?></span>
                             <span class="news_card__month"><?php echo $month; ?></span>
@@ -200,8 +190,8 @@
                                 <?php echo $excerpt; ?>
                             </p>
                             <div class="news_card__bottom">
-                                <span class="news_card__author">автор: <a href="<?php echo $author_link; ?>"><?php echo ($author) ? $author : 'Автор статьи'; ?></a></span>
-                                <a class="news_card__link" href="<?php the_permalink(); ?>">Прочитать</a>
+                                <span class="news_card__author"><?php echo __("автор:", "kinder")?> <a href="<?php echo $author_link; ?>"><?php echo ($author) ? $author : 'Автор статьи'; ?></a></span>
+                                <a class="news_card__link" href="<?php the_permalink(); ?>"><?php echo __("Прочитать", "kinder")?></a>
                             </div>
                         </div>
                     </div>
@@ -211,7 +201,7 @@
                     
                     <?php $all_posts_link = get_post_type_archive_link('post'); ?>
                     <div class="news__wrapper">
-                        <a class="news__read_all" href="<?php echo $all_posts_link; ?>">ЧИТАТЬ ВСЕ НОВОСТИ</a>
+                        <a class="news__read_all" href="<?php echo $all_posts_link; ?>"><?php echo __("ЧИТАТЬ ВСЕ НОВОСТИ", "kinder") ?></a>
                     </div>
                 </div>
 
@@ -235,16 +225,16 @@
 
 
     <section class="glide">
-        <div class="glide__bullets" data-glide-el="controls[nav]">
+        <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="<?php echo __("Индексы и переключения слайдера", "kinder")?>">
         </div>
         <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__button_arrow" data-glide-dir="<">
-                <svg width="28" height="53" viewBox="0 0 28 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button class="glide__button_arrow" data-glide-dir="<" aria-label="<?php echo __("Листать слайды в начало", "kinder") ?> ">
+                <svg width="28" height="53" viewBox="0 0 28 53" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M25 49.8073L3 26.4036L25 3" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <button class="glide__button_arrow" data-glide-dir=">">
-                <svg width="28" height="53" viewBox="0 0 28 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button class="glide__button_arrow" data-glide-dir=">" aria-label="<?php echo __("Листать слайды в конец", "kinder") ?> ">
+                <svg width="28" height="53" viewBox="0 0 28 53" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M3 3.00008L25 26.4037L3 49.8074" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>

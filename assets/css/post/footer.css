@@ -89,7 +89,7 @@
         margin-bottom: 4.375rem;
     }
     
-    .footer__info p:first-child{
+    .footer__info>p:first-child{
         font-size: 1.8rem;
     }
     .footer__info{

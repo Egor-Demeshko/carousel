@@ -14,10 +14,9 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<head >
+<head>
     <meta <?php bloginfo('charset') ?> >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -59,123 +58,172 @@
             --step: clamp(3rem, 20vw, 6.26rem);
             --bottombar-height: 4.375rem;
         }
-        
-        .sun_icon{
-            position: absolute;
-            top: 182px;
-            left: 17.7vw;
+
+        *{
+            box-sizing: border-box;
         }
-        
-        .header{
+
+        body{
+            background-color: var(--background);
+        }
+
+        .header-post{
+            display: flex;
+            padding: clamp( 1.125rem, 1.7vw, 1.5rem);
+            background-color: var(--black-80);
+            width: clamp(min(100%, 56rem), 66vw, 66vw);
+            color: var(--background);
             position: fixed;
             top: 0;
             left: 50%;
             transform: translate(-50%);
-        }
-        
-        .main{
-            display: grid;
-            max-width: 1440px;
-            grid-template-columns: clamp(15rem, 15.56vw, 18rem) auto clamp(18rem, 18.5vw, 21.875rem);
-            grid-template-rows: 25.375rem auto;
-            column-gap: clamp(2rem, 3.9vw, 4.68rem);
-            row-gap: 8.9rem;
-            margin: 0 auto;
-            margin-top: 4.1rem;
-        }
-        
-        .greerings{
-            padding-left: 9.375rem;
+        }.header-post__menu{
+            display: flex;
+        }.header-post__list{
+            display: flex;  
         }
 
-        .content{
-            background-color: transparent;
-            max-width: 63rem;
-            margin: var(--step) auto 0;
-            text-align: center;
+
+        .banner{
+            width: 100%;
+            height: 19.875rem;
+            position: relative;
         }
+
+        .banner__title{
+            font-size: clamp(1rem, 2.2vw, 2rem);
+            padding: clamp(.875rem, 2.2vw, 1.375rem);
+            border-radius: 10px;
+            color: var(--background);
+            max-width: 35rem;
+        }
+        .banner__title--no-display{
+            display: none;
+        }
+        .banner__title--big-screen{
+            display: block;
+        }
+        .banner__title_wrapper{
+            display: flex;
+            justify-content: end;
+            position: absolute;
+            width: clamp(min(72%, 56rem), 66vw, 66vw);
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 50%);
+        }
+
+        .main__header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .main__wrapper{
+            max-width: 63.75rem;
+        }
+
+        .main__breadcrumbs{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .main__home{
+            padding: .875rem;
+        }
+
+        .main__rubrics{
+            padding: .5rem 1.375rem;
+        }
+        
 
         @media screen and (max-width: 800px){
-            body{
-                padding-bottom: calc(var(--bottombar-height) + 1rem);
-            }
-
-            .header__background{
-                display: none;
-            }
-
-            .sun_icon{
-                display: none;
-            }
-
-            header.header{
+            header.header-post{
                 background-color: var(--main-dark);
                 left: 0;
                 transform: translate(0);
                 width: 100%;
                 z-index: 100;
+                border-radius: 0;
             }
-
-            .header__menu nav{
+            .header-post__menu nav{
                 display: none;
             }
+        }
 
-            main.main{
+        @media screen and (max-width: 500px){
+            div.main_flow{
                 display: flex;
                 flex-direction: column;
-                margin: 5.5rem 1.5rem 0;
-                align-items: center;
-                column-gap: 0;
-                row-gap: 3rem;
             }
-
-            .menu{
+            aside.main_flow__aside{
+                width: 100%;
                 position: fixed;
                 top: 0;
                 left: 50%;
-                width: 100%;
+                transform: translate(-150%);
                 z-index: 101;
-                transform: translateX(-150%);
-                grid: none;
             }
 
-            .content{
-                margin: var(--step) 1.5rem 0;
+            .banner{
+                max-height: 16.8rem;
             }
+            h1.banner__title{
+                width: 100%;
+                text-align: center;
+            }
+            .banner__title_wrapper{
+                transform: translate(-50%, -2.8rem);
+            }
+
+            div.main{
+                padding: 0 1.125rem 4.375rem;
+            }
+
+            div.main__placeholder{
+                display: none;
+            }
+
+            /*BREADCRUMBS block*/
+            header.main__header{
+                position: relative;
+                transform: translateY(-10%);
+                justify-content: center;
+                flex-direction: column;
+                gap: 2rem;
+            }
+            div.main__author_info{
+                position: static;
+                flex-direction: row;
+            }
+            /* -- END of BREADCRUMBS -- */
         }
-        </style>
-            <?php
-                $fields = get_fields();
-                $org_name = isset($fields['kinder_schema_name']) ? $fields['kinder_schema_name'] : '';
-                $street = isset($fields['kinder_schema_street']) ? $fields['kinder_schema_street'] : '';
-                $city = isset($fields['kinder_schema_city']) ? $fields['kinder_schema_city'] : '';
-                $zip = isset($fields['kinder_schema_zip']) ? $fields['kinder_schema_zip'] : '';
-                $country = isset($fields['kinder_schema_country']) ? $fields['kinder_schema_country'] : '';
-                $phone = isset($fields['kinder_schema_phone']) ? $fields['kinder_schema_phone'] : '';
-            ?>
-          <script type="application/ld+json">
+    </style>
+    <title><?php wp_title(); ?></title>
+    <meta name="description" content="<?php bloginfo('description')?>"/>
+    <?php 
+
+        $page_title = get_the_title();
+        $page_description = get_the_excerpt();
+        $url = get_the_permalink();
+        ?>
+        
+        <script type="application/ld+json">
             {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "<?php echo $org_name?>",
-            "url": "<?php echo get_site_url();?>",
-            "logo": "<?php echo get_stylesheet_directory_uri(); ?>/logo.png",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "<?php echo $street ?>",
-                "addressLocality": "<?php echo $city ?>",
-                "postalCode": "<?php echo $zip ?>",
-                "addressCountry": "<?php echo $country?>"
-            },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "<?php echo $phone?>",
-                "contactType": "<?php __("Общий контакт", "kinder")?>"
-            }
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "<?php echo $page_title ?>",
+                "description": "<?php echo $page_description ?>",
+                "url": "<?php echo $url?>",
+                "mainEntity": {
+                    "@type": "CreativeWork",
+                    "name": "<?php echo $page_title ?>",
+                    "description": "<?php echo $page_description ?>",
+                    "text": "<?php the_content(); ?>"
+                }
             }
         </script>
-        <link rel="icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/logo.png" sizes="any">
-        <link rel="icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico">
-        <?php wp_head();?>
+    <?php wp_head();?>
 </head>
 <body <?php body_class(); ?> style="background-image: url( <?php echo kinder_get_background_image(); ?>);">

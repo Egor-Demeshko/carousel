@@ -24,9 +24,6 @@ add_action("wp_enqueue_scripts", function(){
     if(str_contains($URI, $roots['main'])){
         wp_enqueue_style('normolize', get_template_directory_uri() . '/assets/css/normolize.css', [], null);
         wp_enqueue_script($main_script, get_template_directory_uri() . '/assets/js/index.js', [], null);
-
-       // wp_enqueue_style('page_style', get_template_directory_uri() . '/assets/css/post/post.css', ['normolize'], null);
-       // wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
     }
 }); 
 
@@ -39,7 +36,14 @@ function enqueue_styles_for_page_template($template) {
         wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
     } else if(basename($template) === "home.php" || basename($template) === "archive.php"){
         wp_enqueue_style('arcive_style', get_template_directory_uri() . '/assets/css/archive/archive.css', ['normolize'], null);
-    } 
+    } else if(basename($template) === "single-workers.php"){
+        wp_enqueue_style('workers_style', get_template_directory_uri() . '/assets/css/post/post.css', ['normolize'], null);
+    } else if(basename($template) === "category-workers.php"){
+        wp_enqueue_style('workers_style', get_template_directory_uri() . '/assets/css/workers/workers.css', ['normolize'], null);
+    } else if(basename($template) === "search.php"){
+        wp_enqueue_style('workers_style', get_template_directory_uri() . '/assets/css/archive/archive.css', ['normolize'], null);
+        wp_enqueue_style('search_style', get_template_directory_uri() . '/assets/css/widgets.css', ['normolize'], null);
+    }
     return $template;
 }
 add_filter('template_include', 'enqueue_styles_for_page_template');
@@ -75,6 +79,8 @@ add_action( 'after_setup_theme', function (){
         'footer_menu' => 'Меню в футере. Подвал сайта',
         'mobile_bottom_bar' => "Мобильное меню. внизу, где две кнопки"
      ) );
+
+     add_theme_support('title-tag');
 
 } );
 
@@ -142,6 +148,15 @@ function navigation_markup_template_filter( $template, $class ){
         </div>
     ';
 }
+
+/** грузим отдельный шаблон для сотрудников, это рубрика в записях. slug = workers */
+function custom_single_template($single_template) {
+    if (in_category(WORKERS)) {
+        $single_template = locate_template(array('single-workers.php'));
+    }
+    return $single_template;
+}
+add_filter('single_template', 'custom_single_template');
 
 
 ?>

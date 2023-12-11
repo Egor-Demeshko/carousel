@@ -73,7 +73,7 @@
 @media screen and (max-width: 500px) {
     .list__block-wrapper{
         margin-top: .4rem;
-        padding: 1.68rem 0 0 2.5rem;
+        padding: 1.68rem 0 0 0;
         gap: 2rem;
     } 
 }

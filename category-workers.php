@@ -1,3 +1,5 @@
+<?php /*Список категории*/ ?>
+
 <?php 
     require get_template_directory() . '/assets/php/navigations/socials.php';
     require get_template_directory() . '/assets/php/navigations/left_navigation.php';
@@ -5,8 +7,7 @@
 
 <?php get_header(); ?>
     
-    <?php get_template_part('template-parts/content', "mobile_bottom")?>
-
+<?php get_template_part('template-parts/content', "mobile_bottom")?>
 
 <header class="header-post">
     <span><a class="header-post__logo" href="/" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
@@ -44,7 +45,6 @@
     </div>
 </header>
 
-
 <div class="banner">
     <?php 
         $id = get_post_thumbnail_id();
@@ -54,14 +54,14 @@
         }
     ?>
     <img class="banner__image" src="<?php 
-        echo ($url) ? $url : esc_url( get_template_directory_uri() . BANNER_DEFAULT_ROUTE);
+        echo ($url) ? $url : esc_url( get_template_directory_uri() . BANNER_WORKERS_DEFAULT);
     ?>" alt="banner" role="presentation" width="1446" height="314" aria-hidden="true">
     <div class="banner__title_wrapper banner__title_wrapper--flex-start">
         <h1 class="banner__title banner__title--left"><?php the_archive_title();?></h1>
     </div>
 </div>
 
-    <div class="main_flow">
+<div class="main_flow">
         <main class="main_flow__main">
             <div class="main" >
                 <div class="main__wrapper">
@@ -72,7 +72,7 @@
                                     if(have_posts()){
                                         while(have_posts()){
                                             the_post();
-                                            get_template_part('/template-parts/content', 'list-card');
+                                            get_template_part('/template-parts/content', 'workers');
                                         }
                                     }
                                 ?>
@@ -157,7 +157,4 @@
         </aside>
     </div>
 
-    <?php get_footer(); ?>
-</body>
-</html>
-
+<?php get_footer();?>

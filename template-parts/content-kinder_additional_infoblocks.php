@@ -17,7 +17,7 @@
             if($link){
                 ?>
                     <a class="additional__button" href="<?php echo $link;?>" target="_blank" 
-                    aria-label="Посмотреть информацию об <?php the_title(); ?>">Перейти</a>
+                    aria-label="Перейти на информацию об <?php the_title(); ?>">Перейти</a>
                 <?php
             }
         ?>

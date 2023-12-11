@@ -85,7 +85,11 @@
     margin: 0 auto;
 }
 .main__content--margin-top{
-    margin-top: 2rem;
+    margin-top: 4rem;
+}
+
+.main__content--margin-top--workers{
+    margin-top: 7rem;
 }
 
 .main__content--no-margin--no-maxwidth{

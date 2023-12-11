@@ -1,3 +1,13 @@
+<?php
+if (is_404()) {
+    // Если текущая страница - страница 404, перенаправляем на страницу 404
+    get_template_part('404');
+    exit();
+}
+
+// Остальной код index.php
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head >

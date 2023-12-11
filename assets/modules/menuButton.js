@@ -3,6 +3,8 @@
   const menu = document.querySelector(".main_flow__aside") || document.querySelector(".menu");
   let menuOpen = false;
 
+  if(!mobileButton || !menu) return;
+
   function toggleMenu() {
     if (menuOpen) {
       menu.style.transform = "translateX(-150%)";

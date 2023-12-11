@@ -1,5 +1,11 @@
 @font-face {
     font-family: "SeoulHangangCondensed-Medium";
-    src: url(/assets/fonts/SeoulHangangCondensed-Medium.ttf) format("truetype");
+    src: url("/assets/fonts/SeoulHangangCondensed-Medium.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face{
+    font-family: "Trykker-Regular";
+    src: url("/assets/fonts/Trykker-Regular.ttf") format("truetype");
     font-display: swap;
 }

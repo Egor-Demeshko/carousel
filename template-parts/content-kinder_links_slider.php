@@ -16,7 +16,7 @@
     <?php 
         if($imglink){
             ?>
-            <div class="links__image">
+            <div class="links__image" role="presentation">
                 <img src="<?php echo $imglink ?>" width="89px" height="89px" alt="<?php echo $imgalt?>" target="_blank"/>
              </div>
             <?php
@@ -24,7 +24,7 @@
 
         if($text){
             ?>
-            <div class="links__title_wrapper">
+            <div class="links__title_wrapper" aria-label="<?php  __("Название другой организации", "kinder")?>" role="presentation">
                 <span class="links__title"><?php echo $text ?></span>
             </div>
             <?php

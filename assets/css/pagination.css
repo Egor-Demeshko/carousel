@@ -76,9 +76,15 @@
     transform: rotateZ(-45deg);
 }
 
+.page-numbers:hover:not(.current){
+    background-color: var(--light);
+    border: 1px solid var(--main-dark);
+}
+
 .pagination__pages .current{
     background-color: var(--light);
     border: 1px solid var(--main-dark);
+    cursor: default;
 }
 
 @media screen and (max-width: 800px) {

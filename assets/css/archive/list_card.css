@@ -172,6 +172,12 @@
     
 }
 
+@media screen and (max-width: 500px){
+    .list_card__date{
+        transform: translateX(0);
+    }
+}
+
 
 /*highcontrast*/
 html.highcontrast .list_card__content_wrapper{

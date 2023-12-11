@@ -1,0 +1,63 @@
+@import url('/assets/css/mobile_bottom.css');
+@import url('/assets/css/go_up.css');
+@import url('/assets/css/post/banner.css');
+@import url('/assets/css/post/menu.css');
+@import url('/assets/css/post/main_flow.css');
+@import url('/assets/css/post/main.css');
+@import url('/assets/css/post/footer.css');
+@import url('/assets/css/post/header-post.css');
+@import url('/assets/css/pagination.css');
+@import url('/assets/css/highcontrast_control.css');
+@import url('/assets/css/workers/card.css');
+
+
+html.highcontrast{
+    font-size: 16px;
+  }
+  
+  html.highcontrast *{
+    color: black !important;
+    background-color: white;
+  }
+  
+  *{
+      font-family: Ubuntu, sans-serif;
+      box-sizing: border-box;
+  }
+  
+  html::-webkit-scrollbar{
+      width: 4px;
+  }
+  
+  /* Hide the scrollbar buttons */
+  html::-webkit-scrollbar-button {
+      display: none;
+  }
+    
+/* Style the scrollbar track */
+html::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Style the scrollbar thumb */
+html::-webkit-scrollbar-thumb {
+    background-color: var(--main-dark);
+    width: 4px;
+}
+
+/* Style the scrollbar corner */
+html::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+/*HIGHCONTRAST*/
+html.highcontrast::-webkit-scrollbar-thumb {
+background-color: grey;
+}
+
+.list__block-wrapper{
+    margin-top: 1.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}

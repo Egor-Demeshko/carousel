@@ -135,13 +135,6 @@
                             }
                             ?>
                             
-                                <!--<a class="previous" href="#">&lt;Предыдущая страница</a>
-                                <div class="pagination__pages">
-                                    <a class="page-numbers" href="#"><span>1</span></a>
-                                    <a class="page-numbers current" href="#"><span>2</span></a>
-                                </div>
-                                <a class="next" href="#">Следующая страница&gt;</a>-->
-                            
                         </div>
                   
                     </article>
