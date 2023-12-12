@@ -9,7 +9,16 @@
 
 
 <header class="header-post">
-    <span><a class="header-post__logo" href="/" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
+    <?php 
+        $locale = get_locale();
+        $addition_to_link = null;
+        if($locale !== "ru_RU"){
+            $addition_to_link = $locale;
+        } else {
+            $addition_to_link = '';
+        } 
+    ?>
+    <span><a class="header-post__logo" href="/<?php echo $addition_to_link;?>" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
     <div class="header-post__menu">
         <nav>
             <?php 
@@ -57,7 +66,7 @@
         echo ($url) ? $url : esc_url( get_template_directory_uri() . BANNER_DEFAULT_ROUTE);
     ?>" alt="banner" role="presentation" width="1446" height="314" aria-hidden="true">
     <div class="banner__title_wrapper banner__title_wrapper--flex-start">
-        <h1 class="banner__title banner__title--left"><?php the_archive_title();?></h1>
+        <h1 class="banner__title banner__title--left"><?php echo single_cat_title('', false);?></h1>
     </div>
 </div>
 

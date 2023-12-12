@@ -17,9 +17,20 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta <?php bloginfo('charset') ?> >
+    <meta charset = "<?php bloginfo('charset') ?>" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @font-face {
+            font-family: "SeoulHangangCondensed-Medium";
+            src: url(<?php echo get_template_directory_uri() . "/assets/fonts/SeoulHangangCondensed-Medium.ttf"?>) format("truetype");
+            font-display: swap;
+        }
+
+        @font-face{
+            font-family: "Trykker-Regular";
+            src: url(<?php echo get_template_directory_uri() . "/assets/fonts/Trykker-Regular.ttf"?>) format("truetype");
+            font-display: swap;
+        }
         :root {
             --background: <?php echo get_field("kinder_background") ?: "#F6F6F6"?>;
             --main-dark: <?php echo get_field("main-dark") ?: "#36AA00"?>;
@@ -57,6 +68,8 @@
 
             --step: clamp(3rem, 20vw, 6.26rem);
             --bottombar-height: 4.375rem;
+
+            --worker-image-width: clamp(10rem, 16.1vw, 14.5rem);
         }
 
         *{
@@ -186,14 +199,19 @@
                 flex-direction: row;
             }
             /* -- END of BREADCRUMBS -- */
+
+            
         }
     </style>
-    <title><?php wp_title(); ?></title>
-    <meta name="description" content="<?php bloginfo('description')?>"/>
+    <?php 
+        $page_description = get_field("kinder_seo_description");
+        $page_description = ( $page_description && $page_description !=='') ? $page_description : get_the_excerpt();
+    ?>
+    <meta name="description" content="<?php echo ($page_description) ?>"/>
     <?php 
 
         $page_title = get_the_title();
-        $page_description = get_the_excerpt();
+        
         $url = get_the_permalink();
         ?>
         
@@ -212,6 +230,10 @@
                 }
             }
         </script>
+        <?php get_template_part("template-parts/seo", "header", [ 
+            "page_description" => $page_description, 
+            "page_title" => $page_title, 
+            "url" => $url])?>
     <?php wp_head();?>
 </head>
 <body <?php body_class(); ?> style="background-image: url( <?php echo kinder_get_background_image(); ?>);">

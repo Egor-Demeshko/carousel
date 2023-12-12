@@ -5,10 +5,10 @@
         <?php the_excerpt(); ?>
         <?php $custom_link = get_field('kinder_slider_link');
         $link = get_permalink();
-        if($custom_link){?>
-            <a class="glide__button" href="<?php echo $custom_link?>" rel="nofollow" target="_blank">Подробнее</a>
+        if($custom_link && $custom_link !== ''){?>
+            <a class="glide__button" href="<?php echo $custom_link?>" rel="nofollow" target="_blank"><?php echo __("Подробнее", "kinder")?></a>
         <?php } else if ($link){?>
-            <a class="glide__button" href="<?php echo $link?>">Подробнее</a>
+            <a class="glide__button" href="<?php echo $link?>"><?php echo __("Подробнее", "kinder")?></a>
         <?php }?>
     </div>
 </li>

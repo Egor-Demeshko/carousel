@@ -1,7 +1,7 @@
 
 export default {
     build: {
-        minify: false,
+        minify: true,
         chunkFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
         rollupOptions: {

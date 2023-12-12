@@ -45,7 +45,7 @@
     border: 4px solid transparent;
     font-size: 1.125rem;
 }.header-post__menu-item a:hover{
-    color: var(--top-menu-accent);
+    color: var(--accent);
     /*border-bottom: 4px solid var(--accent);*/
 }
 .header-post__menu-item--active a{
@@ -67,7 +67,7 @@
 }
 
 .header-post__icon:hover{
-    stroke: var(--top-menu-accent);
+    stroke: var(--accent);
 }
 
 .header-post__icon_cancel{
@@ -85,7 +85,7 @@
 }
 
 .header-post__language:hover a{
-    color: var(--top-menu-accent);
+    color: var(--accent);
 }
 
 /* BOGO STYLES*/

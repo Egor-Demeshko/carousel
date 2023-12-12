@@ -45,7 +45,7 @@
                 ?>
             </nav>
             
-            <div class="header__icon_wrapper" role="button" aria-label="включить/выключить режим высокого контраста">
+            <div class="header__icon_wrapper" role="button" aria-label="<?php echo __("включить/выключить режим высокого контраста", "kinder") ?>">
                 <svg class="header__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -104,7 +104,7 @@
                 ?>
                 <h3 class="greetings__heading">
                     <?php  
-                        echo get_field("kinder_greetings_heading"); ?>
+                        echo $heading ?>
                 </h3>
                     <?php
                         }
@@ -116,19 +116,82 @@
                 
                 
                 <!-- Quote -->
-                <svg class="quote__bottom" width="42" height="32" viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="quote__bottom" width="42" height="32" viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
                     <path d="M27 20.1951H29.9781C28.5851 24.3732 27.3955 26.3741 23.4375 28.0823C22.7769 28.3675 22.4032 29.0956 22.5439 29.8223C22.6845 30.5476 23.2998 31.0695 24.0147 31.0695H24.0177C32.275 31.0542 37.0182 27.6257 40.3815 19.2455C41.455 16.6133 42 13.7962 42 10.8743C42 6.3807 40.6875 3.93367 38.6865 0.713001C38.4111 0.268553 37.935 -4.19617e-05 37.4253 -4.19617e-05L27 -4.19617e-05C24.5186 -4.19617e-05 22.5 2.09047 22.5 4.66038V15.5347C22.5 18.1046 24.5186 20.1951 27 20.1951ZM4.5 20.1951L7.4781 20.1951C6.08505 24.3732 4.89555 26.3741 0.9375 28.0823C0.276901 28.3675 -0.0967484 29.0956 0.0439529 29.8223C0.184502 30.5476 0.799801 31.0695 1.5147 31.0695H1.5177C9.77505 31.0542 14.5182 27.6257 17.8815 19.2455C18.955 16.6133 19.5 13.7962 19.5 10.8743C19.5 6.3807 18.1875 3.93367 16.1865 0.713001C15.9111 0.268553 15.435 -4.19617e-05 14.9253 -4.19617e-05H4.5C2.01855 -4.19617e-05 0 2.09047 0 4.66038V15.5347C0 18.1046 2.01855 20.1951 4.5 20.1951Z"/>
                 </svg>
-                <svg class="quote__top" width="42" height="32" viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="quote__top" width="42" height="32" viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
                     <path d="M27 20.1951H29.9781C28.5851 24.3732 27.3955 26.3741 23.4375 28.0823C22.7769 28.3675 22.4032 29.0956 22.5439 29.8223C22.6845 30.5476 23.2998 31.0695 24.0147 31.0695H24.0177C32.275 31.0542 37.0182 27.6257 40.3815 19.2455C41.455 16.6133 42 13.7962 42 10.8743C42 6.3807 40.6875 3.93367 38.6865 0.713001C38.4111 0.268553 37.935 -4.19617e-05 37.4253 -4.19617e-05L27 -4.19617e-05C24.5186 -4.19617e-05 22.5 2.09047 22.5 4.66038V15.5347C22.5 18.1046 24.5186 20.1951 27 20.1951ZM4.5 20.1951L7.4781 20.1951C6.08505 24.3732 4.89555 26.3741 0.9375 28.0823C0.276901 28.3675 -0.0967484 29.0956 0.0439529 29.8223C0.184502 30.5476 0.799801 31.0695 1.5147 31.0695H1.5177C9.77505 31.0542 14.5182 27.6257 17.8815 19.2455C18.955 16.6133 19.5 13.7962 19.5 10.8743C19.5 6.3807 18.1875 3.93367 16.1865 0.713001C15.9111 0.268553 15.435 -4.19617e-05 14.9253 -4.19617e-05H4.5C2.01855 -4.19617e-05 0 2.09047 0 4.66038V15.5347C0 18.1046 2.01855 20.1951 4.5 20.1951Z"/>
                 </svg>
                 <!-- END of Quote -->
         </div>
         <!-- END OF Greetings -->
+
+        <?php 
+            $query = new WP_Query([
+                'post_type' => 'any',
+                'posts_per_page' => 3,
+                'post__not_in' => get_posts([
+                    'post_type' => 'kinder_slider', 
+                    'post_type' => 'kinder_additional_infoblocks', 
+                    'post_type' => 'kinder_links_slider',
+                    'fields' => 'ids'])
+            ]);
+
+            
+        ?>
+        <!-- News -->
+        <div class="news">
+            <h2 class="news__heading"><?php echo __("Последние записи", "kinder")?></h2>
+            
+            <div class="news__block-wrapper">
+                <!-- News card -->
+                <?php
+                    while($query->have_posts()){
+                        $query->the_post();
+                        $day = get_the_date('d');
+                        $month = get_the_date('F');
+                        $title = get_the_title();
+                        $excerpt = get_the_excerpt();
+                        $author = get_the_author();
+                        $author_link = get_author_posts_url(get_the_author_meta('ID'));
+                    
+                ?>
+                <div class="news_card">
+                    <div class="news_card__point"></div>
+                    <div class="news_card__date" aria-label="<?php echo __("Дата публикации", "kinder")?>">
+                        <div class="news_card__date_background"></div>
+                        <span class="news_card__day" aria-label="<?php echo __("День публикации", "kinder")?>"><?php echo $day; ?></span>
+                        <span class="news_card__month" aria-label="<?php echo __("Месяц публикации", "kinder")?>"><?php echo $month; ?></span>
+                    </div>
+                    <div class="news_card__content">
+                        <h4 class="news_card__heading"><?php echo $title; ?></h4>
+                        <p class="news_card__text">
+                            <?php echo $excerpt; ?>
+                        </p>
+                        <div class="news_card__bottom">
+                            <span class="news_card__author"><?php echo __("автор:", "kinder")?> <a href="<?php echo $author_link; ?>"><?php echo ($author) ? $author : 'Автор статьи'; ?></a></span>
+                            <a class="news_card__link" href="<?php the_permalink(); ?>"><?php echo __("Прочитать", "kinder")?></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF News card -->
+                <?php } ?>
+                <?php wp_reset_postdata(); ?>
+                
+                <?php $all_posts_link = get_post_type_archive_link('post'); ?>
+                <div class="news__wrapper">
+                    <a class="news__read_all" href="<?php echo $all_posts_link; ?>"><?php echo __("ЧИТАТЬ ВСЕ НОВОСТИ", "kinder") ?></a>
+                </div>
+            </div>
+
+        
+        </div>
+        <!-- END OF NEWS -->
+
         <!-- SIDE MENU -->
         <nav class="menu">
             <div class="menu__sticky">
-                <h3 class="menu__heading">Навигация</h3>
+                <h3 class="menu__heading"><?php echo __("Навигация", "kinder") ?></h3>
 
                 <?php echo get_left_top_menu(); ?>
 
@@ -147,67 +210,7 @@
         
 
             
-            <?php 
-                $query = new WP_Query([
-                    'post_type' => 'any',
-                    'posts_per_page' => 3,
-                    'post__not_in' => get_posts([
-                        'post_type' => 'kinder_slider', 
-                        'post_type' => 'kinder_additional_infoblocks', 
-                        'post_type' => 'kinder_links_slider',
-                        'fields' => 'ids'])
-                ]);
 
-                
-            ?>
-            <!-- News -->
-            <div class="news">
-                <h2 class="news__heading"><?php echo __("Последние записи", "kinder")?></h2>
-                
-                <div class="news__block-wrapper">
-                    <!-- News card -->
-                    <?php
-                        while($query->have_posts()){
-                            $query->the_post();
-                            $day = get_the_date('d');
-                            $month = get_the_date('F');
-                            $title = get_the_title();
-                            $excerpt = get_the_excerpt();
-                            $author = get_the_author();
-                            $author_link = get_author_posts_url(get_the_author_meta('ID'));
-                        
-                    ?>
-                    <div class="news_card">
-                        <div class="news_card__point"></div>
-                        <div class="news_card__date" aria-label="<?php echo __("Дата публикации", "kinder")?>">
-                            <div class="news_card__date_background"></div>
-                            <span class="news_card__day"><?php echo $day; ?></span>
-                            <span class="news_card__month"><?php echo $month; ?></span>
-                        </div>
-                        <div class="news_card__content">
-                            <h4 class="news_card__heading"><?php echo $title; ?></h4>
-                            <p class="news_card__text">
-                                <?php echo $excerpt; ?>
-                            </p>
-                            <div class="news_card__bottom">
-                                <span class="news_card__author"><?php echo __("автор:", "kinder")?> <a href="<?php echo $author_link; ?>"><?php echo ($author) ? $author : 'Автор статьи'; ?></a></span>
-                                <a class="news_card__link" href="<?php the_permalink(); ?>"><?php echo __("Прочитать", "kinder")?></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END OF News card -->
-                    <?php } ?>
-                    <?php wp_reset_postdata(); ?>
-                    
-                    <?php $all_posts_link = get_post_type_archive_link('post'); ?>
-                    <div class="news__wrapper">
-                        <a class="news__read_all" href="<?php echo $all_posts_link; ?>"><?php echo __("ЧИТАТЬ ВСЕ НОВОСТИ", "kinder") ?></a>
-                    </div>
-                </div>
-
-            
-            </div>
-            <!-- END OF NEWS -->
         
         
         <aside class="widgets">
@@ -225,7 +228,7 @@
 
 
     <section class="glide">
-        <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="<?php echo __("Индексы и переключения слайдера", "kinder")?>">
+        <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="<?php echo __("Индексы и кнопки переключения слайдера", "kinder")?>">
         </div>
         <div class="glide__arrows" data-glide-el="controls">
             <button class="glide__button_arrow" data-glide-dir="<" aria-label="<?php echo __("Листать слайды в начало", "kinder") ?> ">

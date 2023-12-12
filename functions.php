@@ -134,6 +134,9 @@ function add_custom_image_sizes() {
 }
 
 add_action('after_setup_theme', 'add_custom_image_sizes');
+add_action('after_setup_theme', function(){
+    load_theme_textdomain( 'kinder', get_template_directory() . '/languages' );
+});
 
 
 /**изменяем шаблон пагинации */

@@ -11,7 +11,7 @@
     }
 ?>
 <a class="links__item" href="<?php echo $link?>" 
-    aria-label="перейти на страницу <?php echo $text ?>"
+    aria-label="<?php __("перейти на страницу ", "kinder")?> <?php echo $text ?>"
     target="_blank" rel="external">
     <?php 
         if($imglink){

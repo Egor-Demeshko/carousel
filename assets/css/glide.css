@@ -3,15 +3,22 @@
     height: 24rem;
 }
 
+.glide__track{
+    border-top: 4px solid var(--grey);
+}
+
 @media screen and (max-width: 500px) {
     .glide{
         height: unset;
+    }
+    .glide__track {
+        border: none;
     }
 }
 
 .glide__track {
     height: 100%;
-  }
+}
 
 .glide__slides{
     height: 100%;

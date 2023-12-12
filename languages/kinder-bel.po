@@ -1,0 +1,288 @@
+# Copyright (C) 2023 Egor Demeshko
+# This file is distributed under the .
+msgid ""
+msgstr ""
+"Project-Id-Version: kinder 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/kinder\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-12-12T06:13:25+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: kinder\n"
+
+#. Theme Name of the theme
+msgid "kinder"
+msgstr ""
+
+#. Description of the theme
+msgid "Общая тема с оригинальной формой исполнения header и footer. Можно менять цвета элементов."
+msgstr "Агульная тэма з арыгінальнай фармай выканання загаловка (header) і падвалу (footer). Можна змяняць колеры элементаў."
+
+#. Author of the theme
+msgid "Egor Demeshko"
+msgstr "Ягор Дзямешка"
+
+#. Author URI of the theme
+msgid "https://t.me/egor_demeshko"
+msgstr ""
+
+#: 404.php:279
+#: 404.php:318
+#: template-parts/content-breadcrumbs.php:14
+#: template-parts/content-breadcrumbs_single.php:19
+msgid "Перейти на главную страницу"
+msgstr "Перайсці на галоўную старонку"
+
+#: 404.php:279
+msgid "На главную"
+msgstr "На галоўную"
+
+#: 404.php:295
+#: archive.php:28
+#: category-workers.php:29
+#: front-page.php:40
+#: home.php:28
+#: page.php:27
+#: single-workers.php:27
+#: single.php:27
+msgid "Главная"
+msgstr "Галоўная"
+
+#: 404.php:296
+#: archive.php:29
+#: category-workers.php:30
+#: front-page.php:41
+#: home.php:29
+#: home.php:60
+#: page.php:28
+#: single-workers.php:28
+#: single.php:28
+msgid "Все записи"
+msgstr "Усе запісы"
+
+#: 404.php:302
+#: category-workers.php:36
+#: front-page.php:48
+#: home.php:35
+#: page.php:34
+#: single.php:34
+msgid "включить/выключить режим высокого контраста"
+msgstr "уключыць/выключыць рэжым высокага кантрасту"
+
+#: 404.php:317
+msgid "нет такой страницы  &#9786;"
+msgstr "няма такой старонкі &#9786;"
+
+#: archive.php:12
+#: category-workers.php:13
+#: home.php:12
+#: page.php:11
+#: single-workers.php:11
+#: single.php:11
+msgid "Логотип"
+msgstr "Лагатып"
+
+#: archive.php:147
+#: category-workers.php:147
+#: home.php:147
+#: page.php:64
+#: search.php:9
+#: single-workers.php:62
+#: single.php:64
+msgid "Основное меню"
+msgstr "Асноўнае меню"
+
+#: archive.php:149
+#: category-workers.php:149
+#: front-page.php:131
+#: home.php:149
+#: page.php:66
+#: search.php:11
+#: single-workers.php:64
+#: single.php:66
+msgid "Навигация"
+msgstr "Навігацыя"
+
+#: category-workers.php:83
+msgid "Блок пагинации"
+msgstr "Блок пагінацыі"
+
+#: front-page.php:75
+msgid "Изображение работника организации"
+msgstr "Выява працаўніка арганізацыі"
+
+#: front-page.php:165
+msgid "Последние записи"
+msgstr "Апошнія запісы"
+
+#: front-page.php:182
+msgid "Дата публикации"
+msgstr "Дата публікацыі"
+
+#: front-page.php:184
+msgid "День публикации"
+msgstr "Дзень публікацыі"
+
+#: front-page.php:185
+msgid "Месяц публикации"
+msgstr "Месяц публікацыі"
+
+#: front-page.php:193
+#: template-parts/content-list-card.php:29
+#: template-parts/content-search-card.php:28
+msgid "автор:"
+msgstr "аўтар:"
+
+#: front-page.php:194
+msgid "Прочитать"
+msgstr "Прачытаць"
+
+#: front-page.php:204
+msgid "ЧИТАТЬ ВСЕ НОВОСТИ"
+msgstr "Чытаць усе навіны"
+
+#: front-page.php:228
+msgid "Индексы и кнопки переключения слайдера"
+msgstr "Індэксы і кнопкі пераключэння слайдэра"
+
+#: front-page.php:231
+msgid "Листать слайды в начало"
+msgstr "Гартаць слайды ў пачатак"
+
+#: front-page.php:236
+msgid "Листать слайды в конец"
+msgstr "Гартаць слайды ў канец"
+
+#: functions.php:91
+msgid "Правое поле виджетов"
+msgstr "Правае поле віджэтаў"
+
+#: functions.php:93
+#: functions.php:103
+msgid "Правое поле виджетов, справа от блока новостей. Выводится на главной странице."
+msgstr "Правае поле віджэтаў, справа ад блока навін. Выводзіцца на галоўнай старонцы."
+
+#: functions.php:101
+msgid "Текст в футере, внизу"
+msgstr "Тэкст у футары, унізе"
+
+#: header-main.php:173
+msgid "Общий контакт"
+msgstr "Агульны кантакт"
+
+#: home.php:12
+msgid "Перейти на главную"
+msgstr "Перайсці на галоўную"
+
+#: page.php:11
+#: page.php:27
+#: single.php:11
+#: single.php:27
+msgid "Перейти на главную страницу"
+msgstr "Перайсці на галоўную старонку"
+
+#: page.php:28
+#: single.php:28
+msgid "Перейти к всем записям"
+msgstr "Перайсці да ўсіх запісаў"
+
+#: search.php:28
+msgid "Поисковые результаты: %s"
+msgstr "Пошукавыя вынікі: %s"
+
+#: searchform.php:4
+msgid "Форма поиска по сайту"
+msgstr "Форма пошуку па сайце"
+
+#: searchform.php:7
+msgid "Поле для ввода запроса"
+msgstr "Поле для ўводу запыту"
+
+#: searchform.php:7
+msgid "Поле для поискового запроса"
+msgstr "Поле для пошукавага запыту"
+
+#: searchform.php:8
+msgid "Начать поиск"
+msgstr "Пачаць пошук"
+
+#: single-workers.php:90
+#: template-parts/content-workers.php:39
+msgid "Сотрудник детского сада"
+msgstr "Супрацоўнік дзіцячага сада"
+
+#: single-workers.php:107
+#: template-parts/content-workers.php:35
+msgid "Имя не указано"
+msgstr "Імя не пазначана"
+
+#: template-parts/content-breadcrumbs.php:20
+msgid "перейти на страницу"
+msgstr "перайсці на старонку"
+
+#: template-parts/content-breadcrumbs_single.php:26
+msgid "перейти в раздел"
+msgstr "перайсці ў падзел"
+
+#: template-parts/content-kinder_additional_infoblocks.php:20
+msgid "Перейти на информацию об "
+msgstr "Перайсці на інфармацыю аб"
+
+#: template-parts/content-kinder_additional_infoblocks.php:20
+#: template-parts/content-workers.php:50
+msgid "Перейти"
+msgstr "Перайсці"
+
+#: template-parts/content-kinder_links_slider.php:14
+msgid "перейти на страницу "
+msgstr "перайсці на старонку "
+
+#: template-parts/content-kinder_links_slider.php:27
+msgid "Название другой организации"
+msgstr "Назва іншай арганізацыі"
+
+#: template-parts/content-list-card.php:12
+#: template-parts/content-search-card.php:11
+msgid "одиночная карточка новости"
+msgstr "адзіночная картка навіны"
+
+#: template-parts/content-list-card.php:16
+#: template-parts/content-search-card.php:15
+msgid "день записи"
+msgstr "дзень запісу"
+
+#: template-parts/content-list-card.php:17
+#: template-parts/content-search-card.php:16
+msgid "месяц записи"
+msgstr "месяц запісу"
+
+#: template-parts/content-list-card.php:31
+#: template-parts/content-search-card.php:30
+msgid "Читать далее"
+msgstr "Чытаць далей"
+
+#: template-parts/content-list-card.php:38
+#: template-parts/content-search-card.php:37
+msgid "превью записи"
+msgstr "папярэдні прагляд"
+
+#: template-parts/content-mobile_bottom.php:13
+msgid "Открыть меню навигации"
+msgstr "Адкрыць меню навігацыі"
+
+#: template-parts/content-slider.php:9
+#: template-parts/content-slider.php:11
+msgid "Подробнее"
+msgstr "Больш падрабязна"
+
+#: template-parts/content-workers.php:34
+msgid "Изображение работника"
+msgstr "Выява працаўніка"
+
+#: template-parts/content-workers.php:41
+msgid "Больше информации на странице"
+msgstr "Больш інфармацыі на старонцы"

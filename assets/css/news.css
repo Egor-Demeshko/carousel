@@ -16,7 +16,7 @@
     content: "";
     width: 4px;
     position: absolute;
-    height: 95.68%;
+    height: 130%;
     left: 0;
     transform: translate(-50%, calc(var(--heading-size) / 2));
     background-color: var(--grey);

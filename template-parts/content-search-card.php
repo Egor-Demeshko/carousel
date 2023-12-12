@@ -12,8 +12,8 @@
     <div class="list_card__point"></div>
     <div class="list_card__date">
         <div class="list_card__date_background"></div>
-        <span class="list_card__day" aria-label="день записи"><?php echo $day; ?></span>
-        <span class="list_card__month" aria-label="месяц записи"><?php echo $month ?></span>
+        <span class="list_card__day" aria-label="<?php echo __("день записи", "kinder")?>"><?php echo $day; ?></span>
+        <span class="list_card__month" aria-label="<?php echo __("месяц записи", "kinder")?>"><?php echo $month ?></span>
     </div>
     <div class="list_card__content_wrapper">
         <div class="list_card__content">

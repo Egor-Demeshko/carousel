@@ -1,0 +1,288 @@
+# Copyright (C) 2023 Egor Demeshko
+# This file is distributed under the .
+msgid ""
+msgstr ""
+"Project-Id-Version: kinder 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/kinder\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-12-12T06:13:25+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: kinder\n"
+
+#. Theme Name of the theme
+msgid "kinder"
+msgstr ""
+
+#. Description of the theme
+msgid "Общая тема с оригинальной формой исполнения header и footer. Можно менять цвета элементов."
+msgstr ""
+
+#. Author of the theme
+msgid "Egor Demeshko"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://t.me/egor_demeshko"
+msgstr ""
+
+#: 404.php:279
+#: 404.php:318
+#: template-parts/content-breadcrumbs.php:14
+#: template-parts/content-breadcrumbs_single.php:19
+msgid "Перейти на главную страницу"
+msgstr ""
+
+#: 404.php:279
+msgid "На главную"
+msgstr ""
+
+#: 404.php:295
+#: archive.php:28
+#: category-workers.php:29
+#: front-page.php:40
+#: home.php:28
+#: page.php:27
+#: single-workers.php:27
+#: single.php:27
+msgid "Главная"
+msgstr ""
+
+#: 404.php:296
+#: archive.php:29
+#: category-workers.php:30
+#: front-page.php:41
+#: home.php:29
+#: home.php:60
+#: page.php:28
+#: single-workers.php:28
+#: single.php:28
+msgid "Все записи"
+msgstr ""
+
+#: 404.php:302
+#: category-workers.php:36
+#: front-page.php:48
+#: home.php:35
+#: page.php:34
+#: single.php:34
+msgid "включить/выключить режим высокого контраста"
+msgstr ""
+
+#: 404.php:317
+msgid "нет такой страницы  &#9786;"
+msgstr ""
+
+#: archive.php:12
+#: category-workers.php:13
+#: home.php:12
+#: page.php:11
+#: single-workers.php:11
+#: single.php:11
+msgid "Логотип"
+msgstr ""
+
+#: archive.php:147
+#: category-workers.php:147
+#: home.php:147
+#: page.php:64
+#: search.php:9
+#: single-workers.php:62
+#: single.php:64
+msgid "Основное меню"
+msgstr ""
+
+#: archive.php:149
+#: category-workers.php:149
+#: front-page.php:131
+#: home.php:149
+#: page.php:66
+#: search.php:11
+#: single-workers.php:64
+#: single.php:66
+msgid "Навигация"
+msgstr ""
+
+#: category-workers.php:83
+msgid "Блок пагинации"
+msgstr ""
+
+#: front-page.php:75
+msgid "Изображение работника организации"
+msgstr ""
+
+#: front-page.php:165
+msgid "Последние записи"
+msgstr ""
+
+#: front-page.php:182
+msgid "Дата публикации"
+msgstr ""
+
+#: front-page.php:184
+msgid "День публикации"
+msgstr ""
+
+#: front-page.php:185
+msgid "Месяц публикации"
+msgstr ""
+
+#: front-page.php:193
+#: template-parts/content-list-card.php:29
+#: template-parts/content-search-card.php:28
+msgid "автор:"
+msgstr ""
+
+#: front-page.php:194
+msgid "Прочитать"
+msgstr ""
+
+#: front-page.php:204
+msgid "ЧИТАТЬ ВСЕ НОВОСТИ"
+msgstr ""
+
+#: front-page.php:228
+msgid "Индексы и кнопки переключения слайдера"
+msgstr ""
+
+#: front-page.php:231
+msgid "Листать слайды в начало"
+msgstr ""
+
+#: front-page.php:236
+msgid "Листать слайды в конец"
+msgstr ""
+
+#: functions.php:91
+msgid "Правое поле виджетов"
+msgstr ""
+
+#: functions.php:93
+#: functions.php:103
+msgid "Правое поле виджетов, справа от блока новостей. Выводится на главной странице."
+msgstr ""
+
+#: functions.php:101
+msgid "Текст в футере, внизу"
+msgstr ""
+
+#: header-main.php:173
+msgid "Общий контакт"
+msgstr ""
+
+#: home.php:12
+msgid "Перейти на главную"
+msgstr ""
+
+#: page.php:11
+#: page.php:27
+#: single.php:11
+#: single.php:27
+msgid "Перейти на главную страницу"
+msgstr ""
+
+#: page.php:28
+#: single.php:28
+msgid "Перейти к всем записям"
+msgstr ""
+
+#: search.php:28
+msgid "Поисковые результаты: %s"
+msgstr ""
+
+#: searchform.php:4
+msgid "Форма поиска по сайту"
+msgstr ""
+
+#: searchform.php:7
+msgid "Поле для ввода запроса"
+msgstr ""
+
+#: searchform.php:7
+msgid "Поле для поискового запроса"
+msgstr ""
+
+#: searchform.php:8
+msgid "Начать поиск"
+msgstr ""
+
+#: single-workers.php:90
+#: template-parts/content-workers.php:39
+msgid "Сотрудник детского сада"
+msgstr ""
+
+#: single-workers.php:107
+#: template-parts/content-workers.php:35
+msgid "Имя не указано"
+msgstr ""
+
+#: template-parts/content-breadcrumbs.php:20
+msgid "перейти на страницу"
+msgstr ""
+
+#: template-parts/content-breadcrumbs_single.php:26
+msgid "перейти в раздел"
+msgstr ""
+
+#: template-parts/content-kinder_additional_infoblocks.php:20
+msgid "Перейти на информацию об "
+msgstr ""
+
+#: template-parts/content-kinder_additional_infoblocks.php:20
+#: template-parts/content-workers.php:50
+msgid "Перейти"
+msgstr ""
+
+#: template-parts/content-kinder_links_slider.php:14
+msgid "перейти на страницу "
+msgstr ""
+
+#: template-parts/content-kinder_links_slider.php:27
+msgid "Название другой организации"
+msgstr ""
+
+#: template-parts/content-list-card.php:12
+#: template-parts/content-search-card.php:11
+msgid "одиночная карточка новости"
+msgstr ""
+
+#: template-parts/content-list-card.php:16
+#: template-parts/content-search-card.php:15
+msgid "день записи"
+msgstr ""
+
+#: template-parts/content-list-card.php:17
+#: template-parts/content-search-card.php:16
+msgid "месяц записи"
+msgstr ""
+
+#: template-parts/content-list-card.php:31
+#: template-parts/content-search-card.php:30
+msgid "Читать далее"
+msgstr ""
+
+#: template-parts/content-list-card.php:38
+#: template-parts/content-search-card.php:37
+msgid "превью записи"
+msgstr ""
+
+#: template-parts/content-mobile_bottom.php:13
+msgid "Открыть меню навигации"
+msgstr ""
+
+#: template-parts/content-slider.php:9
+#: template-parts/content-slider.php:11
+msgid "Подробнее"
+msgstr ""
+
+#: template-parts/content-workers.php:34
+msgid "Изображение работника"
+msgstr ""
+
+#: template-parts/content-workers.php:41
+msgid "Больше информации на странице"
+msgstr ""

@@ -18,9 +18,21 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head >
-    <meta <?php bloginfo('charset') ?> >
+    <meta charset = "<?php bloginfo('charset') ?>" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @font-face {
+            font-family: "SeoulHangangCondensed-Medium";
+            src: url(<?php echo get_template_directory_uri() . "/assets/fonts/SeoulHangangCondensed-Medium.ttf"?>) format("truetype");
+            font-display: swap;
+        }
+
+        @font-face{
+            font-family: "Trykker-Regular";
+            src: url(<?php echo get_template_directory_uri() . "/assets/fonts/Trykker-Regular.ttf"?>) format("truetype");
+            font-display: swap;
+        }
+
         :root {
             --background: <?php echo get_field("kinder_background") ?: "#F6F6F6"?>;
             --main-dark: <?php echo get_field("main-dark") ?: "#36AA00"?>;
@@ -148,6 +160,8 @@
                 $fields = get_fields();
                 $org_name = isset($fields['kinder_schema_name']) ? $fields['kinder_schema_name'] : '';
                 $street = isset($fields['kinder_schema_street']) ? $fields['kinder_schema_street'] : '';
+                $org_name = str_replace(array('"', "'", "`"), "", $org_name);
+                $street = str_replace(array('"', "'", "`"), "", $street);
                 $city = isset($fields['kinder_schema_city']) ? $fields['kinder_schema_city'] : '';
                 $zip = isset($fields['kinder_schema_zip']) ? $fields['kinder_schema_zip'] : '';
                 $country = isset($fields['kinder_schema_country']) ? $fields['kinder_schema_country'] : '';
@@ -174,8 +188,20 @@
             }
             }
         </script>
-        <link rel="icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/logo.png" sizes="any">
-        <link rel="icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico">
+        <?php 
+            $page_description = get_field("kinder_seo_description");
+            $page_description = ( $page_description && $page_description !=='') ? $page_description : get_the_excerpt();
+        ?>
+        <meta name="description" content="<?php echo ($page_description) ?>"/>
+        <?php 
+            $page_title = get_the_title();
+            $url = get_the_permalink();
+        ?>
+        <?php get_template_part("template-parts/seo", "header", [ 
+            "page_description" => $page_description, 
+            "page_title" => $page_title, 
+            "url" => $url])?>
+
         <?php wp_head();?>
 </head>
 <body <?php body_class(); ?> style="background-image: url( <?php echo kinder_get_background_image(); ?>);">

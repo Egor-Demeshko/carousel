@@ -81,7 +81,7 @@
                                 $title = array_key_exists('kinder_workers_title', $fields) ? $fields['kinder_workers_title'] : null;
                                 $photo_id = array_key_exists('kinder_workers_fotografiya', $fields) ? $fields['kinder_workers_fotografiya'] : null;
                                 $name = array_key_exists('kinder_workers_name', $fields) ? $fields['kinder_workers_name'] : null;
-                                $short_text = array_key_exists('kinder_workers_short_text', $fields) ? $fields['kinder_workers_name'] : null;
+                                $short_text = array_key_exists('kinder_workers_short_text', $fields) ? $fields['kinder_workers_short_text'] : null;
         
                                 ?>
                                 <h1 class="banner__title banner__title--big-screen">
@@ -115,10 +115,16 @@
                     <div style="height: 4px; background-color: var(--grey); margin: 2.5rem 0; border-radius: 2px;">
                     </div>
                     <!-- END OF BREAKER-->
-                    <div class="main__precept_wrapper">
-                        <p class="main__precept">
-                            <?php $short_text ?>
-                        </p>
+                    <div class="main__precept_wrapper"> 
+                    <?php 
+                        if($short_text && $short_text !== ''){
+                            echo $short_text;
+                        } else {
+                            ?>
+                            <p></p>
+                            <?php
+                        }
+                    ?>
                         <div class="main__placeholder"></div>
                     </div>
 

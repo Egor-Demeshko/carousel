@@ -8,7 +8,7 @@
 <?php get_template_part('/template-parts/content', 'mobile_bottom')?>
 
 <header class="header-post">
-    <span><a class="header-post__logo" href="/" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
+    <span><a class="header-post__logo" href="/" aria-label="<?php echo __("Перейти на главную страницу", "kinder") ?>"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
     <div class="header-post__menu">
         <nav>
             <?php 
@@ -24,14 +24,14 @@
                 } else {
                     ?>
                     <ul class="header__list">
-                        <li class="header-post__menu-item"><a aria-label = "Перейти на главную" href="/"><?php echo __("Главная", "kinder") ?></a></li>
-                        <li class="header-post__menu-item"><a aria-label = "Перейти к всем записям" href="/posts"><?php echo __("Все записи", "kinder") ?></a></li>
+                        <li class="header-post__menu-item"><a aria-label="<?php echo __("Перейти на главную страницу", "kinder") ?>" href="/"><?php echo __("Главная", "kinder") ?></a></li>
+                        <li class="header-post__menu-item"><a aria-label = "<?php echo __("Перейти к всем записям", "kinder") ?>" href="/posts"><?php echo __("Все записи", "kinder") ?></a></li>
                     </ul>
                     <?php
                 }
             ?>
         </nav>
-        <div class="header-post__icon_wrapper" aria-role="button" aria-label="включить/выключить режим высокого контраста">
+        <div class="header-post__icon_wrapper" role="button" aria-label="<?php echo __("включить/выключить режим высокого контраста", "kinder") ?>">
             <svg class="header-post__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -9,12 +9,12 @@
     $alt_text = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
     $link = get_the_permalink();
 ?>
-<div class="list_card" aria-label="одиночная карточка новости">
+<div class="list_card" aria-label="<?php echo __("одиночная карточка новости", "kinder")?>">
     <div class="list_card__point"></div>
     <div class="list_card__date">
         <div class="list_card__date_background"></div>
-        <span class="list_card__day" aria-label="день записи"><?php echo $day; ?></span>
-        <span class="list_card__month" aria-label="месяц записи"><?PHP echo $month ?></span>
+        <span class="list_card__day" aria-label="<?php echo __("день записи", "kinder")?>"><?php echo $day; ?></span>
+        <span class="list_card__month" aria-label="<?php echo __("месяц записи", "kinder")?>"><?PHP echo $month ?></span>
     </div>
     <div class="list_card__content_wrapper">
         <div class="list_card__content">

@@ -10,7 +10,18 @@
 <?php get_template_part('template-parts/content', "mobile_bottom")?>
 
 <header class="header-post">
-    <span><a class="header-post__logo" href="/" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
+    <?php 
+        $locale = get_locale();
+        $addition_to_link = null;
+        if($locale !== "ru_RU"){
+            $addition_to_link = $locale;
+        } else {
+            $addition_to_link = '';
+        } 
+    ?>
+    <span><a class="header-post__logo" href="/<?php echo $addition_to_link;?>" 
+        aria-label="<?php echo __("Перейти на главную страницу", "kinder") ?>">
+            <?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
     <div class="header-post__menu">
         <nav>
             <?php 
@@ -33,7 +44,7 @@
                 }
             ?>
         </nav>
-        <div class="header-post__icon_wrapper" aria-role="button" aria-label="включить/выключить режим высокого контраста">
+        <div class="header-post__icon_wrapper" aria-role="button" aria-label="<?php echo __("включить/выключить режим высокого контраста", "kinder") ?>">
             <svg class="header-post__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -57,7 +68,7 @@
         echo ($url) ? $url : esc_url( get_template_directory_uri() . BANNER_WORKERS_DEFAULT);
     ?>" alt="banner" role="presentation" width="1446" height="314" aria-hidden="true">
     <div class="banner__title_wrapper banner__title_wrapper--flex-start">
-        <h1 class="banner__title banner__title--left"><?php the_archive_title();?></h1>
+        <h1 class="banner__title banner__title--left"><?php echo single_cat_title('', false); ?></h1>
     </div>
 </div>
 
@@ -80,7 +91,7 @@
                         </div>
                         <!-- END OF NEWS -->
                         
-                        <div class="pagination">
+                        <div class="pagination" aria-label="<?php echo __("Блок пагинации", "kinder") ?>">
                             <?php
                             
                             $total_pages = $wp_query->max_num_pages;

@@ -269,6 +269,70 @@
             }
         }
 
+        .goUp{
+            display: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            box-shadow: 0 0 4px var(--shadow);
+            padding: 24px 14px;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--main-dark);
+            position: fixed;
+            bottom: 110px;
+            right: 16px;
+            cursor: pointer;
+            color: var(--background);
+        }
+        
+        .stop-scroll{
+            bottom: 300px;
+        }
+        
+        @media (min-width: 32em){
+            .goUp{
+            bottom: 50px;
+            right: 70px;
+            }
+        
+            .stop-scroll{
+            bottom: 140px;
+            }
+        }
+
+        .highcontrast__control{
+            padding: 1rem clamp(1rem, 2.2vw, 2rem);
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            border: 2px solid black;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .highcontrast__buttons{
+            display: flex;
+            gap: clamp(.4rem, 1.1vw, 1rem);
+            margin-top: clamp(.4rem, 1.1vw, 1rem);
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .highcontrast__btn{
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: .2rem 1rem;
+        }
+
+        @media screen and (max-width: 800px){
+            .highcontrast__control{
+                width: 90%;
+            }
+        }
+
 
     </style>
     <?php wp_head();?>
@@ -276,7 +340,18 @@
 
 <body <?php body_class(); ?> style="background-image: url( <?php echo esc_url( get_template_directory_uri() . "/assets/images/404.png")?>);">
 <header class="header-post">
-    <span><a class="header-post__logo" href="/" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("На главную", "kinder") : get_field("kinder-logo-text");?></a></span>
+    <?php
+        $locale = get_locale();
+        $addition_to_link = null;
+        if($locale !== "ru_RU"){
+            $addition_to_link = $locale;
+        } else {
+            $addition_to_link = '';
+        } 
+    ?>
+    <span><a class="header-post__logo" href="/<?php echo $addition_to_link?>" 
+    aria-label="<?php echo __("Перейти на главную страницу", "kinder")?>">
+    <?php echo empty( get_field("kinder-logo-text")) ? __("На главную", "kinder") : get_field("kinder-logo-text");?></a></span>
     <div class="header-post__menu">
         <nav>
             <?php 
@@ -299,7 +374,7 @@
                 }
             ?>
         </nav>
-        <div class="header-post__icon_wrapper" aria-role="button" aria-label="включить/выключить режим высокого контраста">
+        <div class="header-post__icon_wrapper" aria-role="button" aria-label="<?php __("включить/выключить режим высокого контраста", "kinder")?>">
             <svg class="header-post__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -310,6 +385,7 @@
         <?php echo do_shortcode( '[bogo]' ); ?>
     </div>
 </header>
+
 
 <section>
     <div class="container">
