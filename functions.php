@@ -127,8 +127,8 @@ add_action('init', 'remove_image_sizes');
 
 // Добавляем новые размеры
 function add_custom_image_sizes() {
-    add_image_size('post_preview', 232, 252, true);
-    add_image_size('greetings_portrait', 252, 212, true);
+    add_image_size('post_preview', 252, 232, true);
+    add_image_size('greetings_portrait', 212, 252, true);
     add_image_size('slider_image', 1440, 386, true);
     add_image_size('banner_background', 1446, 314, true);
 }
@@ -162,4 +162,12 @@ function custom_single_template($single_template) {
 add_filter('single_template', 'custom_single_template');
 
 
+function my_localizable_post_types( $localizable ) {
+
+    return array_merge( $localizable, ['kinder_infoblocks', 'kinder_slider', 'kinder_links_slider'] ); 
+} 
+add_filter( 'bogo_localizable_post_types', 'my_localizable_post_types', 10, 1 );
+
+
+    
 ?>

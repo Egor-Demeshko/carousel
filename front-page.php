@@ -199,10 +199,7 @@
 
                 <div class="menu__socials">
                     <?php echo get_left_socials(); ?>
-                    <!--<div class="menu__socials_list">
-                        <a href="#"><img src="/assets/icons/Instagram_green.svg"/></a>
-                        <a href="#"><img src="/assets/icons/youtube_green.svg"/></a>
-                    </div>-->
+                    
                 </div>
             </div>
         </nav>
@@ -227,6 +224,15 @@
     </main>
 
 
+    <?php
+    // Запрос кастомного типа записи kinder_slider
+    $args = array(
+        'post_type' => 'kinder_slider',
+    );
+
+    $query = new WP_Query($args);
+    // Цикл для кастомного типа записи kinder_slider
+    if ($query->have_posts()) {?>
     <section class="glide">
         <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="<?php echo __("Индексы и кнопки переключения слайдера", "kinder")?>">
         </div>
@@ -242,30 +248,21 @@
                 </svg>
             </button>
         </div>
-        <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
-                <?php
-                // Запрос кастомного типа записи kinder_slider
-                $args = array(
-                    'post_type' => 'kinder_slider',
-                );
-
-                $query = new WP_Query($args);
-
-                // Цикл для кастомного типа записи kinder_slider
-                if ($query->have_posts()) {
+                 <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides"><?php
                     while ($query->have_posts()) {
                         $query->the_post();
 
                         get_template_part("template-parts/content", "slider"); 
                     }
                     
-                    wp_reset_postdata();
+                    wp_reset_postdata();?>
+                    </ul>
+                </div>
+    </section>
+                <?php
                 }
                 ?>
-            </ul>
-        </div>
-    </section>
 
 
     
@@ -287,13 +284,6 @@
             wp_reset_postdata();
         }
     ?>
-
-   <!-- <div class="map">
-        <h3 class="map__heading">Интерактивные карты свободных мест</h3>
-        <a class="map__button" href="#">Интерактивные карты свободных мест</a>
-        <iframe class="map__embeded" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab3fd6a48253fddfc0938315bacb4c649e707f7933cfbd555fa59d58475448637&source=constructor"
-        width="720" height="532"></iframe>
-    </div>-->
 
     <section class="content">
         <?php the_content(); ?>

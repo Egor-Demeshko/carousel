@@ -5,9 +5,8 @@
     $excerpt = get_the_excerpt();
     $author = get_the_author();
     $author_link = get_author_posts_url(get_the_author_meta('ID'));
-    $thumbnail = get_the_post_thumbnail_url("post_preview");
+    $thumbnail = get_the_post_thumbnail_url($post, "post_preview");
     $alt_text = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
-    $link = get_the_permalink();
 ?>
 <div class="list_card" aria-label="<?php echo __("одиночная карточка новости", "kinder")?>">
     <div class="list_card__point"></div>
@@ -28,7 +27,7 @@
             <div class="list_card__bottom">
                 <span class="list_card__author"><?php echo __("автор:", "kinder")?><a 
                 aria-label="<?php __("Посмотреть информацию об авторе")?>" href="<?php echo $author_link;?>"><?php echo $author ?></a></span>
-                <a class="list_card__link" href="<?php $link ?>" target="_blank"><?php echo __("Читать далее", "kinder")?></a>
+                <a class="list_card__link" href="<?php the_permalink(); ?>"><?php echo __("Читать далее", "kinder")?></a>
             </div>
         </div>
 

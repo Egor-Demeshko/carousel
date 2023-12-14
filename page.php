@@ -8,7 +8,21 @@
 <?php get_template_part('/template-parts/content', 'mobile_bottom')?>
 
 <header class="header-post">
-    <span><a class="header-post__logo" href="/" aria-label="<?php echo __("Перейти на главную страницу", "kinder")?>" title="<?php __("Перейти на главную страницу", "kinder")?>"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
+    <?php 
+        $locale = get_locale();
+        $addition_to_link = null;
+        if($locale !== "ru_RU"){
+            $addition_to_link = $locale;
+        } else {
+            $addition_to_link = '';
+        } 
+    ?>
+    <span>
+        <a class="header-post__logo" href="/<?php echo $addition_to_link;?>" 
+        aria-label="<?php echo __("Перейти на главную страницу", "kinder") ?>">
+            <?php echo !empty( get_field("kinder-logo-text")) ? get_field("kinder-logo-text") : (get_bloginfo('name')  ? get_bloginfo('name') : __("Логотип", "kinder"));?>
+        </a>
+    </span>
     <div class="header-post__menu">
         <nav>
             <?php 

@@ -208,10 +208,14 @@ class WP_Mobile_Menu extends Walker_Nav_Menu{
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
+		$third_arg = '';
+		if(isset($args) && isset($args->link_after)){
+		    $third_arg = $args->link_after;
+		}
 		$item_output = sprintf( '<a%1$s>%2$s%3$s</a>',
 			$attributes,
 			apply_filters( 'the_title', $item->title, $item->ID ),
-			$args->link_after
+			$third_arg
 		);
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

@@ -9,7 +9,8 @@
      * @return string The URL of the background image.
      */
     function kinder_get_background_image(){
-        $url = get_field("kinder_background_image") ?: esc_url( get_template_directory_uri() . '/assets/images/main_bg.svg' );
+        $image = get_field("kinder_background_image");
+        $url = $image && $image !== ""  ? $image : "";
         return $url;
     }
 ?>
@@ -188,7 +189,7 @@
                 transform: translate(-50%, -2.8rem);
             }
 
-            div.main{
+            div.main__wrapper{
                 padding: 0 1.125rem 4.375rem;
             }
 

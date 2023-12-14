@@ -1,10 +1,14 @@
 .main{
-    padding: 5rem 2.5rem;
     width: 100%;
 }
 
 .main__header--relative{
     position: relative;
+}
+
+.main__wrapper{
+    padding: 5rem 2.5rem;
+    background-color: var(--background);
 }
 
 .main__home{
@@ -106,7 +110,6 @@
     .main__author--absolute{
         position: static;
         align-items: center;
-    }
-    
+    }    
 }
 

@@ -18,7 +18,11 @@
             $addition_to_link = '';
         } 
     ?>
-    <span><a class="header-post__logo" href="/<?php echo $addition_to_link;?>" aria-label="Перейти на главную страницу"><?php echo empty( get_field("kinder-logo-text")) ? __("Логотип", "kinder") : get_field("kinder-logo-text");?></a></span>
+    <span>
+        <a class="header-post__logo" href="/<?php echo $addition_to_link;?>" aria-label="Перейти на главную страницу">
+            <?php echo !empty( get_field("kinder-logo-text")) ? get_field("kinder-logo-text") : ( get_bloginfo('name')  ? get_bloginfo('name') : __("Логотип", "kinder"));?>
+        </a>
+    </span>
     <div class="header-post__menu">
         <nav>
             <?php 
@@ -56,17 +60,21 @@
 
 <div class="banner">
     <?php 
-        $id = get_post_thumbnail_id();
-        $url = null;
-        if($id){
-            $url = wp_get_attachment_image_src( $id, 'banner_background' )[0];
+        $fields = get_fields();
+        $photo_id = (array_key_exists('kinder_single_banner_foto', $fields) && $fields['kinder_single_banner_foto'] !== '') ? $fields['kinder_single_banner_foto'] : null;
+        $photo_url = null;
+        if($photo_id){
+            $photo_url = wp_get_attachment_image_src($photo_id, 'banner_background')[0];
         }
+        $photo_alt = get_post_meta($photo_id, '_wp_attachment_image_alt', TRUE);
     ?>
+
     <img class="banner__image" src="<?php 
-        echo ($url) ? $url : esc_url( get_template_directory_uri() . BANNER_DEFAULT_ROUTE);
-    ?>" alt="banner" role="presentation" width="1446" height="314" aria-hidden="true">
-    <div class="banner__title_wrapper banner__title_wrapper--flex-start">
-        <h1 class="banner__title banner__title--left"><?php echo single_cat_title('', false);?></h1>
+        echo ($photo_url && $photo_url !== "") ? $photo_url : esc_url( get_template_directory_uri() . BANNER_DEFAULT_ROUTE);
+    ?>" alt="<?php echo ($photo_alt && $photo_alt !== "") ? $photo_alt : "banner";?>" 
+    role="presentation" width="1446" height="314" aria-hidden="true">
+    <div class="banner__title_wrapper">
+        <h1 class="banner__title"><?php echo single_cat_title('', false); ?></h1>
     </div>
 </div>
 

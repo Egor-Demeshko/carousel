@@ -2,6 +2,7 @@
     margin: var(--step) auto 0;
     max-width: 63.625rem;
     display: flex;
+    position: relative;
 }
 
 @media screen and (max-width: 500px) {
