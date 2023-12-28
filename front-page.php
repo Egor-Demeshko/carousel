@@ -233,7 +233,7 @@
     $query = new WP_Query($args);
     // Цикл для кастомного типа записи kinder_slider
     if ($query->have_posts()) {?>
-    <section class="glide">
+    <section class="glide" id="hero">
         <div class="glide__bullets" data-glide-el="controls[nav]" aria-label="<?php echo __("Индексы и кнопки переключения слайдера", "kinder")?>">
         </div>
         <div class="glide__arrows" data-glide-el="controls">
@@ -285,8 +285,16 @@
         }
     ?>
 
+
     <section class="content">
         <?php the_content(); ?>
+    </section>
+
+
+    <section class="content">
+        <?php
+            echo get_template_part("template-parts/blocks/gallery/front", "gallery");
+        ?>
     </section>
 
 

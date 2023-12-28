@@ -14,7 +14,7 @@
         }
         
     ?>
-        <header class="main__header">
+        <div class="main__header">
             <div class="main__breadcrumbs">
             <?php
                 $locale = get_locale();
@@ -46,4 +46,4 @@
                         <span><?php $post_date ?></span>
                         <span><a href="<?php echo $author_link?>"><?php echo $author_name?></a></span>
                     </div>  
-        </header>
+        </div>

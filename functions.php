@@ -27,10 +27,24 @@ add_action("wp_enqueue_scripts", function(){
     }
 }); 
 
+function custom_category_template($template) {
+    if (is_single() && in_category(CKROR_PHOTOS)) {
+        $new_template = locate_template(array(CKROR_PHOTOS . '.php'));
+        if (!empty($new_template)) {
+            return $new_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'custom_category_template');
+
 /**так как для страницы и front-page стили сильно разные, делаем разделение загрузки стилей. */
 function enqueue_styles_for_page_template($template) {
     //$template содержит полную строку до макета страницы
-    if (basename($template) === 'page.php' || basename($template) === 'single.php') {
+    if(basename($template) === CKROR_PHOTOS . '.php') {
+        wp_enqueue_style('your-custom-style', get_template_directory_uri() . '/assets/css/post/post.css');
+        wp_enqueue_style('gallery', get_template_directory_uri() . '/assets/css/gallery_cathegory/gallery.css');
+    } else if (basename($template) === 'page.php' || basename($template) === 'single.php') {
         wp_enqueue_style('your-custom-style', get_template_directory_uri() . '/assets/css/post/post.css');
     } else if(basename($template) === 'front-page.php'){
         wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
@@ -43,6 +57,8 @@ function enqueue_styles_for_page_template($template) {
     } else if(basename($template) === "search.php"){
         wp_enqueue_style('workers_style', get_template_directory_uri() . '/assets/css/archive/archive.css', ['normolize'], null);
         wp_enqueue_style('search_style', get_template_directory_uri() . '/assets/css/widgets.css', ['normolize'], null);
+    } else {
+        wp_enqueue_style('main_style', get_template_directory_uri() . '/assets/css/index.css', ['normolize'], null);
     }
     return $template;
 }
@@ -169,5 +185,4 @@ function my_localizable_post_types( $localizable ) {
 add_filter( 'bogo_localizable_post_types', 'my_localizable_post_types', 10, 1 );
 
 
-    
 ?>

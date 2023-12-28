@@ -155,6 +155,8 @@
 .list_card__thumbnail{
     object-fit: cover;
     border-radius: 10px;
+    max-width: 252px;
+    max-height: 212px;
 }
 
 @media screen and (max-width: 800px){

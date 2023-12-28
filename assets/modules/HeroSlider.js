@@ -3,7 +3,7 @@ import Glide from '@glidejs/glide';
 class HeroSlider {
     constructor() {
 
-      const slider = document.querySelector(".glide");
+      const slider = document.querySelector("#hero");
 
 
       if (slider) {

@@ -77,7 +77,7 @@
 </div>
 
 <div class="main_flow">
-
+       
         <main class="main_flow__main">
             <div class="main" >
                 <div class="main__wrapper">
@@ -87,7 +87,17 @@
                     </div>
                     <!-- END OF BREAKER-->
                     
-                    <article class="main__content">
+                    <article class="main__content single_feed feed">
+                        <?php
+                        if ( have_posts() ) : 
+                            while ( have_posts() ) : the_post(); 
+                                // Get the post title and link
+                                echo get_template_part('template-parts/blocks/gallery/archive-gallery', '', ["single" => true]);
+                            endwhile;
+                        else : 
+                            echo 'No posts found';
+                        endif; 
+                        ?>
                         <?php the_content(); ?>
                     </article>
                 </div>

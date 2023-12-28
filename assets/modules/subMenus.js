@@ -16,6 +16,7 @@ let isMobile = false;
     }
 
     const mainMenu = document.querySelector(".menu__main");
+    if(!mainMenu) return;
 
     //если мы находимся на мобильной версии, то создаем слушатель click на mainMenu
     if(isMobile){

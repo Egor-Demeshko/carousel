@@ -74,18 +74,7 @@
 </div>
 
     <div class="main_flow">
-        <aside class="main_flow__aside">
-            <nav class="menu" aria-label=<?php echo __("Основное меню", "kinder")?>>
-                <div class="menu__sticky">
-                    <h3 class="menu__heading"><?php echo __("Навигация", "kinder")?></h3>   
-                    <?php get_left_top_menu(); ?>
-                    <?php echo get_left_middle_menu(); ?>
-                    <div class="menu__socials">
-                        <?php echo get_left_socials(); ?>
-                    </div>
-                </div>
-            </nav>
-        </aside>
+
         <main class="main_flow__main">
             <div class="main" >
                 <div class="main__wrapper">
@@ -151,6 +140,18 @@
             </div>
 
         </main>
+        <aside class="main_flow__aside">
+            <nav class="menu" aria-label=<?php echo __("Основное меню", "kinder")?>>
+                <div class="menu__sticky">
+                    <h3 class="menu__heading"><?php echo __("Навигация", "kinder")?></h3>   
+                    <?php get_left_top_menu(); ?>
+                    <?php echo get_left_middle_menu(); ?>
+                    <div class="menu__socials">
+                        <?php echo get_left_socials(); ?>
+                    </div>
+                </div>
+            </nav>
+        </aside>
     </div>
 
 <?php get_footer()?>

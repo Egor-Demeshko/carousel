@@ -1,0 +1,31 @@
+.feed{
+    padding-left: 3rem;
+    margin: 0;
+}
+
+.feed>section{
+    margin-top: 4rem;
+}
+
+.feed>section:first-child{
+    margin-top: 0;
+}
+
+.feed .photos__gallery{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 800px) {
+    .feed .photos__gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }    
+
+    .feed{
+        padding-left: 1rem;
+    }
+} 
+@media screen and (max-width: 500px) {
+    .feed{
+        padding-left: 0;
+    }
+} 

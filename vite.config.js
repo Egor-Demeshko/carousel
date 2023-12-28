@@ -9,7 +9,8 @@ export default {
                 index: 'index.html',
                 post: 'post.html',
                 archive: 'archive.html',
-                workers: 'workers.html'
+                workers: 'workers.html',
+                gallery: 'gallery.html'
             },
             output: {
                 entryFileNames: '[name].js',

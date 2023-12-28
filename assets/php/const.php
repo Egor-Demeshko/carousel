@@ -3,4 +3,6 @@
     define("BANNER_WORKERS_DEFAULT", "/assets/images/default-workers-banner.png");
     define("WORKERS", "workers");
     define("WORKERS_DEFAULT", "/assets/images/mask_portrait.svg");
+    define("COLORS", "kinder_colors");
+    define("CKROR_PHOTOS", "ckror_photos");
 ?>

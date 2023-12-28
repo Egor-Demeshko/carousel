@@ -26,5 +26,8 @@
     </div>
 </footer>
 
-<?php wp_footer(); ?>
+<?php 
+    echo get_template_part('template-parts/blocks/gallery/gallery', 'full_window');
+    wp_footer(); 
+?>
 </body>

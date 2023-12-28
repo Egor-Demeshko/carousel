@@ -8,6 +8,7 @@
 @import url('/assets/css/post/main.css');
 @import url('/assets/css/post/footer.css');
 @import url('/assets/css/highcontrast_control.css');
+@import url('/assets/css/elements/full_window_gallery/full_window.min.css');
 
 *{
     font-family: Ubuntu, sans-serif;
