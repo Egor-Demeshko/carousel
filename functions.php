@@ -10,6 +10,15 @@ require get_template_directory() . '/assets/php/walkers.php';
 require get_template_directory() . '/assets/php/kinder_bogo_options.php';
 /**константы*/
 require get_template_directory() . '/assets/php/const.php';
+require get_template_directory() . '/assets/php/parser.php';
+
+/**ROOT в JSON API для добавление постов в wordpress */
+add_action('rest_api_init', function () {
+    register_rest_route('parser/v1', 'parser', array(
+        'methods' => WP_REST_Server::READABLE, 
+        'callback' => 'start_parser'
+    ));
+});
 
 
 /** ДОБАВЛЯЕМ СКРИПТЫ И СТИЛИ. СТИЛИ отличаются у второстепенных от главной, поэтому используется

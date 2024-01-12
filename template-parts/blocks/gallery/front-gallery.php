@@ -3,7 +3,7 @@
 $args = array(
     'post_type' => 'post',
     'category_name' => CKROR_PHOTOS,
-    'posts_per_page' => -1,
+    'posts_per_page' => 12,
 );
 
 $query = new WP_Query($args);

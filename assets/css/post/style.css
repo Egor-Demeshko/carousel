@@ -54,3 +54,29 @@ html::-webkit-scrollbar-button {
   html.highcontrast::-webkit-scrollbar-thumb {
     background-color: grey;
   }
+
+
+  /*  Дополнительные ссылки  */
+  .related_links>h4{
+      margin-bottom: 1rem;
+  }
+
+  .related_links__links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .related_links__link{
+    display: block;
+    padding: .625rem 1.625rem;
+    text-decoration: none;
+    color: var(--background);
+    background-color: var(--main-dark);
+    transition: background 400ms ease;
+    border-radius: 10px;
+  }
+
+  .related_links__link:hover{
+    background-color: var(--main);
+  }

@@ -59,6 +59,8 @@ a.photos__goto-link{
     width: 100%;
     transform: scale(1) rotateZ(0);
     transition: transform ease 200ms;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 /*КНОПКА ДЛЯ АРХИВНЫХ ГАЛЛЕРЕЙ*/

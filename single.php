@@ -89,6 +89,41 @@
                     
                     <article class="main__content">
                         <?php the_content(); ?>
+                        <?php
+                        // Get the ID of the current category
+                        $category = get_the_category();
+                        $category_id = $category[0]->cat_ID;
+
+                        // Query all posts in the same category and language
+                        $post_locale = get_locale();
+                        $args = array(
+                            'category__in' => $category_id,
+                            'post_type' => 'post',
+                            'posts_per_page' => -1,
+                            'lang' => $post_locale
+                        );
+
+                        $query = new WP_Query($args);
+
+                        $posts = $query->posts;
+
+                        /*$posts = get_posts($args);*/
+                        ?>
+                        <div class="related_links">
+                            <h4 class="related_links__title"><?php echo __("Также в этом разделе:", "kinder")?></h4>
+                            <div class="related_links__links">
+                                <?php 
+                                // Display the links and titles of all posts in the same category
+                                foreach ($posts as $post) {
+                                    setup_postdata($post);
+                                    ?>
+                                    <a href="<?php the_permalink(); ?>" class="related_links__link"><?php the_title(); ?></a>
+                                    <?php
+                                }
+                                wp_reset_postdata();
+                                ?>
+                            </div>
+                        </div>
                     </article>
                 </div>
             </div>
