@@ -150,6 +150,8 @@
             top: 0;
             left: 50%;
             transform: translate(-50%);
+        }.header-post>span{
+            max-width: 600px;
         }.header-post__menu{
             display: flex;
         }.header-post__list{
