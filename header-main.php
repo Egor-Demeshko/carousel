@@ -170,6 +170,10 @@
             max-width: 63rem;
             margin: var(--step) auto 0;
             text-align: center;
+			padding: 1rem 2rem;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: var(--white);
         }
 
         @media screen and (max-width: 800px){

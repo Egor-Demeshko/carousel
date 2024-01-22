@@ -2,7 +2,6 @@
     background-image: var(--main-green-gradient);
     padding: 4.375rem 12.5rem 1.75rem 8.9rem;
     display: flex;
-    max-height: 18.75rem;
     justify-content: start;
     position: relative;
     gap: 10rem;
